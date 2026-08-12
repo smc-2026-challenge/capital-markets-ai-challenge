@@ -1,0 +1,10 @@
+# Saved SharePoint page: embeds the source URL with session tokens (xsdata,
+# sdata), the tenant id and the user UPN. Never commit these - the full content
+# lives in Brazil_NewsForYou.md with the URL stripped.
+Brazil_NewsForYou.html
+Brazil_NewsForYou_files/
+
+# Local scratch
+*.zip
+*.tmp
+~$*

@@ -1,0 +1,267 @@
+{
+  "checkpoint_version": 1,
+  "checkpoint_date": "2026-08-12",
+  "idioma": "pt-BR sem acentuacao (ASCII puro)",
+  "objetivo": "Contexto portavel do Desafio Capital Markets - AI Agents Challenge (SMC 2026). Recarregue este arquivo para retomar o trabalho sem reprocessar o PDF/HTML de origem.",
+  "status": {
+    "fase": "ideacao",
+    "nome_do_time_definido": false,
+    "ideia_da_solucao_definida": false,
+    "composicao_do_time_definida": false,
+    "inscricao_realizada": false,
+    "satisfacao_do_usuario_com_as_ideias": "nao satisfeito - continuar explorando o espaco de problemas"
+  },
+  "arquivos_de_origem": [
+    {
+      "path": "Regulamento_AI_Agents_Challenge_SMC_2026.pdf",
+      "paginas": 22,
+      "o_que_e": "Regulamento oficial. Versao 1.0, publicado em 05/08/2026.",
+      "nota_de_extracao": "Sem poppler nesta maquina; texto extraido com python pypdf e gravado em UTF-8."
+    },
+    {
+      "path": "Brazil_NewsForYou.html",
+      "o_que_e": "Apenas o esqueleto da pagina SharePoint salva - sem conteudo. O conteudo real esta em Brazil_NewsForYou_files/saved_resource.html."
+    },
+    {
+      "path": "Brazil_NewsForYou_files/saved_resource.html",
+      "o_que_e": "Pagina de divulgacao no SharePoint: cronograma, entregaveis, juri, premiacao."
+    }
+  ],
+  "desafio": {
+    "nome": "Desafio Capital Markets - AI Agents Challenge - SMC 2026",
+    "promotor": "GFT Technologies Brasil",
+    "evento": "Semana Mercado de Capitais 2026 (SMC)",
+    "contato": "Evelim Buratti (emro@gft.com)",
+    "objetivo": "Desenvolver agentes de IA generativa que resolvam problemas reais do Mercado de Capitais, simulando cenarios do dia a dia, com foco em impacto, clareza, seguranca e aplicabilidade pratica.",
+    "parceiro_tecnologico": "Google"
+  },
+  "elegibilidade": {
+    "permitido": "Colaboradores da GFT Brasil contratados em regime CLT, com vinculo ativo da inscricao ate a divulgacao do resultado",
+    "excluidos": [
+      "estagiarios",
+      "prestadores de servico",
+      "consultores independentes",
+      "fornecedores",
+      "contratados como Pessoa Juridica (PJ)",
+      "terceiros alocados em projetos da GFT",
+      "colaboradores em Staff (Bench) na inscricao ou durante o desafio",
+      "colaboradores em cumprimento de aviso previo",
+      "colaboradores afastados (auxilio-doenca, maternidade, paternidade, licenca nao remunerada, acidente)",
+      "colaboradores desligados antes da entrega da premiacao",
+      "integrantes da Comissao Julgadora",
+      "integrantes da Organizacao com conflito de interesses",
+      "executivos L7 ou superior quando a Organizacao declarar impedimento",
+      "colaboradores em processo disciplinar ou penalizados nos 3 meses anteriores"
+    ],
+    "validado_por": "Recursos Humanos; pode ser revisto a qualquer momento"
+  },
+  "time": {
+    "minimo_de_integrantes": 2,
+    "maximo_de_integrantes": 4,
+    "participacao_individual_permitida": true,
+    "agent_lead_obrigatorio": true,
+    "atribuicoes_do_agent_lead": [
+      "representar oficialmente a equipe",
+      "realizar a inscricao",
+      "efetuar o envio das entregas",
+      "manter comunicacao com a Organizacao",
+      "assegurar o cumprimento dos prazos"
+    ],
+    "como_o_regulamento_chama_os_integrantes": "Builders (regulamento sec. 4.5)",
+    "um_time_por_participante": true,
+    "alteracao_de_integrantes": "permitida somente ate a data limite do cronograma oficial",
+    "inscricao_e_individual": "Todos os integrantes devem preencher o formulario de inscricao, inclusive quem participa em equipe. Vagas limitadas.",
+    "times_multidisciplinares_incentivados": true,
+    "regras_de_nome": "NAO EXISTEM - o regulamento nao define nenhuma restricao para o nome do time"
+  },
+  "cronograma_2026": [
+    { "janela": "05/08 - 28/08", "evento": "Periodo de inscricao (formulario individual por integrante, vagas limitadas)" },
+    { "janela": "07/08 - 01/09", "evento": "Selecao das propostas pelo comite; apenas propostas aprovadas avancam" },
+    { "janela": "12/08 14h", "evento": "Kickoff online + apresentacao da trilha de capacitacao do Google" },
+    { "janela": "13/08 - 30/09", "evento": "Desenvolvimento e entrega; 30/09 e o ultimo dia para enviar o agente" },
+    { "janela": "a partir de 13/08", "evento": "Liberacao das licencas Gemini Enterprise para os aprovados" },
+    { "janela": "01/10 - 15/10", "evento": "Avaliacao do juri" },
+    { "janela": "16/10", "evento": "Divulgacao dos 3 finalistas" },
+    { "janela": "19/10 - 23/10", "evento": "Finalistas recebem orientacoes de apresentacao" },
+    { "janela": "28/10", "evento": "Apresentacao final; o publico presente elege 1o, 2o e 3o lugares" }
+  ],
+  "entregaveis_obrigatorios": [
+    { "item": "One-pager", "formato": "PDF", "conteudo": "problema abordado, solucao desenvolvida e impacto esperado" },
+    { "item": "Video com pitch e demo", "formato": "video", "conteudo": "apresentacao com demonstracao da solucao" },
+    { "item": "Demo funcional", "formato": "prototipo", "conteudo": "prototipo navegavel ou simulado do agente de IA" },
+    { "item": "Arquitetura da solucao", "formato": "PDF", "conteudo": "diagrama simplificado da arquitetura tecnica do agente" }
+  ],
+  "avaliacao": {
+    "pesos_do_regulamento": {
+      "Inovacao e Criatividade": 0.25,
+      "Valor agregado ao negocio": 0.25,
+      "Viabilidade tecnica": 0.20,
+      "Qualidade da experiencia do usuario": 0.15,
+      "Escalabilidade e potencial de aplicacao": 0.15
+    },
+    "criterios_na_redacao_do_sharepoint": [
+      "Aderencia ao Mercado de Capitais - clareza do problema e relevancia para o setor financeiro regulado",
+      "Valor para cliente ou negocio - potencial de impacto, eficiencia ou reducao de riscos",
+      "Qualidade do agente e UX - qualidade tecnica, usabilidade e experiencia do usuario",
+      "Criatividade e inovacao - originalidade da abordagem e potencial de escala"
+    ],
+    "desempate": "O VP de Capital Markets decide qual solucao apresenta maior valor agregado ao negocio",
+    "composicao_do_juri": [
+      "Lideranca de Negocios/Delivery da Business Unit de Capital Markets",
+      "Lideranca do BDP",
+      "Parceiro tecnologico: Google",
+      "pode incluir Tecnologia, IA, Negocios, Produtos, Arquitetura, RH, executivos convidados e parceiros estrategicos"
+    ],
+    "vencedor_final_definido_por": "votacao do publico presente no evento de 28/10"
+  },
+  "restricoes_tecnicas": {
+    "plataforma_oficial": "Gemini Enterprise + Google Cloud Platform, com licenca individual por participante inscrito",
+    "obrigatorio": "O agente final deve estar implementado, configurado, integrado, executavel e disponivel para avaliacao nos padroes Gemini Enterprise / GCP. Descumprimento acarreta desclassificacao.",
+    "outras_ferramentas_de_ia": "Permitidas como apoio ao desenvolvimento se autorizadas pelas politicas da GFT e sem gerar custo ou compromisso contratual para a GFT",
+    "guia_tecnico": {
+      "status": "AINDA NAO OBTIDO",
+      "nota": "O Guia Tecnico oficial define requisitos de arquitetura, integracao, seguranca, execucao e apresentacao, e e parte integrante das regras. Deve ser solicitado a Organizacao."
+    },
+    "termos_da_licenca": "individual, pessoal, intransferivel, uso exclusivo no desafio"
+  },
+  "regras_de_dados": {
+    "permitido": ["dados ficticios (mock)", "dados publicos", "dados anonimizados quando previamente autorizados", "dados sinteticos"],
+    "proibido": [
+      "dados pessoais de colaboradores",
+      "dados pessoais de clientes",
+      "dados de parceiros",
+      "dados sensiveis",
+      "bases de producao",
+      "informacoes protegidas por sigilo contratual",
+      "codigo fonte proprietario da GFT",
+      "codigo fonte de clientes",
+      "documentos internos",
+      "credenciais de acesso"
+    ],
+    "penalidade": "desclassificacao imediata, medidas disciplinares e responsabilizacao civil, administrativa e criminal"
+  },
+  "propriedade_intelectual_e_confidencialidade": {
+    "titularidade": "Todos os ativos desenvolvidos sao patrimonio intelectual exclusivo da GFT Brasil; a participacao implica cessao gratuita, total, definitiva e irrevogavel dos direitos patrimoniais",
+    "autoria": "A GFT pode reconhecer a autoria institucionalmente, sem qualquer direito economico associado",
+    "itens_confidenciais": [
+      "solucoes desenvolvidas",
+      "estrategias de negocio",
+      "materiais tecnicos",
+      "informacoes de clientes",
+      "codigo fonte",
+      "arquiteturas",
+      "documentos internos",
+      "criterios de avaliacao",
+      "resultados preliminares"
+    ],
+    "vigencia": "permanece apos o encerramento do desafio e apos eventual desligamento do participante"
+  },
+  "premiacao": {
+    "primeiro": { "valor_brl": 3000, "forma": "cartao de beneficios + destaque nos canais institucionais" },
+    "segundo": { "valor_brl": 2000, "forma": "cartao de beneficios + destaque nos canais institucionais" },
+    "terceiro": { "valor_brl": 1000, "forma": "cartao de beneficios + destaque nos canais institucionais" },
+    "divisao": "concedida ao projeto e dividida igualmente entre todos os integrantes elegiveis; rateio desigual e proibido; a parcela de integrante nao elegivel nao e redistribuida"
+  },
+  "analise_de_aderencia_da_plataforma": {
+    "forcas_do_gemini_enterprise": [
+      "RAG sobre grandes acervos de documentos",
+      "orquestracao multi-agente",
+      "conectores para dados corporativos",
+      "extracao estruturada a partir de documentos nao estruturados"
+    ],
+    "fraquezas_do_gemini_enterprise": [
+      "computacao quantitativa customizada",
+      "streaming de dados de mercado em tempo real",
+      "caminhos de latencia muito baixa"
+    ],
+    "implicacao": "Priorizar problemas intensivos em documentos e em operacoes, em vez de problemas de trading sensiveis a latencia."
+  },
+  "fontes_de_dados_publicos_utilizaveis": [
+    "Dados abertos da CVM - regulamentos de fundos, ITR/DFP, fatos relevantes, escrituras de debentures",
+    "Manuais, comunicados e avisos de eventos corporativos publicos da B3",
+    "APIs do Bacen (SGS / PTAX) - indices, taxas, cambio",
+    "Documentos publicos e taxas de referencia da ANBIMA",
+    "Listas publicas de sancoes e lista de punidos da CVM"
+  ],
+  "dores_de_negocio_identificadas": [
+    {
+      "id": "P1",
+      "titulo": "Monitoramento de covenants em credito privado",
+      "por_que_agora": "O volume de debentures, CRI/CRA e fundos de credito cresceu rapido enquanto o monitoramento de covenants continuou manual",
+      "onde_vaza_dinheiro": "deteccao tardia de quebra eleva a perda dada a inadimplencia; 2 a 4 dias de analista por emissor por trimestre; cauda da carteira sem monitoramento",
+      "disponibilidade_de_dados": "totalmente publica (escrituras, ITR/DFP, indices Bacen)"
+    },
+    {
+      "id": "P2",
+      "titulo": "Processamento de eventos corporativos na custodia",
+      "por_que_agora": "avisos nao estruturados ainda sao digitados manualmente como eventos estruturados",
+      "onde_vaza_dinheiro": "claims operacionais por eventos perdidos ou lancados errado; horas extras no dia do evento",
+      "disponibilidade_de_dados": "avisos publicos, posicoes sinteticas"
+    },
+    {
+      "id": "P3",
+      "titulo": "Falhas de liquidacao em ciclos comprimidos",
+      "por_que_agora": "ciclos globais comprimidos para T+1 (EUA e Canada em 2024, Reino Unido e UE previstos para 2027) enquanto acoes na B3 seguem em D+2; pressao de afirmacao no mesmo dia para fluxo cross-border",
+      "onde_vaza_dinheiro": "custo de falha, funding e pre-funding, risco de buy-in, regimes de penalidade",
+      "disponibilidade_de_dados": "majoritariamente sintetica - menor credibilidade de demo"
+    },
+    {
+      "id": "P4",
+      "titulo": "Vazao de mudancas regulatorias",
+      "por_que_agora": "CVM, Bacen e B3 publicam continuamente; bancos mantem times dedicados a ler, classificar impacto e cascatear para backlogs de sistemas",
+      "onde_vaza_dinheiro": "semanas entre a publicacao e a avaliacao de impacto",
+      "risco": "ideia mais saturada em hackathons - prejudica a nota de Inovacao"
+    },
+    {
+      "id": "P5",
+      "titulo": "Falsos positivos em PLD e vigilancia de mercado",
+      "por_que_agora": "taxas de falso positivo passam de 90%; analistas reescrevem narrativas quase identicas",
+      "onde_vaza_dinheiro": "custo puro de headcount",
+      "risco": "o juri desconfia de agente que parece decidir sobre crime financeiro; viavel apenas com humano no circuito"
+    }
+  ],
+  "solucoes_candidatas": [
+    { "id": "A1", "nome": "Radar Normativo", "dor": "P4", "formato": "monitora publicacoes de CVM/Bacen/B3, classifica impacto por dominio de negocio e emite avaliacao de impacto + backlog de acoes + casos de teste" },
+    { "id": "A2", "nome": "Auditor de Regulamento CVM 175", "dor": "P4", "formato": "audita regulamentos publicos de fundos contra um checklist de clausulas da CVM 175, cita artigos e propoe redacao corretiva", "risco": "a onda de adaptacao a CVM 175 pode ja ter passado do pico em 2026 - validar antes de pitchar" },
+    { "id": "A3", "nome": "Covenant Watch", "dor": "P1", "formato": "extrai covenants de escrituras publicas, monta calendario de verificacao, testa contra ITR/DFP publicos, projeta distancia da quebra e redige memorando e carta de waiver" },
+    { "id": "B4", "nome": "Normalizador de eventos corporativos", "dor": "P2", "formato": "avisos publicos de AGO/AGE e fatos relevantes convertidos em eventos no formato ISO 20022 / MT564, com ambiguidade encaminhada a um humano" },
+    { "id": "B5", "nome": "Triagem de breaks e falhas", "dor": "P3", "formato": "trades sinteticos contra posicoes de custodia, classificacao de causa raiz, redacao da mensagem a contraparte e proposta de correcao" },
+    { "id": "C6", "nome": "Analista de suitability e KYC", "dor": "P5", "formato": "suitability conforme CVM 30 mais screening em listas publicas de sancoes e na lista de punidos da CVM" },
+    { "id": "C7", "nome": "Respondedor de DDQ/RFP", "dor": "nenhuma-primaria", "formato": "responde questionarios de due diligence de gestoras, com cada resposta lastreada em citacao" },
+    { "id": "C8", "nome": "Triagem de vigilancia", "dor": "P5", "formato": "fluxo de ordens sintetico, sinalizacao de layering e spoofing, narrativa do caso para um analista humano" },
+    { "id": "D9", "nome": "Agente de manual de regras para suite de testes", "dor": "margem de delivery da GFT", "formato": "le mudancas em manuais e regras operacionais da B3 e gera cenarios de teste executaveis para a plataforma de um cliente", "nota": "atinge o P&L que o proprio juri administra; risco de ser lido como ferramenta interna e nao solucao de mercado" }
+  ],
+  "recomendacao_atual": {
+    "principal": "A3 Covenant Watch",
+    "vice": "B4 Normalizador de eventos corporativos",
+    "justificativa": [
+      "Aderencia + valor de negocio (50% da nota): os clientes de Capital Markets da GFT sao administradores, gestoras e custodiantes que operam exatamente esse fluxo",
+      "Viabilidade tecnica (20%): RAG documental + extracao estruturada + reverificacao agendada e territorio nativo do Gemini Enterprise, construivel em 7 semanas",
+      "Escalabilidade (15%): o mesmo motor le qualquer contrato com formato de escritura e depois instrumentos offshore",
+      "Votacao do publico: a demo termina em um numero, nao em um dashboard"
+    ],
+    "diferencial_de_inovacao": "projecao de distancia da quebra - projetar cada indice a frente pela propria tendencia do emissor e ranquear a carteira por meses ate a quebra",
+    "papeis_dos_agentes": [
+      "Extrator - PDF da escritura convertido em objetos de covenant (tipo, formula, limite, frequencia de teste, prazo de cura, referencia do artigo)",
+      "Calculadora - busca a metrica no ITR/DFP publico e calcula o indice, mostrando a aritmetica",
+      "Vigia - execucao agendada por data de teste, classifica cumprido / proximo da quebra / quebrado com um numero de distancia da quebra",
+      "Narrador - escreve o memorando do analista e a carta a contraparte, com cada afirmacao ligada ao artigo e a linha da demonstracao financeira"
+    ],
+    "aceita": false
+  },
+  "questoes_abertas": [
+    "Em qual dominio do Mercado de Capitais o time atua no dia a dia? (define qual dor e crivel no pitch)",
+    "Quem sao os integrantes e quem sera o Agent Lead?",
+    "O Guia Tecnico ja foi obtido com a Organizacao?",
+    "Todos os integrantes pretendidos sao elegiveis (CLT, fora de Bench/aviso previo/afastamento)?",
+    "Alguem participou do kickoff de 12/08 as 14h ou ha gravacao disponivel?"
+  ],
+  "proximas_acoes": [
+    "Confirmar composicao do time e elegibilidade de cada integrante",
+    "Solicitar o Guia Tecnico a Organizacao (emro@gft.com)",
+    "Fechar a direcao de problema e solucao",
+    "Fechar o nome do time",
+    "Cada integrante enviar o formulario individual de inscricao antes de 28/08",
+    "Escrever o texto da proposta para o formulario de inscricao"
+  ]
+}
