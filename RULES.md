@@ -3,7 +3,7 @@
 Fontes: `Regulamento_AI_Agents_Challenge_SMC_2026.pdf` (22 paginas, v1.0, publicado em 05/08/2026) e `Brazil_NewsForYou_files/saved_resource.html` (pagina de divulgacao no SharePoint).
 Contato: Evelim Buratti - emro@gft.com.
 
-> Este arquivo resume **as regras**, que nao mudaram. Para a **situacao do projeto** - o que ja passou do cronograma, o que esta confirmado e o que nao esta - ver `PLAN.md` e `checkpoint.json` (v7, 08/09/2026). A solucao em construcao esta em `oneask/`.
+> Este arquivo resume **as regras**, que nao mudaram. Para a **situacao do projeto** - o que ja passou do cronograma, o que esta confirmado e o que nao esta - ver `PLAN.md` e `checkpoint.json` (v8, 08/09/2026). A solucao em construcao esta em `oneask/`.
 
 > Nota de extracao: sem poppler nesta maquina. Texto extraido com python `pypdf` e gravado em UTF-8. Os numeros de secao abaixo referem-se ao regulamento.
 >

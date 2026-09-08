@@ -10,7 +10,7 @@ Referencias: `../RULES.md` (regulamento), `../GUIA_TECNICO_RESPOSTA.md` (nao exi
 
 ## 0. Aviso de contexto - o que esta confirmado e o que nao esta
 
-`../PLAN.md` e `../checkpoint.json` foram atualizados em **08/09/2026** e ja refletem a direcao OneAsk (checkpoint v7). Este arquivo e a versao longa do que aqueles dois resumem - se houver divergencia, este e o detalhamento e eles sao o indice.
+`../PLAN.md` e `../checkpoint.json` foram atualizados em **08/09/2026** e ja refletem a direcao OneAsk (checkpoint v8). Este arquivo e a versao longa do que aqueles dois resumem - se houver divergencia, este e o detalhamento e eles sao o indice.
 
 **Resolvido em 08/09:** o texto submetido no formulario esta transcrito em `PROPOSTA_SUBMETIDA.md` (campos 7, 8 e 9 da secao "Dados do Agente"). Isso destrava a questao que bloqueava esta avaliacao inteira - e corrige duas recomendacoes. Ver secao 0.1.
 
@@ -40,6 +40,7 @@ Ressalva remanescente sobre a premissa desta avaliacao: a **direcao** esta trava
 | 8 - coreografia da demo | `avaliacao_da_direcao_atual.coreografia_da_demo` |
 | 9 - riscos | `riscos` |
 | 10 - acoes imediatas | `proximas_acoes` (com dono), `questoes_abertas` |
+| 11 - segunda opiniao externa | `segunda_opiniao_externa` |
 
 ---
 
@@ -198,6 +199,14 @@ Depois o segundo andar, que e onde esta o dinheiro de verdade: uma investigacao 
 
 Regra de honestidade: rotular como premissa, nao como medicao. Um juri de Capital Markets perdoa premissa declarada e nao perdoa numero inventado apresentado como fato.
 
+**Refinamento vindo da revisao externa (secao 11): melhor que declarar premissa e CITAR.** Um numero de fonte publica de industria - ANBIMA, B3, relatorio de associacao setorial, pesquisa de operacoes de custodia - vale mais que uma premissa do time, porque o desempate do juri e por valor de negocio e uma cifra com fonte carrega sozinha.
+
+**Mas a ordem importa, e aqui a revisao externa erra por excesso de confianca.** Ela sugeriu uma citacao especifica com numero e ano, apresentada como fato, que ninguem do time abriu. **Citacao fabricada e infinitamente pior que premissa honesta** - diante deste juri, uma fonte que nao existe e o unico erro que destroi a submissao inteira. Logo:
+
+1. Se alguem do time **abrir a fonte e ler o numero**, cite com referencia completa.
+2. Se nao houver fonte verificavel a tempo, **declare como premissa do time**, com o esqueleto acima.
+3. Nunca o meio do caminho - numero com aparencia de fonte, sem fonte conferida.
+
 ---
 
 ## 5. Arquitetura sugerida - Gemini Enterprise e GCP
@@ -213,25 +222,55 @@ Restricao dura (sec. 12): o agente final tem de estar implementado, configurado,
 | Conversa | Agente no Gemini Enterprise | Entendimento, elicitacao de parametro, selecao de tool, apresentacao. Nunca calcula. |
 | Contrato | Tools via OpenAPI | Fronteira unica entre linguagem natural e execucao |
 | Execucao | Cloud Run (backend deterministico) | Valida spec, chama conectores, executa filtro e join, gera arquivo e manifesto |
-| Dados | BigQuery | Zona de pouso dos extratos mockados; motor de filtro e join da V2 |
+| Dados | **Em memoria no proprio Cloud Run** (DuckDB ou pandas) | Motor de filtro e join. **Trocado em 08/09** - ver abaixo |
 | Entrega | Cloud Storage + URL assinada | Arquivo final para o usuario |
 | Registro | Cloud Logging | Toda spec executada fica registrada - e isso que sustenta a procedencia |
 | Segredo | Secret Manager | Chaves das APIs mockadas |
+
+**BigQuery saiu, e essa e uma correcao a minha propria recomendacao anterior.** Eu havia posto BigQuery como zona de pouso e motor de join. A revisao externa (secao 11) apontou o obvio: o acervo mockado e minusculo. BigQuery acrescenta dataset a provisionar, custo, latencia e um passo de deploy a mais - e **zero valor de demo**, porque ninguem no juri ve onde o join aconteceu. Era eu fazendo casamento de padrao com "plataforma de dados corporativa" para um problema que nao tem volume.
+
+Join em memoria no proprio Cloud Run resolve, e o contrato de tools nao muda em nada: `run_query(spec)` continua recebendo a mesma spec validada. Se algum dia houver volume real, BigQuery entra atras da mesma tool, sem tocar no agente - o que, aliais, e a prova de que a fronteira esta no lugar certo.
 
 ### Contrato de tools - o que faz V1 servir a V3 sem retrabalho
 
 - `list_reports(query)` - devolve subconjunto do catalogo
 - `describe_report(report_id)` - colunas, parametros, grao (esta tool **e** a V2.1)
 - `fetch_report(report_id, params)` - referencia do arquivo, contagem de linhas, manifesto
-- `run_query(spec)` - `spec` = `{sources[], select[], filters[], joins[], limit}`, validado por JSON Schema e traduzido para SQL pelo backend
+- `run_query(spec)` - `spec` = `{sources[], select[], filters[], joins[], limit}`, validado por JSON Schema e executado pelo backend (SQL em DuckDB sobre os extratos em memoria)
 - `deliver(result_ref, format)` - CSV ou XLSX via URL assinada
 - `list_playbooks(need)` / `get_playbook(id)` - a V3
 
 **A regra que sustenta tudo:** o LLM emite **spec**, nunca SQL livre e nunca numero. O backend valida a spec contra schema e so entao executa. Isso remove a classe inteira de risco de alucinacao em cifra, e e a resposta a pergunta 6 da secao 8 do documento - sim, a V1 suporta as evolucoes sem reconstrucao, sob duas regras: **catalogo como dado** e **LLM so emite spec**.
 
+### Seguranca e conformidade - a caixa que faltava no diagrama
+
+**Esta e a lacuna que a revisao externa encontrou e eu nao tinha.** O diagrama que eu propus tinha Secret Manager e Cloud Logging, mas nao tinha uma **historia de seguranca** - e a unica exigencia que a Organizacao acrescentou de proprio punho foi justamente "que as pessoas cuidem da questao de privacidade de dados, seguranca e afins" (`../GUIA_TECNICO_RESPOSTA.md`). Um diagrama de arquitetura para setor regulado sem caixa de seguranca e um sinal negativo, nao uma omissao neutra.
+
+Custa quase nada desenhar, e sinaliza ao juri que o time conhece o ambiente:
+
+| Controle | O que dizer no diagrama |
+|---|---|
+| **Nenhum dado bruto no contexto do agente** | O agente trafega **referencias** (report_id, result_ref), nunca linhas de dado. E o controle mais forte da lista, e cai de graca da regra "o LLM emite spec" |
+| Perimetro | VPC Service Controls em volta do projeto |
+| Cifragem | CMEK em Cloud Storage; cifragem em repouso declarada |
+| Trilha de auditoria | Cloud Audit Logs com sink imutavel - e o que sustenta o manifesto de procedencia |
+| Segredos | Secret Manager; nunca em codigo, nunca em documento |
+| IAM | Service account propria por conector, com o menor privilegio; o agente nao tem acesso direto as fontes |
+| Dados | Somente mock/sintetico/publico. Sem dado pessoal, sem base de producao (sec. 13) |
+
+O primeiro item merece destaque no pitch: **o agente nunca ve o dado, so a referencia.** Isso e simultaneamente um controle de privacidade e a razao pela qual o agente nao consegue inventar uma cifra - o mesmo desenho serve aos dois argumentos.
+
+### Nomear as primitivas, pelo parceiro que esta no juri
+
+O juri inclui o **Google** como parceiro tecnologico. "Agente no Gemini Enterprise" e vago demais para quem constroi a plataforma. O diagrama e o one-pager devem nomear as primitivas concretas que estao sendo usadas - agente e ferramentas no Gemini Enterprise, execucao serverless em Cloud Run, Cloud Storage, Secret Manager, Cloud Logging - e evitar qualquer coisa que pareca VM ou infraestrutura administrada a mao. Um desenho que se le como "o jeito Google de fazer" ganha o parceiro; um desenho genericamente nublado nao.
+
+Conferir os nomes exatos dos servicos e dos modelos no console antes de publicar o PDF. A revisao externa citou uma geracao de modelo desatualizada - lembrete de que nome de servico e algo para copiar da tela, nao de memoria.
+
 ### Dois detalhes baratos que compram credibilidade
 
-**Conectores genuinamente heterogeneos.** Os "sistemas" mockados devem ser servicos separados com estilos de API de verdade diferentes - um REST/JSON paginado, um XML, um arquivo em GCS simulando entrega batch. Se forem tres rotas do mesmo servidor, o juri percebe e a abstracao de conector perde o argumento.
+**Conectores heterogeneos - dois, nao tres.** Os "sistemas" mockados devem ser servicos separados com estilos de acesso de verdade diferentes. Se forem rotas do mesmo servidor, o juri percebe e a abstracao de conector perde o argumento - e o campo 8 do formulario **prometeu** "adaptacao a diferentes sistemas, APIs e mecanismos de automacao", entao isso e evidencia de uma afirmacao ja feita, nao enfeite.
+
+A revisao externa (secao 11) recomendou cortar para **um** mock. Discordo pela metade: com um so, a promessa do campo 8 fica sem prova. Com dois de naturezas opostas - **um REST/JSON paginado com auth e modos de erro, e um arquivo em Cloud Storage simulando entrega batch** - a abstracao fica demonstrada. O terceiro (XML) era luxo: mesma prova, mais horas de um dev junior. **Cortado.**
 
 **Uma integracao real dentro do mundo mockado.** Conversao de moeda usando a serie de PTAX do Bacen (SGS) e dado publico, permitido pelo `../RULES.md`, custa quase nada e quebra o cheiro de "esta tudo mockado" que o `../IDEAS.md` aponta como prejuizo de credibilidade de demo. Alternativas publicas: dados abertos da CVM, manuais e avisos da B3.
 
@@ -296,18 +335,30 @@ Sim, sob duas regras nao negociaveis: **catalogo como dado**, nunca como prompt;
 
 Prazo duro: **30/09** e o ultimo dia para enviar o agente. Sao 22 dias corridos, e a janela de entregaveis e ensaio vai de 25/09 a 29/09. Ou seja: **restam cerca de 12 dias de construcao**, nao 22.
 
-Reordenado em 08/09 apos a leitura do texto submetido: o playbook de V3 subiu de "se houver folga" para **obrigatorio**, porque e o que o campo 8 do formulario prometeu (secao 0.1, Fato 2). O join arbitrario da V2.3 desceu para fora de escopo.
+Reordenado duas vezes em 08/09. Primeiro apos a leitura do texto submetido: o playbook de V3 subiu de "se houver folga" para **obrigatorio**, porque e o que o campo 8 prometeu (secao 0.1, Fato 2), e o join arbitrario da V2.3 desceu para fora de escopo. Depois apos a revisao externa (secao 11), que fez a conta de horas de backend que eu nao tinha feito: **o corte anterior nao era suficiente**.
+
+**Aritmetica que muda a conversa.** O nucleo deterministico e trabalho de um unico dev junior, em horario voluntario, com cerca de 12 dias uteis. Isso da uma ordem de grandeza de **60 a 80 horas de backend** - e a lista que eu havia recomendado (conectores, validacao, joins, arquivo, manifesto, camada OpenAPI, BigQuery, deploy, seguranca) passa facil de **120**. Nao fecha. Logo:
+
+| Fora de escopo | Por que |
+|---|---|
+| **BigQuery** | Acervo mockado e minusculo; join em memoria resolve. Zero valor de demo (secao 5) |
+| **V2.3 com join arbitrario** | O playbook cobre o join que a demo precisa, com chaves fixas |
+| **Terceiro conector (XML)** | Dois de naturezas opostas ja provam a abstracao (secao 5) |
+| **V2.2 como capacidade de usuario** | Filtro em linguagem natural e bonito e nao aparece no roteiro do video. Os filtros de que a demo precisa vivem no playbook |
+
+**Continua dentro:** catalogo semantico como dado, um playbook ponta a ponta, manifesto de procedencia, passo de plano-e-confirmacao, V2.1 (que e so ler o catalogo), dois conectores, caixa de seguranca no diagrama, e a suite que prova o invariante.
 
 | Janela | Foco | Saida |
 |---|---|---|
 | 08/09 - 10/09 | Congelar escopo **contra o texto submetido**. Confirmar homologacao do repositorio de codigo. Fechar o conjunto de premissas do numero. | Escopo congelado, numero acordado |
 | 08/09 - 15/09 | Catalogo semantico como dado. Dois servicos mockados heterogeneos. V1 ponta a ponta no Gemini Enterprise. | Fundacao pronta |
 | 15/09 - 21/09 | **Um playbook de V3 ponta a ponta** - divergencia de posicao, com verificacao de consistencia. V2.1, que sai quase de graca do catalogo. Manifesto de procedencia. Passo de plano e confirmacao. | **A demo que o texto submetido promete** |
-| 22/09 - 25/09 | V2.2. Terceiro sistema. Segundo playbook, se houver folga real. **Congelar codigo em 25/09.** | Demo completa |
-| 25/09 - 29/09 | Os quatro entregaveis. Ensaio. Gravar a demo, incluindo take de reserva. | Pacote de submissao |
-| 30/09 | Enviar com folga de horario | Submetido |
+| 22/09 - 24/09 | Caixa de seguranca no diagrama. Integracao. **Congelar codigo em 24/09.** Segundo playbook ou V2.2 somente se houver folga real - e provavelmente nao havera. | Demo completa |
+| 24/09 - 28/09 | **Roteiro do video primeiro**, depois gravacao, incluindo take de reserva. One-pager e PDF de arquitetura. | Pacote de submissao |
+| 29/09 | Folga deliberada. Revisao, ensaio, correcao do que aparecer. | Margem |
+| 30/09 | Enviar de manha, nao no fim do dia | Submetido |
 
-**Fora de escopo salvo folga real: V2.3 com join arbitrario.** O playbook cobre, com chaves fixas, exatamente o join de que a demo precisa - e a secao 6, resposta 3, explica por que o playbook e a parte mais facil das duas.
+**A folga de 29/09 e proposital.** A revisao externa apresentou um cronograma de 12 dias com "buffer: 0 dias" como se fosse virtude. Em projeto voluntario com prazo duro, folga zero nao e plano - e a primeira coisa que quebra. O congelamento de codigo em 24/09 e o dia livre em 29/09 existem para absorver o imprevisto que certamente aparece.
 
 O ponto que mais derruba time e este: os quatro entregaveis obrigatorios sao **100% do que o juri ve**, e a pagina do Loop planeja evolucao de produto sem mencionar nenhum deles.
 
@@ -320,18 +371,34 @@ O ponto que mais derruba time e este: os quatro entregaveis obrigatorios sao **1
 
 ---
 
-## 8. Coreografia da demo - a final e por votacao do publico
+## 8. Coreografia - sao DUAS pecas, para DUAS plateias
 
-Em 28/10 a sala vota. Plateia nao tecnica. A demo tem de terminar em numero.
+**Correcao de 08/09, vinda da revisao externa (secao 11).** Eu tratava a coreografia como uma coisa so. Sao duas, com publicos e prazos diferentes:
 
-1. A dor, em uma frase: um analista investigando divergencia de posicao abre tres sistemas, puxa tres relatorios e reconcilia em planilha.
-2. Uma frase para o agente: "preciso investigar a divergencia de posicao do fundo X de ontem".
-3. O agente **mostra o plano**: quais relatorios, de quais sistemas, com quais parametros. Usuario confirma.
-4. Executa: tres sistemas diferentes, join, verificacao de consistencia, e acha o movimento sem par.
-5. Fecha no numero: de **M minutos** para **segundos**, com o manifesto na tela provando de onde veio cada cifra.
-6. Uma frase de escala: adicionar um quarto sistema e uma entrada no catalogo.
+| Peca | Plateia | Quando | Criterio que serve |
+|---|---|---|---|
+| **Video com pitch e demo** | Plateia nao tecnica que **vota** | Gravado ate 29/09, visto na final de 28/10 | A votacao do publico decide 1o, 2o e 3o |
+| **Demo funcional** | Juri tecnico + parceiro Google | Avaliacao de 01/10 a 15/10 | Viabilidade tecnica (20%), UX (15%) |
 
-O passo 3 e o que separa esta demo de um chatbot. O passo 5 e o que ganha voto.
+**Consequencia de ordem: escrever o roteiro do video PRIMEIRO, e tratar a demo ao vivo como um subconjunto dele.** Isso inverte o instinto natural do time - construir e depois filmar. Toda decisao tecnica deveria passar pelo teste "isso aparece no video?"; o que nao aparece compete por horas de um dev junior contra o que aparece.
+
+### O roteiro do video - o que a plateia entende
+
+A plateia **nao** entende catalogo semantico, manifesto de procedencia nem playbook declarativo. Entende antes e depois.
+
+1. **A dor, visceral, nos primeiros 15 segundos.** Nao um diagrama: gravacao de tela real de alguem abrindo tres sistemas, exportando CSV e fazendo PROCV numa planilha. O tedio precisa ser visivel.
+2. **Uma frase para o agente:** "preciso investigar a divergencia de posicao do fundo X de ontem".
+3. **O agente mostra o plano** - quais relatorios, de quais sistemas, com quais parametros - e o usuario confirma. E aqui que a plateia ve **raciocinio em vez de caixa preta**, e e o que separa isto de um chatbot.
+4. **Executa:** dois sistemas de naturezas diferentes, join, verificacao de consistencia, e acha o movimento sem par.
+5. **O momento do recibo:** manifesto na tela - origem, horario, contagem de linhas, e a verificacao que falhou destacada. O que a plateia precisa pensar e *"eu conseguiria defender isso para o auditor"*.
+6. **Fecha no numero:** de **M minutos** para segundos.
+7. **Uma frase de escala:** adicionar um sistema e uma entrada no catalogo - nao uma mudanca no agente.
+
+O passo 3 separa a demo de um chatbot. O passo 5 e o que um juri de setor regulado guarda. O passo 6 e o que ganha voto.
+
+### A demo funcional - o que o juri tecnico ve
+
+Mesmo fluxo, mas com o que a plateia nao precisa: a spec validada, o catalogo como dado, a fronteira LLM/deterministico, a caixa de seguranca, e a suite de teste que prova o invariante anti-alucinacao. Rodando em Gemini Enterprise, nao em maquina local.
 
 ---
 
@@ -355,6 +422,10 @@ O passo 3 e o que separa esta demo de um chatbot. O passo 5 e o que ganha voto.
 | Dado pessoal entrando no mock | Media | Mock ostensivamente sintetico. Violacao e desclassificacao imediata (sec. 13). |
 | Entregaveis comprimidos na ultima semana | Media | Reservar 25/09 a 29/09 e nao usar para codigo |
 | Ponto unico de falha na submissao - so o Agent Lead envia | Media | Plano B por escrito, e envio antes do dia 30 |
+| **Backend rodando fora do padrao Gemini Enterprise/GCP** | **Alta - desclassificacao** | Tentacao real quando o prazo aperta, e a revisao externa chegou a recomendar backend local com tunel. Sec. 12 exige o agente executavel e disponivel para avaliacao NO padrao GE/GCP. Cloud Run e um comando de deploy - nao e aqui que se economiza hora |
+| Diagrama de arquitetura sem historia de seguranca | Media | Caixa de seguranca e conformidade (secao 5). Privacidade e seguranca foram a unica exigencia que a Organizacao acrescentou de proprio punho |
+| Numero de impacto com fonte inventada | **Alta** | Citar somente fonte que alguem do time abriu; senao, declarar como premissa. Fonte inexistente e o unico erro que derruba a submissao inteira (secao 4) |
+| Video tratado como embalagem, e nao como entregavel | Media | Roteiro do video primeiro; demo ao vivo como subconjunto. A plateia que vota ve o video, nao a arquitetura (secao 8) |
 | Elegibilidade de 4 pessoas nao verificada | Media | Conferencia individual; vale ate a divulgacao do resultado, nao so na inscricao |
 
 ---
@@ -373,7 +444,50 @@ Donos registrados em `../checkpoint.json`, chave `proximas_acoes`.
 8. Confirmar se as **licencas Gemini Enterprise** estao liberadas para os 4. *Agent Lead.*
 9. **Cada integrante confere a propria elegibilidade** e a autorizacao do gestor imediato para dedicacao em expediente. Com 4 pessoas, um inelegivel custa R$ 750 que ninguem recebe em caso de primeiro lugar - a parcela nao e redistribuida (sec. 19). *Cada um dos 4.*
 10. Combinar um **plano B de submissao** caso o Agent Lead esteja indisponivel em 30/09, e nao deixar o envio para o proprio dia 30. *Agent Lead.*
-11. **Reservar 25/09 a 29/09 para os quatro entregaveis** e nao usar essa janela para codigo. *Time.*
-12. Reatualizar `../PLAN.md` e `../checkpoint.json` quando as confirmacoes restantes chegarem.
+11. **Escrever o roteiro do video antes de construir o resto** - a plateia que decide o 1o lugar ve o video, nao a arquitetura (secao 8). *BA, com o Front-End.*
+12. **Desenhar a caixa de seguranca e conformidade** no PDF de arquitetura, comecando por "o agente nunca ve dado bruto, so referencia" (secao 5). *Back-End com o BA.*
+13. **Reservar 24/09 a 28/09 para os quatro entregaveis**, com 29/09 de folga deliberada, e nao usar nenhuma das duas janelas para codigo. *Time.*
+14. Reatualizar `../PLAN.md` e `../checkpoint.json` quando as confirmacoes restantes chegarem.
 
 **Ja resolvido, e por isso fora da lista:** o texto submetido (`PROPOSTA_SUBMETIDA.md`), a composicao do time, o Agent Lead e os papeis profissionais (`../PLAN.md`, "O time"), e o Guia Tecnico - que nao existe (`../GUIA_TECNICO_RESPOSTA.md`).
+
+---
+
+## 11. Segunda opiniao externa - o que foi aceito e o que foi rejeitado
+
+Em 08/09 esta avaliacao foi submetida a um modelo externo, com instrucao explicita de **contestar** em vez de validar. O briefing enviado descrevia o concurso, o texto submetido, a escada V1/V2/V3, as recomendacoes desta avaliacao e a composicao do time **por papel, sem nome, e-mail ou horario de ninguem**.
+
+**Procedencia, e ela importa para o peso da opiniao:** os modelos de topo da cadeia falharam e a resposta veio de um modelo gratuito de porte menor. Sinal concreto de desatualizacao: ele citou uma geracao de modelo Gemini de 2024. Logo, leitura externa util - nao autoridade.
+
+### O que ele encontrou e eu nao tinha - aceito
+
+| Achado | O que mudou aqui |
+|---|---|
+| **Faltava historia de seguranca no diagrama** | Nova subsecao na secao 5. O melhor item e dele: *nenhum dado bruto no contexto do agente, so referencia* - controle de privacidade e explicacao de por que o agente nao inventa cifra, no mesmo desenho |
+| **Video e demo ao vivo sao pecas diferentes** | Secao 8 reescrita. Duas plateias, dois prazos, e a ordem inverte: **roteiro do video primeiro** |
+| **O parceiro Google esta no juri e precisa ver a stack dele** | Nova subsecao na secao 5: nomear primitivas concretas em vez de "agente no Gemini Enterprise" |
+| **A conta de horas de backend nao fechava** | Secao 7: cortes mais fundos. BigQuery, terceiro conector e V2.2 sairam. Meu corte anterior (so a V2.3) era insuficiente |
+| **Citar e melhor que declarar premissa** | Secao 4, com a ressalva de que citacao nao conferida e pior que premissa honesta |
+
+O achado de horas e o mais valioso: eu havia recomendado cortar a V2.3 e mantido BigQuery, camada OpenAPI e tres conectores para um dev junior em horario voluntario. Era otimismo disfarcado de plano.
+
+### O que rejeitei, e por que
+
+| Recomendacao dele | Por que nao |
+|---|---|
+| **Rodar o backend localmente, atras de tunel** | **Gatilho de desclassificacao.** O argumento dele - "o juri avalia o agente, nao sua maturidade de ops em GCP" - le a psicologia do juri e ignora a regra: sec. 12 exige o agente implementado, configurado, integrado, **executavel e disponivel para avaliacao nos padroes Gemini Enterprise/GCP**. Tunel para maquina local e exatamente o que a clausula veda, e ainda trafegaria conteudo interno por terceiro |
+| **Camada OpenAPI e trabalho inutil** | A integracao nativa de ferramentas do Gemini Enterprise espera schema OpenAPI. Chamar HTTP cru pode nem ser caminho suportado - conferir no console antes de cortar |
+| **Cortar a V2 inteira** | Impreciso. A V2.1 e a tool `describe_report` lendo o catalogo que ele mesmo mantem: custo proximo de zero e um beat de conversa a mais. Cortei a V2.2, nao a V2 |
+| **Um unico conector mockado** | Deixaria sem prova a promessa do campo 8 de "adaptacao a diferentes sistemas, APIs e mecanismos de automacao". Fiquei em dois, de naturezas opostas |
+| **"Buffer: 0 dias. That's the plan."** | Folga zero em projeto voluntario com prazo duro nao e plano. Mantive congelamento em 24/09 e 29/09 livre |
+| **Abandonar o dominio de custodia** | Ele abre dizendo que C1 e o erro mais provavel e fecha recomendando *"demo on one CM workflow (position break) using real CM vocabulary from a 1-hour SME session"* - que e a C1 com o pre-requisito de revisao que ela ja tinha. Convergencia apresentada como refutacao |
+
+### O que vale roubar da forma dele de dizer
+
+- **"We solved the pattern, not one instance"** - enquadramento forte para Escalabilidade (15%), e resolve a tensao entre proposta horizontal e demo vertical melhor que a minha redacao.
+- **"Se insistir em custodia, o caso da V3 tem de ser o UNICO cenario da demo"** - estreitar ate caber numa conversa de uma hora com quem e do dominio. Aperto util da C1.
+- **"O momento do recibo"** para o manifesto, e *"eu conseguiria defender isso para o auditor"* como o pensamento que se quer na plateia.
+
+### O que sobreviveu intacto
+
+Fronteira LLM/deterministico, catalogo como dado, playbooks como configuracao, manifesto de procedencia, verificacoes de consistencia, o invariante anti-alucinacao, e o minimo de V1 mais um playbook. A revisao nao derrubou o nucleo - encontrou uma lacuna (seguranca), uma distincao (video e demo) e cortou mais fundo que eu no escopo.

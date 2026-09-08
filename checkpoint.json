@@ -1,5 +1,5 @@
 {
-  "checkpoint_version": 7,
+  "checkpoint_version": 8,
   "checkpoint_date": "2026-09-08",
   "checkpoint_anterior": {
     "version": 1,
@@ -19,7 +19,8 @@
     "08/09: composicao do time e Agent Lead confirmados (4 integrantes - o maximo permitido; Agent Lead: Raffaele Brivio). Ver time.integrantes. Isso fecha duas questoes abertas, atribui donos as proximas acoes e acrescenta o risco de ponto unico de falha na submissao.",
     "08/09: resolvido o Guia Tecnico - NAO EXISTE documento separado. Resposta da Organizacao (Evelim), repassada em 12/08 e registrada em GUIA_TECNICO_RESPOSTA.md: o guia tecnico e o que esta no SharePoint mais o que ja esta no regulamento, nada alem, com pedido explicito de cuidado com privacidade de dados e seguranca. Isso encerra o bloqueio mais antigo do projeto, remove a ressalva de invalidacao da arquitetura sugerida e eleva as regras de dados a expectativa nomeada da Organizacao.",
     "08/09: papeis profissionais dos 4 integrantes confirmados. Achado central - NENHUM integrante e da Business Unit de Capital Markets; todos sao PSU BR. Isso qualifica a correcao C1 (vestir o dominio): a revisao por alguem de Capital Markets deixa de ser desejavel e passa a ser PRE-REQUISITO da manchete de custodia. Em compensacao, a composicao encaixa bem na arquitetura recomendada - ver time.mapeamento_dos_papeis_para_o_trabalho.",
-    "08/09: revisao arquivo por arquivo. Corrigidos - a janela 08/09-10/09 do plano ainda pedia o Guia Tecnico (que nao existe); a afirmacao de ASCII puro no README.md, falsa desde que entraram tres transcricoes fieis; referencias relativas quebradas em oneask/AVALIACAO.md; contradicao entre 'tres playbooks' e o plano que entrega um; titulo duplicado em PLAN.md; e a secao final de IDEAS.md, que perguntava qual dor o time encosta sem registrar a resposta (nenhuma)."
+    "08/09: revisao arquivo por arquivo. Corrigidos - a janela 08/09-10/09 do plano ainda pedia o Guia Tecnico (que nao existe); a afirmacao de ASCII puro no README.md, falsa desde que entraram tres transcricoes fieis; referencias relativas quebradas em oneask/AVALIACAO.md; contradicao entre 'tres playbooks' e o plano que entrega um; titulo duplicado em PLAN.md; e a secao final de IDEAS.md, que perguntava qual dor o time encosta sem registrar a resposta (nenhuma).",
+    "08/09: avaliacao submetida a revisao externa adversarial. Aceitos - caixa de seguranca e conformidade no diagrama (faltava), separacao entre video (plateia que vota) e demo funcional (juri tecnico) com o roteiro do video vindo primeiro, e cortes de escopo mais fundos porque a conta de horas de backend nao fechava (BigQuery, terceiro conector e V2.2 sairam). Rejeitados - backend local atras de tunel (gatilho de desclassificacao pela sec. 12), corte da camada OpenAPI, corte da V2 inteira, conector unico, e cronograma com folga zero. Registro em oneask/AVALIACAO.md secao 11."
   ],
   "status": {
     "fase": "construcao do agente - janela 13/08 a 30/09, com 22 dias corridos restantes na data deste checkpoint",
@@ -312,8 +313,8 @@
       },
       {
         "camada": "dados",
-        "componente": "BigQuery",
-        "papel": "zona de pouso dos extratos mockados; motor de filtro e join da V2"
+        "componente": "Em memoria no proprio Cloud Run (DuckDB ou pandas)",
+        "papel": "Motor de filtro e join. BigQuery SAIU em 08/09 - acervo mockado minusculo, e o join em memoria nao muda o contrato de tools. Se houver volume real algum dia, BigQuery entra atras da mesma tool."
       },
       {
         "camada": "entrega",
@@ -368,7 +369,23 @@
       "Conectores genuinamente heterogeneos: os sistemas mockados devem ser servicos separados com estilos de API de verdade diferentes (um REST/JSON paginado, um XML, um arquivo em GCS simulando entrega batch). Tres rotas do mesmo servidor o juri percebe, e a abstracao de conector perde o argumento.",
       "Uma integracao real dentro do mundo mockado: conversao de moeda via serie de PTAX do Bacen (SGS) e dado publico, permitido, custa quase nada e quebra o cheiro de 'esta tudo mockado' que corroi credibilidade de demo."
     ],
-    "cuidado_de_lgpd": "O campo customer_name do exemplo da V2.3 e um convite a alguem popular a base com nome de cliente real. Mock ostensivamente sintetico, e dito em voz alta para o time."
+    "cuidado_de_lgpd": "O campo customer_name do exemplo da V2.3 e um convite a alguem popular a base com nome de cliente real. Mock ostensivamente sintetico, e dito em voz alta para o time.",
+    "seguranca_e_conformidade": {
+      "por_que": "Lacuna encontrada pela revisao externa. Privacidade e seguranca de dados foi a unica exigencia que a Organizacao acrescentou de proprio punho. Diagrama para setor regulado sem caixa de seguranca e sinal negativo, nao omissao neutra.",
+      "controles": [
+        "NENHUM DADO BRUTO NO CONTEXTO DO AGENTE - o agente trafega referencias (report_id, result_ref), nunca linhas. Controle mais forte da lista, e cai de graca da regra 'o LLM emite spec'",
+        "Perimetro: VPC Service Controls em volta do projeto",
+        "Cifragem: CMEK em Cloud Storage; cifragem em repouso declarada",
+        "Trilha de auditoria: Cloud Audit Logs com sink imutavel - sustenta o manifesto de procedencia",
+        "Segredos: Secret Manager; nunca em codigo, nunca em documento",
+        "IAM: service account propria por conector, menor privilegio; o agente nao acessa as fontes direto",
+        "Dados: somente mock/sintetico/publico (sec. 13)"
+      ],
+      "frase_de_pitch": "O agente nunca ve o dado, so a referencia - simultaneamente controle de privacidade e a razao pela qual o agente nao consegue inventar cifra."
+    },
+    "nota_para_o_parceiro_google": "O Google esta no juri como parceiro tecnologico. 'Agente no Gemini Enterprise' e vago demais para quem constroi a plataforma - nomear primitivas concretas no diagrama e no one-pager, e evitar qualquer coisa que pareca VM administrada a mao. Conferir nomes de servico e de modelo no console antes de publicar o PDF.",
+    "conectores_mockados": "DOIS, de naturezas opostas - um REST/JSON paginado com auth e modos de erro, e um arquivo em Cloud Storage simulando entrega batch. O terceiro (XML) era luxo e foi cortado. Um so deixaria sem prova a promessa do campo 8 de adaptacao a diferentes sistemas e mecanismos.",
+    "rejeitado": "Backend rodando localmente atras de tunel, sugerido pela revisao externa. Sec. 12 exige o agente executavel e disponivel para avaliacao NO padrao Gemini Enterprise/GCP - tunel para maquina local e exatamente o que a clausula veda, e trafegaria conteudo interno por terceiro. Cloud Run e um comando de deploy."
   },
   "definicao_de_pronto_da_v1": {
     "por_que_congelar": "Responde a pergunta 4 da secao 8 do documento OneAsk e e a defesa contra escopo espalhado por V1, V2 e V3 sem nenhum completo.",
@@ -427,24 +444,29 @@
         "saida": "a demo que o texto submetido promete"
       },
       {
-        "janela": "22/09 - 25/09",
-        "foco": "V2.2. Terceiro sistema. Segundo playbook se houver folga real. CONGELAR CODIGO EM 25/09.",
+        "janela": "22/09 - 24/09",
+        "foco": "Caixa de seguranca no diagrama. Integracao. CONGELAR CODIGO EM 24/09.",
         "saida": "demo completa"
       },
       {
-        "janela": "25/09 - 29/09",
-        "foco": "Os quatro entregaveis. Ensaio. Gravar a demo, incluindo take de reserva.",
+        "janela": "24/09 - 28/09",
+        "foco": "ROTEIRO DO VIDEO PRIMEIRO, depois gravacao com take de reserva. One-pager e PDF de arquitetura.",
         "saida": "pacote de submissao"
       },
       {
+        "janela": "29/09",
+        "foco": "Folga deliberada - revisao, ensaio, correcao do que aparecer. Folga zero nao e plano.",
+        "saida": "margem"
+      },
+      {
         "janela": "30/09",
-        "foco": "Enviar com folga de horario",
+        "foco": "Enviar de manha, nao no fim do dia",
         "saida": "submetido"
       }
     ],
     "alerta": "Os quatro entregaveis obrigatorios sao 100% do que o juri ve, e a pagina do Loop planeja evolucao de produto sem mencionar nenhum deles.",
     "reordenado_em": "08/09, apos a leitura do texto submetido: o playbook de V3 subiu de 'se houver folga' para obrigatorio; o join arbitrario da V2.3 desceu para fora de escopo.",
-    "fora_de_escopo": "V2.3 com join arbitrario, salvo folga real. O playbook cobre com chaves fixas exatamente o join de que a demo precisa."
+    "fora_de_escopo": "Aprofundado em 08/09 pela conta de horas: 60 a 80 horas de backend disponiveis contra mais de 120 na lista original. Fora - BigQuery (join em memoria resolve), V2.3 com join arbitrario (o playbook cobre), terceiro conector XML (dois provam a abstracao), e V2.2 como capacidade de usuario (nao aparece no roteiro do video)."
   },
   "cronograma_2026": [
     {
@@ -987,6 +1009,26 @@
       "risco": "Nucleo deterministico concentrado em um unico dev de nivel I",
       "gravidade": "media",
       "mitigacao": "Cortar V2.3 com join arbitrario. Manter os conectores mockados simples de construir, ainda que heterogeneos em estilo. Front-End e QA podem absorver parte do trabalho de tool e de fixture."
+    },
+    {
+      "risco": "Backend rodando fora do padrao Gemini Enterprise/GCP",
+      "gravidade": "alta - desclassificacao",
+      "mitigacao": "Tentacao real quando o prazo aperta. Sec. 12 exige o agente executavel e disponivel para avaliacao NO padrao GE/GCP. Cloud Run e um comando de deploy."
+    },
+    {
+      "risco": "Diagrama de arquitetura sem historia de seguranca",
+      "gravidade": "media",
+      "mitigacao": "Caixa de seguranca e conformidade; privacidade foi a unica exigencia que a Organizacao acrescentou de proprio punho."
+    },
+    {
+      "risco": "Numero de impacto com fonte inventada",
+      "gravidade": "alta",
+      "mitigacao": "Citar somente fonte que alguem do time abriu; senao declarar como premissa. Fonte inexistente derruba a submissao inteira."
+    },
+    {
+      "risco": "Video tratado como embalagem e nao como entregavel",
+      "gravidade": "media",
+      "mitigacao": "Roteiro do video primeiro; demo ao vivo como subconjunto. A plateia que vota ve o video."
     }
   ],
   "questoes_abertas": [
@@ -1041,6 +1083,44 @@
     {
       "acao": "Combinar plano B de submissao caso o Agent Lead esteja indisponivel em 30/09",
       "dono": "Agent Lead - Raffaele Brivio"
+    },
+    {
+      "acao": "Escrever o roteiro do video antes de construir o resto - a plateia que decide o 1o lugar ve o video, nao a arquitetura",
+      "dono": "BA (Agent Lead) com o Front-End"
+    },
+    {
+      "acao": "Desenhar a caixa de seguranca e conformidade no PDF de arquitetura, comecando por 'o agente nunca ve dado bruto, so referencia'",
+      "dono": "Back-End com o BA"
+    },
+    {
+      "acao": "Conferir se a camada de tools do Gemini Enterprise exige schema OpenAPI antes de considerar corta-la",
+      "dono": "Back-End"
     }
-  ]
+  ],
+  "segunda_opiniao_externa": {
+    "data": "2026-09-08",
+    "como": "Avaliacao submetida a modelo externo via bridge local, com instrucao explicita de contestar em vez de validar. Briefing descreveu o concurso, o texto submetido, a escada V1/V2/V3, as recomendacoes e a composicao do time POR PAPEL - sem nome, e-mail ou horario de ninguem.",
+    "procedencia": "Os modelos de topo da cadeia falharam; a resposta veio de um modelo gratuito de porte menor, que citou uma geracao de modelo Gemini de 2024. Leitura externa util, nao autoridade.",
+    "aceito": [
+      "Faltava historia de seguranca no diagrama - melhor item: nenhum dado bruto no contexto do agente, so referencia",
+      "Video e demo ao vivo sao pecas diferentes, para plateias e prazos diferentes; o roteiro do video vem primeiro",
+      "O parceiro Google esta no juri e precisa ver primitivas concretas da stack dele",
+      "A conta de horas de backend nao fechava - o corte anterior (so V2.3) era insuficiente",
+      "Citar fonte publica e melhor que declarar premissa, COM a ressalva de que citacao nao conferida e pior que premissa honesta"
+    ],
+    "rejeitado": [
+      "Backend local atras de tunel - gatilho de desclassificacao (sec. 12)",
+      "Cortar a camada OpenAPI - e o caminho nativo de tools do Gemini Enterprise; conferir antes de cortar",
+      "Cortar a V2 inteira - a V2.1 e so ler o catalogo, custo proximo de zero",
+      "Um unico conector mockado - deixaria sem prova a promessa do campo 8",
+      "Cronograma com folga zero apresentado como virtude",
+      "Abandonar o dominio de custodia - ele abre contestando a C1 e fecha recomendando a C1 com o pre-requisito de revisao que ela ja tinha"
+    ],
+    "formulacoes_a_roubar": [
+      "'We solved the pattern, not one instance' - enquadramento para Escalabilidade (15%)",
+      "Se insistir em custodia, o caso da V3 tem de ser o UNICO cenario da demo, estreito o bastante para caber numa conversa de uma hora com quem e do dominio",
+      "'O momento do recibo' para o manifesto, e 'eu conseguiria defender isso para o auditor' como o pensamento desejado na plateia"
+    ],
+    "sobreviveu_intacto": "Fronteira LLM/deterministico, catalogo como dado, playbooks como configuracao, manifesto de procedencia, verificacoes de consistencia, invariante anti-alucinacao, e o minimo de V1 mais um playbook."
+  }
 }

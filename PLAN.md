@@ -1,6 +1,6 @@
 # Plano - Desafio Capital Markets AI Agents Challenge (SMC 2026)
 
-Data do checkpoint: **08/09/2026**. Versao legivel por maquina: `checkpoint.json` (v7).
+Data do checkpoint: **08/09/2026**. Versao legivel por maquina: `checkpoint.json` (v8).
 Arquivos companheiros: `RULES.md` (resumo do regulamento), `IDEAS.md` (espaco de problemas e catalogo de solucoes), `NAMES.md` (candidatos a nome do time), `oneask/` (a solucao em construcao, o texto submetido e a avaliacao).
 
 > Este arquivo esta em pt-BR sem acentuacao (ASCII puro), para nao quebrar em formularios, nomes de arquivo e terminais.
@@ -141,6 +141,18 @@ Existe portanto uma **lacuna entre o escopo submetido e o plano de MVP**. Conseq
 
 **O que o texto nao resolve:** nao ha numero nele tambem. "Aumenta o esforco operacional" e o adjetivo, no lugar exato onde deveria estar a cifra. O one-pager nao herda nenhum numero do formulario - tem de produzi-lo.
 
+## Segunda opiniao externa
+
+Em 08/09 a avaliacao foi submetida a um modelo externo com instrucao de contestar. Registro completo em `oneask/AVALIACAO.md`, secao 11 - incluindo o que foi **rejeitado** e por que.
+
+Tres achados aceitos, todos ja incorporados acima e em `oneask/AVALIACAO.md`:
+
+1. **Faltava historia de seguranca no diagrama** - e privacidade/seguranca foi a unica exigencia que a Organizacao acrescentou de proprio punho.
+2. **Video e demo ao vivo sao pecas diferentes**, para plateias e prazos diferentes. O roteiro do video vem primeiro.
+3. **A conta de horas de backend nao fechava** - o corte de escopo anterior era insuficiente.
+
+Uma rejeicao merece destaque, porque a tentacao volta quando o prazo aperta: a sugestao de **rodar o backend localmente atras de tunel**. Sec. 12 exige o agente executavel e disponivel para avaliacao **no padrao Gemini Enterprise/GCP**, e isso e gatilho explicito de desclassificacao. Cloud Run e um comando de deploy.
+
 ## Datas duras
 
 **30/09** e o ultimo dia para enviar o agente - **22 dias corridos** a partir desta data. Descontando a janela de entregaveis, **restam cerca de 12 dias reais de construcao**.
@@ -200,11 +212,21 @@ Reordenado em 08/09 apos a leitura do texto submetido: o playbook de V3 subiu de
 | 08/09 - 10/09 | Congelar escopo **contra o texto submetido**. Agendar a revisao com Capital Markets. Confirmar homologacao do repositorio de codigo. Fechar as premissas do numero. | Escopo congelado, numero acordado, revisao marcada |
 | 08/09 - 15/09 | Catalogo semantico como dado. Dois servicos mockados heterogeneos. V1 ponta a ponta no Gemini Enterprise. | Fundacao pronta |
 | 15/09 - 21/09 | **Um playbook de V3 ponta a ponta** - divergencia de posicao, com verificacao de consistencia. V2.1, que sai quase de graca do catalogo. Manifesto de procedencia. Passo de plano e confirmacao. | **A demo que o texto submetido promete** |
-| 22/09 - 25/09 | V2.2. Terceiro sistema. Segundo playbook, se houver folga real. **Congelar codigo em 25/09.** | Demo completa |
-| 25/09 - 29/09 | Os quatro entregaveis. Ensaio. Gravar a demo, com take de reserva. | Pacote de submissao |
-| 30/09 | Enviar com folga de horario | Submetido |
+| 22/09 - 24/09 | Caixa de seguranca no diagrama. Integracao. **Congelar codigo em 24/09.** | Demo completa |
+| 24/09 - 28/09 | **Roteiro do video primeiro**, depois gravacao com take de reserva. One-pager e PDF de arquitetura. | Pacote de submissao |
+| 29/09 | Folga deliberada - revisao, ensaio, correcao do que aparecer | Margem |
+| 30/09 | Enviar de manha, nao no fim do dia | Submetido |
 
-**Fora de escopo salvo folga real: V2.3 com join arbitrario.** O playbook cobre, com chaves fixas, exatamente o join de que a demo precisa.
+**Cortes de escopo, aprofundados em 08/09 apos revisao externa** (detalhe em `oneask/AVALIACAO.md` secoes 7 e 11). O nucleo deterministico e trabalho de um unico dev junior em horario voluntario: ordem de 60 a 80 horas disponiveis contra mais de 120 na lista original. Fora, portanto:
+
+| Fora de escopo | Por que |
+|---|---|
+| **BigQuery** | Acervo mockado e minusculo; join em memoria (DuckDB) no proprio Cloud Run resolve. Zero valor de demo |
+| **V2.3 com join arbitrario** | O playbook cobre o join da demo, com chaves fixas |
+| **Terceiro conector (XML)** | Dois de naturezas opostas ja provam a abstracao prometida no campo 8 |
+| **V2.2 como capacidade de usuario** | Filtro em linguagem natural nao aparece no roteiro do video; os filtros da demo vivem no playbook |
+
+**A folga de 29/09 e proposital.** Folga zero em projeto voluntario com prazo duro nao e plano - e a primeira coisa que quebra.
 
 A ordem de construcao V2.1 -> V2.2 -> V2.3 esta correta **como sequencia**, e o motivo e estrutural: cada incremento adiciona *um conjunto de campos ao mesmo catalogo* (colunas e rotulos; tipos e dominios; chaves de join). Isso continua valendo mesmo com a V2.3 fora de escopo - se ela voltar, volta nessa posicao, nunca antes da V2.2.
 
@@ -219,9 +241,9 @@ A pagina do Loop planeja evolucao de produto e nao menciona nenhum dos quatro. E
 | Entregavel | O que nao pode faltar |
 |---|---|
 | One-pager (PDF) | O numero. A dor em uma frase reconhecivel por quem e de Capital Markets |
-| Video com pitch e demo | Take de reserva gravado. Demo ao vivo falha, e falha na hora errada |
+| Video com pitch e demo | **Escrever o roteiro ANTES de construir o resto.** A plateia que decide o 1o lugar em 28/10 ve o video, nao a arquitetura - e sao duas pecas para duas plateias (`oneask/AVALIACAO.md` secao 8). Take de reserva gravado |
 | Demo funcional | Rodando em Gemini Enterprise, nao em notebook local |
-| Arquitetura (PDF) | A fronteira LLM/deterministico **desenhada** - e o argumento de viabilidade tecnica em forma visual |
+| Arquitetura (PDF) | A fronteira LLM/deterministico **desenhada** - e o argumento de viabilidade tecnica em forma visual. Mais a **caixa de seguranca e conformidade**, comecando por "o agente nunca ve dado bruto, so referencia". Nomear as primitivas GCP concretas: o parceiro Google esta no juri |
 
 ## Fase final - 16/10 a 28/10
 

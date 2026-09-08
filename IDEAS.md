@@ -7,7 +7,7 @@
 >
 > Trecho mais relevante para a direcao atual: **P2** (eventos corporativos na custodia), **P3** (falhas de liquidacao) e **B5** (triagem de breaks e falhas) sao o vizinho mais proximo do caso de abertura recomendado para o OneAsk - investigacao de divergencia de posicao. Ver `oneask/AVALIACAO.md`, secao 3.1.
 
-Situacao atual do projeto em `PLAN.md` e `checkpoint.json` (v7, 08/09/2026). Ver `RULES.md` para as restricoes que estas ideias precisam respeitar.
+Situacao atual do projeto em `PLAN.md` e `checkpoint.json` (v8, 08/09/2026). Ver `RULES.md` para as restricoes que estas ideias precisam respeitar.
 
 > Este arquivo esta em pt-BR sem acentuacao (ASCII puro).
 

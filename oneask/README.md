@@ -30,7 +30,7 @@ Contexto fora desta pasta: `../PLAN.md` (situacao, time, caminho critico), `../c
 4. `AVALIACAO.md` secao 1 - veredito em uma pagina.
 5. `AVALIACAO.md` secao 10 - as acoes imediatas.
 
-Para a situacao do projeto como um todo - cronograma, o que esta confirmado, caminho critico - ver `../PLAN.md`. A versao legivel por maquina de tudo isso esta em `../checkpoint.json` (v7, 08/09/2026), que ja incorpora esta avaliacao; `AVALIACAO.md` secao 0 traz o mapa de qual secao daqui vive em qual chave de la.
+Para a situacao do projeto como um todo - cronograma, o que esta confirmado, caminho critico - ver `../PLAN.md`. A versao legivel por maquina de tudo isso esta em `../checkpoint.json` (v8, 08/09/2026), que ja incorpora esta avaliacao; `AVALIACAO.md` secao 0 traz o mapa de qual secao daqui vive em qual chave de la.
 
 ## O ponto de atencao mais importante
 
