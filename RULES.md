@@ -3,6 +3,8 @@
 Fontes: `Regulamento_AI_Agents_Challenge_SMC_2026.pdf` (22 paginas, v1.0, publicado em 05/08/2026) e `Brazil_NewsForYou_files/saved_resource.html` (pagina de divulgacao no SharePoint).
 Contato: Evelim Buratti - emro@gft.com.
 
+> Este arquivo resume **as regras**, que nao mudaram. Para a **situacao do projeto** - o que ja passou do cronograma, o que esta confirmado e o que nao esta - ver `PLAN.md` e `checkpoint.json` (v7, 08/09/2026). A solucao em construcao esta em `oneask/`.
+
 > Nota de extracao: sem poppler nesta maquina. Texto extraido com python `pypdf` e gravado em UTF-8. Os numeros de secao abaixo referem-se ao regulamento.
 >
 > Este arquivo esta em pt-BR sem acentuacao (ASCII puro).
@@ -62,7 +64,7 @@ As atividades devem ser planejadas para nao comprometer entregas profissionais; 
 - Plataforma oficial: **Gemini Enterprise + Google Cloud Platform**, disponibilizada pela GFT. Cada participante inscrito recebe licenca individual, pessoal e intransferivel, para uso exclusivo no desafio.
 - Outras ferramentas de IA publicas ou comerciais podem apoiar o desenvolvimento, desde que permitidas pelas politicas da GFT e respeitadas todas as regras de seguranca, privacidade, protecao de dados, confidencialidade, compliance e propriedade intelectual. Ferramentas externas nao podem gerar custo, compromisso comercial ou obrigacao contratual para a GFT sem autorizacao previa e expressa.
 - **O agente final deve estar implementado, configurado, integrado, executavel e disponivel para avaliacao nos padroes Gemini Enterprise / GCP. O descumprimento desses padroes desclassifica a equipe.**
-- Requisitos tecnicos, arquiteturais, de integracao, seguranca, execucao e apresentacao estao no **Guia Tecnico** oficial, que e parte integrante das regras. **Ainda nao obtido - solicitar.**
+- Requisitos tecnicos, arquiteturais, de integracao, seguranca, execucao e apresentacao estao no **Guia Tecnico** oficial, que e parte integrante das regras. **Nao existe como documento separado** - a Organizacao respondeu em 12/08 que o guia tecnico e a pagina do SharePoint mais o proprio regulamento, nada alem, com pedido explicito de cuidado com privacidade de dados e seguranca. Ver `GUIA_TECNICO_RESPOSTA.md`.
 - Nunca inserir em plataformas publicas de IA: codigo fonte proprietario da GFT, codigo fonte de clientes, informacoes confidenciais, documentos internos, credenciais de acesso, dados pessoais, dados sensiveis ou informacoes protegidas por NDA.
 
 ## Regras de dados (sec. 13, LGPD)

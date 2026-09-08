@@ -1,5 +1,10 @@
 # Candidatos a nome do time
 
+> **Atualizado em 08/09/2026.** A inscricao encerrou em **28/08** e era **individual** - cada integrante digitou um nome de time no proprio formulario.
+> Logo, a tarefa deixou de ser *escolher* um nome e passou a ser **confirmar qual nome foi efetivamente registrado**, e se os **4 integrantes** digitaram a mesma grafia. Quem sabe disso e o **Agent Lead (Raffaele Brivio)**, que realizou a inscricao. Havendo divergencia entre os formularios, cabe ao Agent Lead avisar a Organizacao (emro@gft.com) antes da entrega de 30/09.
+>
+> **Nome do produto e nome do time sao coisas diferentes.** O produto ja tem nome: **OneAsk** (`oneask/`). O nome do time pode ser outro - e provavelmente ja e.
+
 O regulamento nao tem nenhuma regra de nome - o nome e livre. Padrao pedido pelo usuario: `[palavra] + SMC`, como em *BeyondAISMC* e *SquadSMC*.
 
 > Este arquivo esta em pt-BR sem acentuacao (ASCII puro). Todos os nomes abaixo ja estao grafados sem acento de proposito: acentos quebram em formularios, nomes de arquivo e URLs.
@@ -36,10 +41,23 @@ Duas coisas valem carregar para qualquer nome escolhido. O regulamento chama cad
 
 ## Escolhas
 
+Validas apenas se o nome ainda estiver aberto - ver o aviso no topo.
+
 - **MesaDeAgentesSMC** - melhor para credibilidade com o juri tecnico.
 - **B3ravosSMC** - melhor para a votacao do publico.
-- **LastroIASMC** ou **CovenantWatchSMC** - se o time seguir com a ideia Covenant Watch de `IDEAS.md`.
+- ~~**LastroIASMC** ou **CovenantWatchSMC** - se o time seguir com a ideia Covenant Watch~~ - **superado**: a direcao e OneAsk, nao Covenant Watch.
+
+### Candidatos alinhados a direcao OneAsk
+
+| Nome | Por que |
+|---|---|
+| **OneAskSMC** | O nome do produto vira nome do time. Curto, falavel e memoravel por uma sala - o que importa na votacao do publico em 28/10 |
+| UmaPerguntaSMC | A mesma ideia em portugues: uma pergunta em vez de tres sistemas |
+| CustodiaVivaSMC | Se a manchete virar investigacao de divergencia de posicao, conforme `oneask/AVALIACAO.md` secao 3.1 - custodia e onde a dor vive |
+| MesaDeAgentesSMC | Segue sendo a aposta mais forte para credibilidade tecnica, independente da solucao |
 
 ## Aviso pratico
 
-A inscricao e individual, entao **todos os integrantes precisam digitar exatamente o mesmo nome de time** no proprio formulario. Combinar a grafia por escrito antes de qualquer um enviar.
+A inscricao e individual, entao **os 4 integrantes precisavam digitar exatamente o mesmo nome de time** no proprio formulario.
+
+Como a janela ja fechou em 28/08, isto virou item de **verificacao**, nao de combinacao: conferir com cada integrante qual grafia foi enviada. Divergencia entre formularios e o tipo de detalhe administrativo que aparece na hora errada.

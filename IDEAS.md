@@ -1,7 +1,13 @@
 # Espaco de problemas e catalogo de solucoes
 
-Data do checkpoint: **12/08/2026**. Situacao: **nada aceito ainda** - o usuario segue explorando.
-Ver `RULES.md` para as restricoes que estas ideias precisam respeitar.
+> **Documento historico, mantido como referencia.** Escrito em **12/08/2026**, quando nenhuma direcao estava escolhida.
+> A direcao atual e **OneAsk** (`oneask/`), e a recomendacao de agosto que fecha este arquivo - A3 Covenant Watch - esta **superada**.
+>
+> O que segue valido: os **tres filtros** logo abaixo, que qualquer ideia ainda precisa respeitar, o mapa de **dores P1 a P5** e o **catalogo de solucoes A1 a D9**, como referencia de espaco de problemas.
+>
+> Trecho mais relevante para a direcao atual: **P2** (eventos corporativos na custodia), **P3** (falhas de liquidacao) e **B5** (triagem de breaks e falhas) sao o vizinho mais proximo do caso de abertura recomendado para o OneAsk - investigacao de divergencia de posicao. Ver `oneask/AVALIACAO.md`, secao 3.1.
+
+Situacao atual do projeto em `PLAN.md` e `checkpoint.json` (v7, 08/09/2026). Ver `RULES.md` para as restricoes que estas ideias precisam respeitar.
 
 > Este arquivo esta em pt-BR sem acentuacao (ASCII puro).
 
@@ -73,7 +79,9 @@ Contraponto honesto: o juri fica desconfortavel com um agente que aparenta *deci
 
 - **D9 - Agente de manual de regras para suite de testes**: le mudancas em manuais e regras operacionais da B3 e gera cenarios de teste executaveis para a plataforma de um cliente. Atinge o P&L que o proprio juri administra. Risco: pode ser lido como ferramenta interna e nao solucao de mercado - embora os criterios digam explicitamente "valor para cliente **ou** negocio".
 
-## Recomendacao vigente (nao aceita)
+## Recomendacao de agosto de 2026 - SUPERADA
+
+> Esta recomendacao **nao vale mais**. A direcao do projeto e **OneAsk** (`oneask/`). O que segue e o registro do raciocinio de 12/08, preservado porque a analise contra os pesos de avaliacao segue util como metodo - e porque o diferencial de inovacao descrito abaixo (transformar um leitor de documentos em sistema de alerta antecipado) e o mesmo tipo de movimento que `oneask/AVALIACAO.md` recomenda para o OneAsk: nomear um mecanismo em vez de prometer inteligencia.
 
 **A3 Covenant Watch**, com **B4 Normalizador de eventos corporativos** como vice.
 
@@ -94,10 +102,19 @@ Por que A3 casa com a pontuacao:
 
 ## O que desbloqueia a decisao
 
-A pergunta unica que muda a resposta: **qual das dores P1 a P5 o time encosta em trabalho real de cliente?** Aderencia e valor de negocio somam metade da nota, e um pitch sobre um fluxo que o time nunca viu soa generico, nao importa quao bom seja o agente.
+> **Respondida em 08/09, e a resposta e desconfortavel.** A decisao de direcao ja foi tomada (OneAsk), mas a pergunta abaixo tambem foi respondida - e o mapeamento por perfil de time, preservado no fim desta secao, ficou sem linha aplicavel.
+
+A pergunta unica era: **qual das dores P1 a P5 o time encosta em trabalho real de cliente?** Aderencia e valor de negocio somam metade da nota, e um pitch sobre um fluxo que o time nunca viu soa generico, nao importa quao bom seja o agente.
+
+**A resposta e: nenhuma.** Os quatro integrantes sao PSU BR - Analista de Negocios III, Front-End II, Back-End I e Analista de Teste I - e nenhum e da Business Unit de Capital Markets. Ver `PLAN.md`, secao "A lacuna de dominio".
+
+Isso nao muda a direcao, que esta travada pelo formulario. Muda o **preco** de vestir o dominio: a manchete de custodia recomendada em `oneask/AVALIACAO.md` secao 3.1 passa a depender de **revisao por alguem da BU de Capital Markets**, sem a qual a pele de dominio vira passivo em vez de ativo. Uma conversa de 30 a 60 minutos resolve, e consultar alguem nao a torna integrante da equipe - o limite de 4 nao e afetado.
+
+O mapeamento original, preservado porque segue servindo para escolher **qual caso vira a manchete** caso a revisao aponte outro caminho:
 
 - Time de renda fixa / credito: A3
-- Pos-negociacao / custodia / back-office: B4 ou B5
+- Pos-negociacao / custodia / back-office: B4 ou B5 - **e aqui que o caso recomendado para o OneAsk mora**
 - Compliance / risco / regulatorio: A1, A2, C6 ou C8
 - Front-office / corretora / plataformas de gestao: C6 ou C7
 - Modernizacao de plataforma / delivery: D9
+- **Nenhum dos acima - o caso deste time:** a lacuna se fecha por revisao externa, nao por experiencia propria
