@@ -53,6 +53,8 @@ O SharePoint acrescenta: **a inscricao e individual - todos os participantes pre
 | 19/10 - 23/10 | Finalistas recebem orientacoes de apresentacao |
 | 28/10 | Apresentacao final; o publico presente elege 1o, 2o e 3o lugares |
 
+> **Cuidado com a data 13/08.** O e-mail de aprovacao, recebido em **10/09**, repete este mesmo cronograma - "o periodo de desenvolvimento acontecera de 13/08 a 30/09" e "seu acesso sera liberado em 13/08". Nao e 13/09: 13/08 e a data publicada desde 05/08, e 13/09/2026 cai num domingo. **A janela esta aberta desde 13/08**, e o que resta e o intervalo ate 30/09. Ver `APROVACAO.md`, secao 4.
+
 ## Natureza da participacao e jornada (sec. 9 e 10)
 
 Voluntaria e facultativa. A nao participacao nao pode gerar prejuizo funcional, impacto em avaliacao de desempenho, restricao de evolucao, tratamento diferenciado ou consequencia disciplinar. A participacao nao altera o contrato de trabalho.
@@ -78,6 +80,8 @@ A violacao acarreta desclassificacao imediata, medidas disciplinares e responsab
 ## Seguranca da informacao (sec. 14)
 
 Vedado: usar ambientes nao autorizados para informacao corporativa, compartilhar credenciais, subir documentos internos em plataformas nao homologadas, usar software obtido de forma irregular e compartilhar solucoes desenvolvidas no desafio sem autorizacao formal da companhia. Todo material permanece nos ambientes indicados pela Organizacao.
+
+**Qual e o ambiente indicado, para o codigo:** o **GitLab da GFT**, em diretorio proprio da equipe - nomeado no e-mail de aprovacao de 10/09 (`APROVACAO.md`). Nao ha mais duvida sobre o repositorio: artefato de desenvolvimento fora dali esta fora do ambiente indicado, alem de ser entregavel faltando.
 
 ## Propriedade intelectual (sec. 15)
 
@@ -107,12 +111,17 @@ O SharePoint enuncia os mesmos criterios em linguagem de negocio: aderencia ao M
 
 Designada pela GFT Brasil; pode incluir Tecnologia, IA, Negocios, Produtos, Arquitetura, RH, executivos convidados e parceiros estrategicos. O SharePoint especifica: lideranca de Negocios/Delivery da Business Unit de Capital Markets, lideranca do BDP e o Google como parceiro tecnologico. As decisoes sao soberanas quanto ao merito tecnico; revisao apenas em caso de erro material na consolidacao das notas.
 
-## Entregaveis obrigatorios (SharePoint)
+## Entregaveis obrigatorios (SharePoint + e-mail de aprovacao)
+
+**Sao cinco, nao quatro.** A pagina do SharePoint lista quatro; o e-mail de aprovacao de 10/09 lista **cinco** - acrescenta o GitLab. Ver `APROVACAO.md`.
 
 1. **One-pager** (PDF) - problema abordado, solucao desenvolvida, impacto esperado
 2. **Video com pitch e demo** - apresentacao com demonstracao da solucao
 3. **Demo funcional** - prototipo navegavel ou simulado do agente
 4. **Arquitetura da solucao** (PDF) - diagrama simplificado da arquitetura tecnica
+5. **GitLab GFT** - artefatos de desenvolvimento no diretorio da equipe *(so no e-mail de 10/09)*
+
+O e-mail acrescenta ainda que **o padrao Google Enterprise AI e obrigatorio em todos os entregaveis**, e nao apenas no agente que roda: "Projetos fora desse padrao serao desclassificados."
 
 ## Premiacao (sec. 19)
 

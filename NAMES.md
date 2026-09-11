@@ -1,9 +1,12 @@
-# Candidatos a nome do time
+# Candidatos a nome do time - **encerrado**
 
-> **Atualizado em 08/09/2026.** A inscricao encerrou em **28/08** e era **individual** - cada integrante digitou um nome de time no proprio formulario.
-> Logo, a tarefa deixou de ser *escolher* um nome e passou a ser **confirmar qual nome foi efetivamente registrado**, e se os **4 integrantes** digitaram a mesma grafia. Quem sabe disso e o **Agent Lead (Raffaele Brivio)**, que realizou a inscricao. Havendo divergencia entre os formularios, cabe ao Agent Lead avisar a Organizacao (emro@gft.com) antes da entrega de 30/09.
+> **RESOLVIDO em 09/09/2026.** O nome do time registrado e **OneAsk** - confirmado pelo Agent Lead (Raffaele Brivio), que realizou a inscricao. Time e produto tem o mesmo nome.
 >
-> **Nome do produto e nome do time sao coisas diferentes.** O produto ja tem nome: **OneAsk** (`oneask/`). O nome do time pode ser outro - e provavelmente ja e.
+> **Confirmado tambem pela Organizacao em 10/09:** o e-mail de aprovacao da proposta abre com *"Ola OneAsk!"*. Nao ha mais duvida sobre a grafia registrada. Ver `APROVACAO.md`.
+>
+> O restante deste arquivo e **historico**: os candidatos levantados antes da confirmacao. Nao ha decisao pendente aqui. Se algum entregavel precisar de um nome de vitrine diferente do nome registrado, a lista continua util - mas o nome que vale para a Organizacao e **OneAsk**.
+>
+> Nota relacionada: a inscricao era individual e **somente o Agent Lead enviou o formulario**. Os outros tres foram chamados a regularizar por e-mail em 09/09 - e cada um dos tres precisa declarar o mesmo nome de grupo, **OneAsk**. Ver `PLAN.md`, "A lacuna de inscricao".
 
 O regulamento nao tem nenhuma regra de nome - o nome e livre. Padrao pedido pelo usuario: `[palavra] + SMC`, como em *BeyondAISMC* e *SquadSMC*.
 

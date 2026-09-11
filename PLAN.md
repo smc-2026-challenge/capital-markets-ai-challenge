@@ -1,7 +1,7 @@
 # Plano - Desafio Capital Markets AI Agents Challenge (SMC 2026)
 
-Data do checkpoint: **08/09/2026**. Versao legivel por maquina: `checkpoint.json` (v8).
-Arquivos companheiros: `RULES.md` (resumo do regulamento), `IDEAS.md` (espaco de problemas e catalogo de solucoes), `NAMES.md` (candidatos a nome do time), `oneask/` (a solucao em construcao, o texto submetido e a avaliacao).
+Data do checkpoint: **11/09/2026**. Versao legivel por maquina: `checkpoint.json` (v10).
+Arquivos companheiros: `APROVACAO.md` (o e-mail de aprovacao e o que ele muda), `RULES.md` (resumo do regulamento), `IDEAS.md` (espaco de problemas e catalogo de solucoes), `NAMES.md` (historico dos candidatos a nome do time - encerrado em OneAsk), `oneask/` (a solucao em construcao, o texto submetido e a avaliacao).
 
 > Este arquivo esta em pt-BR sem acentuacao (ASCII puro), para nao quebrar em formularios, nomes de arquivo e terminais.
 
@@ -11,7 +11,9 @@ O checkpoint anterior dizia que nada estava decidido. Isso ja nao e verdade: exi
 
 A recomendacao de agosto (**A3 Covenant Watch**, vice **B4 Normalizador de eventos corporativos**) esta **superada**. Fica preservada em `checkpoint.json`, em `direcao_da_solucao.recomendacao_anterior_agosto_2026`, e o catalogo de dores P1-P5 e de solucoes A1-D9 em `IDEAS.md` segue valido como referencia de espaco de problemas.
 
-**Atualizacao de 08/09:** o texto submetido no formulario foi obtido e esta em `oneask/PROPOSTA_SUBMETIDA.md` (campos 7, 8 e 9 - "Dados do Agente"). Isso destrava o que era a questao numero um do projeto e **corrige duas decisoes de escopo** - ver "O que o texto submetido muda", abaixo. A **aprovacao** pelo comite (selecao encerrada em 01/09) segue nao confirmada.
+**Atualizacao de 08/09:** o texto submetido no formulario foi obtido e esta em `oneask/PROPOSTA_SUBMETIDA.md` (campos 7, 8 e 9 - "Dados do Agente"). Isso destrava o que era a questao numero um do projeto e **corrige duas decisoes de escopo** - ver "O que o texto submetido muda", abaixo.
+
+**Atualizacao de 11/09: a proposta foi APROVADA.** E-mail da Organizacao em 10/09, 12h30, aos quatro integrantes. Transcricao fiel e analise em `APROVACAO.md`. O e-mail traz tres coisas que mudam o plano - ver "A aprovacao, e as tres coisas que vieram com ela", abaixo.
 
 ## Onde estamos
 
@@ -19,18 +21,64 @@ A recomendacao de agosto (**A3 Covenant Watch**, vice **B4 Normalizador de event
 |---|---|
 | Regulamento lido | Feito |
 | Direcao de problema e solucao | **Travada pelo formulario** - `oneask/PROPOSTA_SUBMETIDA.md`. O que segue em discussao e o plano de evolucao V1/V2/V3 |
-| Fase | **Construcao do agente** - janela 13/08 a 30/09 |
+| Fase | **Construcao do agente** - janela 13/08 a 30/09, **aberta desde 13/08**, restam 20 dias corridos |
 | Proposta submetida no formulario | **Confirmada** - texto em `oneask/PROPOSTA_SUBMETIDA.md` |
-| Proposta aprovada pelo comite | **Nao confirmada** - a selecao fechou em 01/09 |
-| Campos 1 a 6 do formulario | **Nao vistos** - e por isso o nome do time registrado segue nao confirmado |
+| Proposta aprovada pelo comite | **APROVADA** - e-mail da Organizacao em 10/09 (`APROVACAO.md`) |
+| Ambiente do codigo | **Resolvido: GitLab da GFT**, diretorio da equipe. **Acesso nao confirmado** - era para ate ~18/08 |
+| Campos 1 a 6 do formulario | **Nao vistos** - o nome do time foi confirmado por fora, pelo Agent Lead |
 | Composicao do time | **Confirmada - 4 integrantes, o maximo permitido** (ver abaixo) |
 | Agent Lead | **Raffaele Brivio** |
-| Nome do time registrado | Nao confirmado - o chat se chama OneAsk, mas isso e o nome do produto |
+| Nome do time registrado | **OneAsk** - confirmado em 09/09. Time e produto tem o mesmo nome |
+| Inscricao individual dos 4 | **Somente o Agent Lead consta.** Regularizacao dos outros 3 pedida pela Organizacao em 09/09 - ver abaixo |
 | Licencas Gemini Enterprise | Recebimento nao confirmado |
 | Guia Tecnico | **Resolvido - nao existe** como documento separado. Ver `GUIA_TECNICO_RESPOSTA.md` |
-| Os quatro entregaveis obrigatorios | Nao iniciados, exceto a demo (V1 em construcao) |
+| Os **cinco** entregaveis obrigatorios | Nao iniciados, exceto a demo (V1 em construcao). **Sao cinco, nao quatro** - ver `APROVACAO.md` |
 
 Em `checkpoint.json`, `null` significa **nao confirmado**, nao `false`. A distincao importa: parte do trabalho avancou fora deste repositorio.
+
+## A aprovacao, e as tres coisas que vieram com ela
+
+A proposta foi **aprovada**. E-mail da Organizacao (Evelim Ribeiro) em **10/09, 12h30**, enderecado aos quatro integrantes, com copia para Miotta, Kato e Bueno. Transcricao fiel e analise completa em `APROVACAO.md`.
+
+Isso encerra a questao aberta numero cinco deste arquivo. Mas o e-mail nao e so uma boa noticia - ele carrega tres mudancas materiais, e uma armadilha de leitura.
+
+**1. Sao cinco entregaveis obrigatorios, nao quatro.** A pagina do SharePoint lista quatro; o e-mail lista cinco. O novo e **"GitLab GFT: artefatos de desenvolvimento no diretorio da sua equipe"**. Este arquivo dizia "os quatro entregaveis" em quatro lugares diferentes - estava errado. E o quinto entregavel nao e um documento a produzir na ultima semana: e onde o trabalho tem de estar acontecendo *durante* a construcao. Um unico commit em 29/09 entrega o artefato e nao entrega a evidencia de processo que um diretorio versionado existe para dar.
+
+**2. O ambiente homologado do codigo tem nome: GitLab da GFT.** Era o item 5 do caminho critico e a questao aberta 3 - *"o GitHub usado pelo time e ambiente homologado?"*. **Respondida.** Sec. 14 manda que todo material permaneca nos ambientes indicados pela Organizacao; a Organizacao indicou. O risco vira tarefa, com uma cobranca urgente colada nela: **a liberacao do GitLab era para ate 3 dias uteis a partir de 13/08 - por volta de 18/08 - e passou quase um mes.** Se o acesso nao chegou, cobrar hoje. Diretorio sem acesso e entregavel obrigatorio que nao existe.
+
+**3. O padrao Google Enterprise AI vale para todos os entregaveis.** O e-mail e mais especifico que o SharePoint: *"o padrao Google Enterprise AI e obrigatorio em todos os entregaveis. Projetos fora desse padrao serao desclassificados."* Nao basta o agente rodar em Gemini Enterprise - o PDF de arquitetura precisa nomear primitivas Google concretas, o video precisa mostrar a solucao no padrao, e o one-pager nao deve ser agnostico de plataforma. O que era tatica de nota (o parceiro Google esta no juri) passou a ser requisito de conformidade.
+
+### A armadilha: "dia 13" e 13/08, e ja passou
+
+O e-mail diz que o desenvolvimento vai **de 13/08 a 30/09** e que o acesso ao Gemini Enterprise seria liberado **em 13/08**. Isso nao e data nova nem erro de digitacao: e o cronograma publicado no SharePoint desde 05/08 (ver `RULES.md`). O e-mail chegou em **10/09** repetindo um calendario que comecou 28 dias antes - a aprovacao veio com quase um mes da janela ja consumido.
+
+A leitura no Teams foi *"dia 13 comeca"*. **Nao comeca - ja comecou.** 13/09/2026 cai num domingo; 13/08 era a quinta-feira seguinte ao kickoff de 12/08.
+
+Por que vale gastar um paragrafo nisso: quem le "comeca dia 13" acredita ter a janela inteira pela frente, e quem acredita nisso nao sente urgencia nenhuma nos proximos dois dias. A conta real esta em "Datas duras", abaixo - e ela e curta.
+
+### O que a aprovacao **nao** resolve
+
+O e-mail e sobre a proposta, nao sobre inscricao. **Ele nao e o aceite formal das tres inscricoes individuais faltantes** - embora estar enderecado aos quatro seja indicio relevante de que a Organizacao trata o time como quarteto formado. A premiacao alcanca apenas integrantes **inscritos** e elegiveis (sec. 19), entao a cobranca da secao seguinte continua de pe.
+
+Tambem nao confirma que as licencas Gemini Enterprise estao efetivamente liberadas: o e-mail diz "sera liberado em 13/08" - futuro, sobre data no passado.
+
+### Um canal novo, e uma licao que ja custou caro
+
+O e-mail anuncia um **grupo exclusivo com os Agent Builders aprovados**, para orientacoes, cronograma e duvidas. Duas providencias: garantir que o Agent Lead esteja nele (sec. 4.4 - a comunicacao com a Organizacao e atribuicao formal do papel), e **aterrar no repositorio, no mesmo dia, o que for dito ali**. Foi exatamente assim que a resposta sobre o Guia Tecnico ficou quase um mes fora do repositorio enquanto o projeto tratava o assunto como principal risco tecnico.
+
+## A lacuna de inscricao - aberta em 09/09
+
+A Organizacao (Evelim Ribeiro) conferiu os formularios e **nao encontrou a inscricao de 3 dos 4 integrantes**. Somente a do Agent Lead consta.
+
+Causa: a inscricao era **individual** - sec. 7 do regulamento, reforcado na pagina do SharePoint (*todos os participantes preenchem o formulario, inclusive quem participa em equipe*). O Agent Lead submeteu um formulario de grupo, com participacao em quarteto, nome do time e os quatro e-mails; os outros tres entenderam que aquela submissao registrava a equipe inteira, e nenhum preencheu o proprio.
+
+O que a Organizacao pediu, em 09/09 as 11h00: que **cada integrante faltante envie um e-mail ate as 13h do mesmo dia**, explicando que perdeu o prazo de inscricao e o motivo, e respondendo as perguntas que estavam no formulario. Destinatario: `evelim.ribeiro@gft.com`, com copia para Vitor Miotta, Carlos Kato e Thiago Bueno.
+
+Por que e risco alto, e nao burocracia: a premiacao e dividida entre os integrantes **inscritos** e elegiveis (sec. 19), e a parcela de quem nao se qualifica **nao e redistribuida** ao resto do time. Enquanto a regularizacao nao for aceita, tres dos quatro nao constam como inscritos - o que expoe mais do que a premiacao.
+
+**Status:** regularizacao pedida em 09/09, com prazo de 13h no mesmo dia. **Envio dos tres e-mails e aceite pela Organizacao: nao confirmados** - e o proximo item a cobrar, pelo canal do Agent Lead.
+
+**Licao de processo, a mesma de 12/08:** a exigencia de inscricao individual estava escrita em `RULES.md` desde o primeiro checkpoint - *"a inscricao e individual - todos os participantes preenchem o formulario, inclusive quem participa em equipe"* - e ainda assim passou. Regra lida nao e regra cumprida enquanto ninguem confirma a execucao, um a um.
 
 ## O time
 
@@ -38,7 +86,7 @@ Quatro integrantes - **o maximo que o regulamento permite** (sec. 4.3: de 2 a 4)
 
 | Integrante | Usuario | Cargo | Unidade | Jornada |
 |---|---|---|---|---|
-| **Brivio, Raffaele** - Agent Lead | - | Analista de Negocios III | PSU BR | 09:00-18:00 |
+| **Brivio, Raffaele** - Agent Lead | `rebv` | Analista de Negocios III | PSU BR | 09:00-18:00 |
 | Franco, Jeferson | `jrfc` | Desenvolvedor(a) Front-End II | PSU BR | 08:00-17:00 |
 | Augusto de Melo, Guilherme | `geam` | Desenvolvedor(a) Back-End I | PSU BR | 08:00-17:00 |
 | da Silva, Michelle Carla | `maiv` | Analista de Teste I | PSU BR Indirect | 08:30-17:30 |
@@ -155,7 +203,11 @@ Uma rejeicao merece destaque, porque a tentacao volta quando o prazo aperta: a s
 
 ## Datas duras
 
-**30/09** e o ultimo dia para enviar o agente - **22 dias corridos** a partir desta data. Descontando a janela de entregaveis, **restam cerca de 12 dias reais de construcao**.
+**30/09** e o ultimo dia para enviar o agente - **20 dias corridos** e **14 dias uteis** a partir desta data.
+
+A conta que importa nao e essa, e a de construcao. Com congelamento de codigo em 24/09, restam **10 dias uteis de construcao** (11/09 a 24/09) e **4 dias uteis para os entregaveis** (25/09 a 30/09). E trabalho voluntario, fora ou dentro do expediente conforme autorizacao do gestor - logo 10 dias uteis nao sao 80 horas por pessoa.
+
+A janela **abriu em 13/08** e ja consumiu cerca de 60% do prazo. O e-mail de aprovacao, que chegou em 10/09 repetindo "13/08 a 30/09", nao move essa data - ver "A armadilha", acima.
 
 Depois: avaliacao do juri de 01/10 a 15/10, finalistas em **16/10**, apresentacao final e votacao do publico em **28/10**.
 
@@ -167,11 +219,12 @@ Cronograma completo em `RULES.md`.
 2. **Fechar o escopo minimo como V1 mais um playbook de V3**, nao V1 sozinha. E o que o campo 8 do formulario prometeu, e e a decisao que reordena o cronograma. Esta e a acao numero um.
 3. ~~Solicitar o Guia Tecnico.~~ **Resolvido: nao existe.** A Organizacao respondeu em 12/08 que o guia tecnico e a pagina do SharePoint mais o regulamento, nada alem. Ver `GUIA_TECNICO_RESPOSTA.md`. **A arquitetura sugerida deixou de correr risco de invalidacao** - nao ha documento por vir.
 4. **Agendar a revisao do cenario com alguem da BU de Capital Markets.** Nenhum integrante e de CM - sem essa revisao, a manchete de custodia fica sem lastro diante de um juri que e justamente de CM. Ver "A lacuna de dominio".
-5. **Confirmar se o GitHub usado pelo time e ambiente homologado** para o codigo do desafio. Sec. 14 veda plataformas nao homologadas e determina que todo material permanece nos ambientes indicados pela Organizacao; sec. 15 torna o codigo patrimonio da GFT; sec. 20 faz da violacao gatilho de desclassificacao. Padrao seguro: repositorio gerido pela GFT, ou o proprio projeto GCP.
+5. ~~Confirmar se o GitHub usado pelo time e ambiente homologado.~~ **Respondido em 10/09: o ambiente e o GitLab da GFT**, em diretorio da equipe (`APROVACAO.md`). No lugar disso, duas acoes novas, ambas urgentes: **(a) cobrar o acesso ao GitLab** - era para ate ~18/08 e nao chegou confirmacao; **(b) comecar a versionar os artefatos ali**, porque o diretorio da equipe e o **quinto entregavel obrigatorio**, e ele e avaliado pelo que contem em 30/09.
 6. **Congelar a definicao de pronto da V1** (abaixo). E a defesa contra o risco mais provavel do projeto: escopo espalhado por V1, V2 e V3 sem nenhum completo em 30/09.
 7. **Fechar o numero de impacto.** Nem o documento OneAsk nem o formulario tem um unico numero. O desempate do juri e por valor agregado ao negocio, e a votacao final e do publico. Sem numero, "ganho de eficiencia" e adjetivo.
 8. **Vestir o dominio, sem perder a afirmacao horizontal.** Exemplos de V1 e V2 em custodia, divergencia de posicao como caso de abertura, e o alcance amplo mantido como argumento de escala.
-9. **Confirmar a aprovacao pelo comite e o nome do time registrado nos 4 formularios** - com o Agent Lead, que realizou a inscricao.
+9. ~~Confirmar a aprovacao pelo comite.~~ **Feito - APROVADA em 10/09** (`APROVACAO.md`). O nome do time esta confirmado: **OneAsk** - o proprio e-mail abre com "Ola OneAsk!".
+9b. **Confirmar com a Organizacao o aceite das inscricoes individuais regularizadas em 09/09** - ver "A lacuna de inscricao". Sem aceite, 3 dos 4 integrantes nao constam como inscritos. O e-mail de aprovacao aos quatro e indicio, **nao e aceite**.
 10. **Cada integrante confere a propria elegibilidade** e a autorizacao do gestor para dedicacao em expediente. A elegibilidade vale ate a divulgacao do resultado.
 
 ## Avaliacao da direcao atual, em resumo
@@ -209,12 +262,13 @@ Reordenado em 08/09 apos a leitura do texto submetido: o playbook de V3 subiu de
 
 | Janela | Foco | Saida |
 |---|---|---|
-| 08/09 - 10/09 | Congelar escopo **contra o texto submetido**. Agendar a revisao com Capital Markets. Confirmar homologacao do repositorio de codigo. Fechar as premissas do numero. | Escopo congelado, numero acordado, revisao marcada |
-| 08/09 - 15/09 | Catalogo semantico como dado. Dois servicos mockados heterogeneos. V1 ponta a ponta no Gemini Enterprise. | Fundacao pronta |
+| ~~08/09 - 10/09~~ | ~~Congelar escopo contra o texto submetido. Agendar a revisao com Capital Markets. Confirmar homologacao do repositorio. Fechar as premissas do numero.~~ **Vencida.** A homologacao do repositorio foi respondida de fora (GitLab GFT); o resto segue pendente e foi empurrado para a linha abaixo | - |
+| **11/09 - 12/09** | **Cobrar acesso ao GitLab e as licencas Gemini Enterprise** - ambos com prazo estourado desde agosto. Abrir o diretorio da equipe e subir o primeiro artefato. Congelar escopo **contra o texto submetido**. Agendar a revisao com Capital Markets. Fechar as premissas do numero. | Acessos cobrados por escrito, diretorio do GitLab vivo, escopo congelado, numero acordado, revisao marcada |
+| 11/09 - 15/09 | Catalogo semantico como dado. Dois servicos mockados heterogeneos. V1 ponta a ponta no Gemini Enterprise. **Tudo versionado no GitLab desde o primeiro commit.** | Fundacao pronta |
 | 15/09 - 21/09 | **Um playbook de V3 ponta a ponta** - divergencia de posicao, com verificacao de consistencia. V2.1, que sai quase de graca do catalogo. Manifesto de procedencia. Passo de plano e confirmacao. | **A demo que o texto submetido promete** |
 | 22/09 - 24/09 | Caixa de seguranca no diagrama. Integracao. **Congelar codigo em 24/09.** | Demo completa |
-| 24/09 - 28/09 | **Roteiro do video primeiro**, depois gravacao com take de reserva. One-pager e PDF de arquitetura. | Pacote de submissao |
-| 29/09 | Folga deliberada - revisao, ensaio, correcao do que aparecer | Margem |
+| 24/09 - 28/09 | **Roteiro do video primeiro**, depois gravacao com take de reserva. One-pager e PDF de arquitetura. **Os tres no padrao Google Enterprise AI** - o e-mail de aprovacao exige isso de todos os entregaveis, nao so do agente. | Pacote de submissao |
+| 29/09 | Folga deliberada - revisao, ensaio, correcao do que aparecer. **Conferir o diretorio do GitLab como se fosse entregavel - porque e.** | Margem |
 | 30/09 | Enviar de manha, nao no fim do dia | Submetido |
 
 **Cortes de escopo, aprofundados em 08/09 apos revisao externa** (detalhe em `oneask/AVALIACAO.md` secoes 7 e 11). O nucleo deterministico e trabalho de um unico dev junior em horario voluntario: ordem de 60 a 80 horas disponiveis contra mais de 120 na lista original. Fora, portanto:
@@ -236,14 +290,17 @@ Observacao contraintuitiva: os **playbooks da V3 sao mais faceis** que a V2.3 ab
 
 ## Entregaveis - 100% do que o juri ve
 
-A pagina do Loop planeja evolucao de produto e nao menciona nenhum dos quatro. E aqui que times perdem pontos, nao no modelo.
+**Sao cinco, nao quatro.** A pagina do SharePoint lista quatro; o e-mail de aprovacao de 10/09 acrescenta o quinto. A pagina do Loop planeja evolucao de produto e nao menciona nenhum deles. E aqui que times perdem pontos, nao no modelo.
 
 | Entregavel | O que nao pode faltar |
 |---|---|
 | One-pager (PDF) | O numero. A dor em uma frase reconhecivel por quem e de Capital Markets |
 | Video com pitch e demo | **Escrever o roteiro ANTES de construir o resto.** A plateia que decide o 1o lugar em 28/10 ve o video, nao a arquitetura - e sao duas pecas para duas plateias (`oneask/AVALIACAO.md` secao 8). Take de reserva gravado |
-| Demo funcional | Rodando em Gemini Enterprise, nao em notebook local |
+| Demo funcional | Rodando em Gemini Enterprise, nao em notebook local. A redacao "prototipo navegavel ou simulado" **nao libera** rodar fora do padrao - sec. 12 e o proprio e-mail fecham essa porta |
 | Arquitetura (PDF) | A fronteira LLM/deterministico **desenhada** - e o argumento de viabilidade tecnica em forma visual. Mais a **caixa de seguranca e conformidade**, comecando por "o agente nunca ve dado bruto, so referencia". Nomear as primitivas GCP concretas: o parceiro Google esta no juri |
+| **GitLab GFT** *(novo, 10/09)* | Artefatos de desenvolvimento no **diretorio da equipe**. Nao e tarefa de ultima semana: e onde o trabalho precisa estar acontecendo durante a construcao. Depende de um acesso que ainda nao foi confirmado - **cobrar hoje** |
+
+**Uma exigencia que atravessa os cinco:** o e-mail de aprovacao diz que *"o padrao Google Enterprise AI e obrigatorio em todos os entregaveis. Projetos fora desse padrao serao desclassificados."* Isso sobe a barra do PDF de arquitetura e do video, que passam a precisar mostrar o padrao, e nao apenas descreve-lo.
 
 ## Fase final - 16/10 a 28/10
 
@@ -251,27 +308,29 @@ Se selecionado entre os tres finalistas, refazer o pitch para uma plateia **nao 
 
 ## Questoes abertas
 
-1. **O time aceita o escopo minimo como V1 mais um playbook de V3, em vez de V1 sozinha?** Questao numero um - ela define o cronograma.
-2. **Quem, na BU de Capital Markets, pode revisar o cenario da demo em 30 a 60 minutos?** Sem isso a manchete de custodia fica sem lastro.
-3. **O GitHub usado pelo time e ambiente homologado para o codigo do desafio?** Sec. 14, 15 e 20 - classe de gatilho de desclassificacao.
-4. Qual o nome do **time** registrado nos formularios, e os 4 digitaram a mesma grafia?
-5. A proposta foi aprovada pelo comite na selecao encerrada em 01/09?
-6. As licencas Gemini Enterprise foram liberadas? O chat de 08/09 mostra um problema de acesso resolvido as 10h27 que **pode** ter sido exatamente isso - confirmar.
-7. Os 4 integrantes seguem elegiveis, e seguirao ate a divulgacao do resultado?
-8. Os gestores imediatos deram ciencia e autorizacao para dedicacao em expediente (sec. 10)?
-9. Qual caso de custodia vira a demo?
-10. Qual o conjunto de premissas do numero de impacto?
+1. **O acesso ao GitLab da GFT foi provisionado, e qual e o caminho do diretorio da equipe?** Era para ate 3 dias uteis a partir de 13/08 - ou seja, ~18/08 - e nao ha confirmacao. **Sobe para primeira posicao porque o diretorio e entregavel obrigatorio**, e nenhum outro item da lista tem prazo estourado ha um mes.
+2. **O time aceita o escopo minimo como V1 mais um playbook de V3, em vez de V1 sozinha?** Ela define o cronograma.
+3. **Quem, na BU de Capital Markets, pode revisar o cenario da demo em 30 a 60 minutos?** Sem isso a manchete de custodia fica sem lastro.
+4. Os tres e-mails de regularizacao de inscricao foram aceitos pela Organizacao? O e-mail de aprovacao aos quatro e indicio, nao aceite.
+5. As licencas Gemini Enterprise foram liberadas **para os quatro**? O e-mail de aprovacao diz "sera liberado em 13/08" - futuro, sobre data no passado. O chat de 08/09 mostra um problema de acesso resolvido as 10h27 que **pode** ter sido exatamente isso - confirmar.
+6. Os 4 integrantes seguem elegiveis, e seguirao ate a divulgacao do resultado?
+7. Os gestores imediatos deram ciencia e autorizacao para dedicacao em expediente (sec. 10)?
+8. Qual caso de custodia vira a demo?
+9. Qual o conjunto de premissas do numero de impacto?
 
 **Respondidas em 08/09, e por isso fora da lista:** o que a proposta submetida declara (`oneask/PROPOSTA_SUBMETIDA.md`); quem esta no time, quem e o Agent Lead e quais sao os papeis profissionais (ver "O time"); e se o Guia Tecnico foi obtido - nao existe (`GUIA_TECNICO_RESPOSTA.md`).
+
+**Respondidas em 10/09 pelo e-mail de aprovacao** (`APROVACAO.md`), e por isso fora da lista: se a proposta foi aprovada pelo comite - **foi**; qual o nome do time registrado - **OneAsk**, o e-mail abre com "Ola OneAsk!"; e se o repositorio usado pelo time e ambiente homologado - a pergunta perdeu o objeto, porque a Organizacao nomeou o ambiente: **GitLab da GFT**.
 
 ## Pontos que vale nao esquecer
 
 - **Plataforma**: o agente final tem de estar implementado, configurado, integrado, executavel e disponivel para avaliacao nos padroes Gemini Enterprise + GCP. Fora disso, desclassificacao. Nao ha requisito tecnico adicional a descobrir - ver `GUIA_TECNICO_RESPOSTA.md`.
-- **Ambientes**: sec. 14 determina que todo material permanece nos ambientes indicados pela Organizacao, e veda plataformas nao homologadas. Codigo do desafio e patrimonio da GFT (sec. 15) e nao deve viver em conta pessoal.
+- **Ambientes**: sec. 14 determina que todo material permanece nos ambientes indicados pela Organizacao, e veda plataformas nao homologadas. **O ambiente indicado para o codigo tem nome desde 10/09: GitLab da GFT, diretorio da equipe.** Codigo do desafio e patrimonio da GFT (sec. 15) e nao deve viver em conta pessoal - e agora estar fora do GitLab tambem significa entregavel obrigatorio faltando.
 - **Dados**: mock e sintetico sao explicitamente permitidos, o que valida a premissa do OneAsk. E privacidade e seguranca de dados foram o **unico pedido que a Organizacao acrescentou de proprio punho** ao responder sobre o Guia Tecnico. Mas `customer_name` no exemplo da V2.3 e um convite a alguem popular a base com nome de cliente real - mock ostensivamente sintetico, e dito em voz alta para o time. Violacao e desclassificacao imediata.
 - **Credibilidade da demo**: uma integracao publica real dentro do mundo mockado (PTAX/Bacen para conversao de moeda, por exemplo) custa quase nada e quebra o cheiro de "esta tudo mockado".
 - O premio e por projeto, dividido igualmente entre os 4; rateio desigual e proibido independentemente da contribuicao individual. Primeiro lugar da **R$ 750 por pessoa**, e a parcela de integrante inelegivel **nao** e redistribuida.
 - Elegibilidade vale **ate a divulgacao do resultado**, nao apenas na inscricao.
 - Toda a propriedade intelectual e da GFT - cessao gratuita, total e irrevogavel. A autoria recebe apenas reconhecimento institucional.
-- Tudo sobre o desafio e confidencial, explicitamente incluindo os criterios de avaliacao e os resultados preliminares. Manter estes arquivos internos.
+- Tudo sobre o desafio e confidencial, explicitamente incluindo os criterios de avaliacao e os resultados preliminares. Manter estes arquivos internos. **A aprovacao da propria proposta e resultado preliminar** - comemorar dentro da GFT, nao fora dela.
+- O grupo de Agent Builders aprovados e canal novo: o que for dito la **aterra no repositorio no mesmo dia**. Ja custou quase um mes uma vez.
 - O regulamento chama cada integrante de **Builder** e o representante de **Agent Lead** - usar esse vocabulario no pitch soa como fluencia nas regras.

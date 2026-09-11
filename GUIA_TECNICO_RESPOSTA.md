@@ -28,7 +28,8 @@ O regulamento (sec. 12) diz que "requisitos tecnicos, arquiteturais, de integrac
 - **Regulamento, sec. 12** - o agente final deve estar implementado, configurado, integrado, executavel e disponivel para avaliacao nos padroes **Gemini Enterprise + GCP**. Descumprir desclassifica.
 - **Regulamento, sec. 13** - regras de dados (mock, publico, sintetico, anonimizado com autorizacao previa).
 - **Regulamento, sec. 14** - seguranca da informacao. Inclui a vedacao de subir documentos internos em plataformas nao homologadas, e a regra de que **todo material permanece nos ambientes indicados pela Organizacao**.
-- **Pagina do SharePoint** - os quatro entregaveis obrigatorios, cronograma, criterios e juri. Ver `Brazil_NewsForYou.md`.
+- **Pagina do SharePoint** - entregaveis, cronograma, criterios e juri. Ver `Brazil_NewsForYou.md`.
+- **E-mail de aprovacao de 10/09** - posterior a esta resposta. Acrescenta um **quinto entregavel** (artefatos no diretorio da equipe no GitLab da GFT), nomeia o GitLab como ambiente dos artefatos e estende o padrao Google Enterprise AI a todos os entregaveis. Ver `APROVACAO.md`.
 
 **2. Nao ha template nem checklist para o diagrama de arquitetura.** A pagina do SharePoint pede "diagrama simplificado da arquitetura tecnica" e nada alem. O time define o que isso quer dizer - liberdade, mas tambem ausencia de rubrica a satisfazer.
 

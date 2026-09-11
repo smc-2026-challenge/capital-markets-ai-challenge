@@ -20,7 +20,11 @@ Disso sai o achado que mais afeta esta avaliacao: **nenhum integrante e da Busin
 
 **Tambem resolvido:** nao existe Guia Tecnico separado - a especificacao tecnica e o regulamento mais a pagina do SharePoint (`../GUIA_TECNICO_RESPOSTA.md`). Isso remove a ressalva que acompanhava a secao 5.
 
-Seguem **nao confirmados**: a aprovacao pela selecao do comite (encerrada em 01/09), o nome do **time** registrado nos formularios, a liberacao das licencas Gemini Enterprise, e se o GitHub usado pelo time e ambiente homologado. Em `../checkpoint.json` esses itens estao como `null`, que significa **nao confirmado**, nao `false`.
+**Resolvido em 10/09 pelo e-mail de aprovacao** (`../APROVACAO.md`): a proposta foi **APROVADA** pelo comite; o nome do **time** registrado e **OneAsk** (o e-mail abre com "Ola OneAsk!"); e o ambiente homologado do codigo e o **GitLab da GFT**, em diretorio da equipe - a pergunta sobre o GitHub perdeu o objeto.
+
+O mesmo e-mail acrescenta um **quinto entregavel obrigatorio** - os artefatos de desenvolvimento no diretorio da equipe no GitLab - e estende a exigencia do padrao Google Enterprise AI a **todos** os entregaveis. Esta avaliacao foi escrita quando eram quatro; onde ela disser "os quatro entregaveis", leia cinco.
+
+Seguem **nao confirmados**: o aceite das tres inscricoes individuais regularizadas em 09/09, a liberacao das licencas Gemini Enterprise, e **o provisionamento do acesso ao GitLab** (prometido para ate ~18/08). Em `../checkpoint.json` esses itens estao como `null`, que significa **nao confirmado**, nao `false`.
 
 Ressalva remanescente sobre a premissa desta avaliacao: a **direcao** esta travada pelo formulario e isso nao muda mais. O que segue podendo mudar e o **plano de evolucao V1/V2/V3** - se o documento do Loop for proposta de um integrante que o grupo ainda nao adotou, aquela escada e candidata, nao decidida.
 
@@ -360,7 +364,9 @@ Reordenado duas vezes em 08/09. Primeiro apos a leitura do texto submetido: o pl
 
 **A folga de 29/09 e proposital.** A revisao externa apresentou um cronograma de 12 dias com "buffer: 0 dias" como se fosse virtude. Em projeto voluntario com prazo duro, folga zero nao e plano - e a primeira coisa que quebra. O congelamento de codigo em 24/09 e o dia livre em 29/09 existem para absorver o imprevisto que certamente aparece.
 
-O ponto que mais derruba time e este: os quatro entregaveis obrigatorios sao **100% do que o juri ve**, e a pagina do Loop planeja evolucao de produto sem mencionar nenhum deles.
+O ponto que mais derruba time e este: os entregaveis obrigatorios sao **100% do que o juri ve**, e a pagina do Loop planeja evolucao de produto sem mencionar nenhum deles.
+
+**Sao cinco, nao quatro** - o e-mail de aprovacao de 10/09 acrescentou o GitLab (`../APROVACAO.md`).
 
 | Entregavel | O que nao pode faltar |
 |---|---|
@@ -368,6 +374,9 @@ O ponto que mais derruba time e este: os quatro entregaveis obrigatorios sao **1
 | Video com pitch e demo | Take de reserva gravado. Demo ao vivo falha, e falha na hora errada. |
 | Demo funcional | Rodando em Gemini Enterprise, nao em notebook local |
 | Arquitetura (PDF) | A fronteira LLM/deterministico **desenhada**. E o argumento de viabilidade tecnica em forma visual. |
+| **GitLab GFT** *(novo, 10/09)* | Artefatos de desenvolvimento no diretorio da equipe. Unico entregavel que nao se produz no fim - precisa acumular historico durante a construcao. |
+
+**E uma exigencia que atravessa os cinco:** o padrao Google Enterprise AI e obrigatorio em **todos os entregaveis**, nao so no agente que roda. Isso sobe a barra do PDF de arquitetura e do video.
 
 ---
 
@@ -412,7 +421,7 @@ Mesmo fluxo, mas com o que a plateia nao precisa: a spec validada, o catalogo co
 | **Pele de dominio sem lastro - nenhum integrante e de Capital Markets** | **Alta** | Revisao do cenario por alguem da BU de CM antes de fechar demo e one-pager. Consultar nao torna a pessoa integrante, logo nao afeta o limite de 4. Sem isso, preferir cenario simples e publicamente documentado a profundidade simulada. |
 | Nucleo deterministico concentrado em um unico dev de nivel I | Media | Cortar V2.3 com join arbitrario. Conectores mockados simples de construir, ainda que heterogeneos em estilo. Front-End e QA absorvem parte do trabalho de tool e fixture. |
 | ~~Guia Tecnico nao obtido - pode invalidar arquitetura~~ | resolvido | Nao existe documento separado (`../GUIA_TECNICO_RESPOSTA.md`). Nada mais vai chegar. Segue valendo que descumprir o padrao Gemini Enterprise/GCP desclassifica. |
-| **Codigo do desafio em plataforma possivelmente nao homologada** | **Alta** | Ha indicio de organizacao no GitHub com convite a conta pessoal. Sec. 14 veda plataforma nao homologada e exige que o material permaneca nos ambientes indicados pela Organizacao; sec. 15 torna o codigo patrimonio da GFT; sec. 20 faz da violacao gatilho de desclassificacao. Confirmar homologacao - padrao seguro e repositorio gerido pela GFT ou o proprio projeto GCP. |
+| ~~Codigo do desafio em plataforma possivelmente nao homologada~~ | **respondido, e trocado por outro** | O e-mail de aprovacao de 10/09 nomeou o ambiente: **GitLab da GFT**, diretorio da equipe (`../APROVACAO.md`). Sai a duvida sobre homologacao, entra o risco novo: **o acesso ao GitLab nao foi confirmado** e era para ate ~18/08. Como o diretorio da equipe virou o **quinto entregavel obrigatorio**, acesso ausente ou diretorio vazio em 30/09 e entregavel faltando - cobrar hoje, nao na ultima semana. |
 | Escopo espalhado por V1, V2 e V3 sem nenhum completo | Alta | Congelar definicao de pronto da V1 hoje. Freeze de codigo em 25/09. |
 | Leitura de "chatbot generico" pelo juri | Alta | Pele de dominio + mecanismo nomeado + procedencia (secao 3) |
 | Ausencia de numero | Alta | Conjunto de premissas fechado esta semana. Desempate e por valor de negocio. |
@@ -436,17 +445,17 @@ Donos registrados em `../checkpoint.json`, chave `proximas_acoes`.
 
 1. **Fechar o escopo minimo como V1 mais um playbook de V3**, nao V1 sozinha - e o que o campo 8 do formulario prometeu, e e a decisao que reordena o cronograma (secao 0.1, Fato 2; secao 7). *Decisao coletiva.*
 2. **Achar e agendar uma pessoa da BU de Capital Markets** para revisar o cenario da demo, o vocabulario e o formato dos relatorios. Sem isso a manchete de custodia fica sem lastro (secao 3.1). **Acao de maior alavancagem disponivel hoje.** *Agent Lead.*
-3. **Confirmar se o GitHub usado pelo time e ambiente homologado** para o codigo do desafio - sec. 14, 15 e 20, classe de gatilho de desclassificacao. Padrao seguro: repositorio gerido pela GFT, ou o proprio projeto GCP. *Agent Lead.*
+3. ~~Confirmar se o GitHub usado pelo time e ambiente homologado.~~ **Respondido: e o GitLab da GFT.** No lugar: **cobrar o provisionamento do acesso ao GitLab e comecar a versionar os artefatos no diretorio da equipe** - prazo estourado desde ~18/08, e o diretorio e o quinto entregavel obrigatorio (`../APROVACAO.md`). *Agent Lead para cobrar, Back-End para povoar.*
 4. **Fechar o conjunto de premissas do numero** (secao 4), com o insumo da revisao da acao 2 - ninguem no time tem a vivencia operacional, e o formulario nao traz numero algum. *Agent Lead.*
 5. **Escolher o caso de custodia da demo** e trocar os exemplos de V1 e V2 para ele, **mantendo** a afirmacao horizontal como argumento de escala (secao 3.1). *Decisao coletiva.*
 6. **Distribuir o trabalho conforme os papeis** - mapeamento em `../PLAN.md`, "Como os papeis encaixam no trabalho". Dois dos tres diferenciais sao front-end, e o invariante anti-alucinacao e trabalho de QA. *Time.*
-7. Confirmar a **aprovacao pelo comite** e o nome do **time** registrado nos 4 formularios. *Agent Lead, que realizou a inscricao.*
+7. ~~Confirmar a **aprovacao pelo comite** e o nome do **time** registrado.~~ **Feito - aprovada em 10/09, time OneAsk** (`../APROVACAO.md`). No lugar: **cobrar o aceite das tres inscricoes individuais** regularizadas em 09/09. *Agent Lead.*
 8. Confirmar se as **licencas Gemini Enterprise** estao liberadas para os 4. *Agent Lead.*
 9. **Cada integrante confere a propria elegibilidade** e a autorizacao do gestor imediato para dedicacao em expediente. Com 4 pessoas, um inelegivel custa R$ 750 que ninguem recebe em caso de primeiro lugar - a parcela nao e redistribuida (sec. 19). *Cada um dos 4.*
 10. Combinar um **plano B de submissao** caso o Agent Lead esteja indisponivel em 30/09, e nao deixar o envio para o proprio dia 30. *Agent Lead.*
 11. **Escrever o roteiro do video antes de construir o resto** - a plateia que decide o 1o lugar ve o video, nao a arquitetura (secao 8). *BA, com o Front-End.*
 12. **Desenhar a caixa de seguranca e conformidade** no PDF de arquitetura, comecando por "o agente nunca ve dado bruto, so referencia" (secao 5). *Back-End com o BA.*
-13. **Reservar 24/09 a 28/09 para os quatro entregaveis**, com 29/09 de folga deliberada, e nao usar nenhuma das duas janelas para codigo. *Time.*
+13. **Reservar 24/09 a 28/09 para os entregaveis de documento e video**, com 29/09 de folga deliberada, e nao usar nenhuma das duas janelas para codigo. O quinto entregavel - o diretorio no GitLab - **nao cabe nesta janela**: ele se constroi desde o primeiro commit. *Time.*
 14. Reatualizar `../PLAN.md` e `../checkpoint.json` quando as confirmacoes restantes chegarem.
 
 **Ja resolvido, e por isso fora da lista:** o texto submetido (`PROPOSTA_SUBMETIDA.md`), a composicao do time, o Agent Lead e os papeis profissionais (`../PLAN.md`, "O time"), e o Guia Tecnico - que nao existe (`../GUIA_TECNICO_RESPOSTA.md`).

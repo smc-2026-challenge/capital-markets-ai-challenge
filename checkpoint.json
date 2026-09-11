@@ -1,1126 +1,1251 @@
 {
-  "checkpoint_version": 8,
-  "checkpoint_date": "2026-09-08",
-  "checkpoint_anterior": {
-    "version": 1,
-    "date": "2026-08-12"
-  },
-  "idioma": "pt-BR sem acentuacao (ASCII puro)",
-  "objetivo": "Contexto portavel do Desafio Capital Markets - AI Agents Challenge (SMC 2026). Recarregue este arquivo para retomar o trabalho sem reprocessar as fontes.",
-  "convencao_de_valores": "null significa NAO CONFIRMADO nesta sessao - nao significa false. Distinguir os dois importa: varios itens avancaram fora deste repositorio.",
-  "mudancas_desde_o_checkpoint_1": [
-    "A direcao de solucao deixou de estar indefinida: existe um MVP com direcao definida chamado OneAsk, documentado em pagina do Microsoft Loop e extraido para oneask/OneAsk_Proposta_Evolucao_MVP.md.",
-    "A recomendacao de agosto (A3 Covenant Watch / B4 Normalizador de eventos corporativos) foi SUPERADA pela direcao OneAsk. Preservada em direcao_da_solucao.recomendacao_anterior_agosto_2026 para historico.",
-    "A chave recomendacao_atual foi substituida por direcao_da_solucao.",
-    "Novas secoes: direcao_da_solucao, avaliacao_da_direcao_atual, arquitetura_sugerida, plano_ate_30_09, riscos.",
-    "O periodo de inscricao (encerrado em 28/08) e a selecao das propostas pelo comite (encerrada em 01/09) ja passaram. O resultado dessas duas etapas NAO foi confirmado nesta sessao.",
-    "Booleans de status que antes eram false passaram a null quando o valor real deixou de ser conhecido.",
-    "08/09: o texto submetido no formulario foi obtido (campos 7, 8 e 9) e transcrito em oneask/PROPOSTA_SUBMETIDA.md. Nova secao proposta_submetida. Isso confirmou inscricao_realizada = true, corrigiu definicao_de_pronto_da_v1 (V1 sozinha NAO basta) e reordenou plano_ate_30_09 (playbook de V3 virou obrigatorio).",
-    "08/09: composicao do time e Agent Lead confirmados (4 integrantes - o maximo permitido; Agent Lead: Raffaele Brivio). Ver time.integrantes. Isso fecha duas questoes abertas, atribui donos as proximas acoes e acrescenta o risco de ponto unico de falha na submissao.",
-    "08/09: resolvido o Guia Tecnico - NAO EXISTE documento separado. Resposta da Organizacao (Evelim), repassada em 12/08 e registrada em GUIA_TECNICO_RESPOSTA.md: o guia tecnico e o que esta no SharePoint mais o que ja esta no regulamento, nada alem, com pedido explicito de cuidado com privacidade de dados e seguranca. Isso encerra o bloqueio mais antigo do projeto, remove a ressalva de invalidacao da arquitetura sugerida e eleva as regras de dados a expectativa nomeada da Organizacao.",
-    "08/09: papeis profissionais dos 4 integrantes confirmados. Achado central - NENHUM integrante e da Business Unit de Capital Markets; todos sao PSU BR. Isso qualifica a correcao C1 (vestir o dominio): a revisao por alguem de Capital Markets deixa de ser desejavel e passa a ser PRE-REQUISITO da manchete de custodia. Em compensacao, a composicao encaixa bem na arquitetura recomendada - ver time.mapeamento_dos_papeis_para_o_trabalho.",
-    "08/09: revisao arquivo por arquivo. Corrigidos - a janela 08/09-10/09 do plano ainda pedia o Guia Tecnico (que nao existe); a afirmacao de ASCII puro no README.md, falsa desde que entraram tres transcricoes fieis; referencias relativas quebradas em oneask/AVALIACAO.md; contradicao entre 'tres playbooks' e o plano que entrega um; titulo duplicado em PLAN.md; e a secao final de IDEAS.md, que perguntava qual dor o time encosta sem registrar a resposta (nenhuma).",
-    "08/09: avaliacao submetida a revisao externa adversarial. Aceitos - caixa de seguranca e conformidade no diagrama (faltava), separacao entre video (plateia que vota) e demo funcional (juri tecnico) com o roteiro do video vindo primeiro, e cortes de escopo mais fundos porque a conta de horas de backend nao fechava (BigQuery, terceiro conector e V2.2 sairam). Rejeitados - backend local atras de tunel (gatilho de desclassificacao pela sec. 12), corte da camada OpenAPI, corte da V2 inteira, conector unico, e cronograma com folga zero. Registro em oneask/AVALIACAO.md secao 11."
+ "checkpoint_version": 10,
+ "checkpoint_date": "2026-09-11",
+ "checkpoint_anterior": {
+  "version": 9,
+  "date": "2026-09-09"
+ },
+ "idioma": "pt-BR sem acentuacao (ASCII puro)",
+ "objetivo": "Contexto portavel do Desafio Capital Markets - AI Agents Challenge (SMC 2026). Recarregue este arquivo para retomar o trabalho sem reprocessar as fontes.",
+ "convencao_de_valores": "null significa NAO CONFIRMADO nesta sessao - nao significa false. Distinguir os dois importa: varios itens avancaram fora deste repositorio.",
+ "mudancas_desde_o_checkpoint_1": [
+  "A direcao de solucao deixou de estar indefinida: existe um MVP com direcao definida chamado OneAsk, documentado em pagina do Microsoft Loop e extraido para oneask/OneAsk_Proposta_Evolucao_MVP.md.",
+  "A recomendacao de agosto (A3 Covenant Watch / B4 Normalizador de eventos corporativos) foi SUPERADA pela direcao OneAsk. Preservada em direcao_da_solucao.recomendacao_anterior_agosto_2026 para historico.",
+  "A chave recomendacao_atual foi substituida por direcao_da_solucao.",
+  "Novas secoes: direcao_da_solucao, avaliacao_da_direcao_atual, arquitetura_sugerida, plano_ate_30_09, riscos.",
+  "O periodo de inscricao (encerrado em 28/08) e a selecao das propostas pelo comite (encerrada em 01/09) ja passaram. O resultado dessas duas etapas NAO foi confirmado nesta sessao.",
+  "Booleans de status que antes eram false passaram a null quando o valor real deixou de ser conhecido.",
+  "08/09: o texto submetido no formulario foi obtido (campos 7, 8 e 9) e transcrito em oneask/PROPOSTA_SUBMETIDA.md. Nova secao proposta_submetida. Isso confirmou inscricao_realizada = true, corrigiu definicao_de_pronto_da_v1 (V1 sozinha NAO basta) e reordenou plano_ate_30_09 (playbook de V3 virou obrigatorio).",
+  "08/09: composicao do time e Agent Lead confirmados (4 integrantes - o maximo permitido; Agent Lead: Raffaele Brivio). Ver time.integrantes. Isso fecha duas questoes abertas, atribui donos as proximas acoes e acrescenta o risco de ponto unico de falha na submissao.",
+  "08/09: resolvido o Guia Tecnico - NAO EXISTE documento separado. Resposta da Organizacao (Evelim), repassada em 12/08 e registrada em GUIA_TECNICO_RESPOSTA.md: o guia tecnico e o que esta no SharePoint mais o que ja esta no regulamento, nada alem, com pedido explicito de cuidado com privacidade de dados e seguranca. Isso encerra o bloqueio mais antigo do projeto, remove a ressalva de invalidacao da arquitetura sugerida e eleva as regras de dados a expectativa nomeada da Organizacao.",
+  "08/09: papeis profissionais dos 4 integrantes confirmados. Achado central - NENHUM integrante e da Business Unit de Capital Markets; todos sao PSU BR. Isso qualifica a correcao C1 (vestir o dominio): a revisao por alguem de Capital Markets deixa de ser desejavel e passa a ser PRE-REQUISITO da manchete de custodia. Em compensacao, a composicao encaixa bem na arquitetura recomendada - ver time.mapeamento_dos_papeis_para_o_trabalho.",
+  "08/09: revisao arquivo por arquivo. Corrigidos - a janela 08/09-10/09 do plano ainda pedia o Guia Tecnico (que nao existe); a afirmacao de ASCII puro no README.md, falsa desde que entraram tres transcricoes fieis; referencias relativas quebradas em oneask/AVALIACAO.md; contradicao entre 'tres playbooks' e o plano que entrega um; titulo duplicado em PLAN.md; e a secao final de IDEAS.md, que perguntava qual dor o time encosta sem registrar a resposta (nenhuma).",
+  "08/09: avaliacao submetida a revisao externa adversarial. Aceitos - caixa de seguranca e conformidade no diagrama (faltava), separacao entre video (plateia que vota) e demo funcional (juri tecnico) com o roteiro do video vindo primeiro, e cortes de escopo mais fundos porque a conta de horas de backend nao fechava (BigQuery, terceiro conector e V2.2 sairam). Rejeitados - backend local atras de tunel (gatilho de desclassificacao pela sec. 12), corte da camada OpenAPI, corte da V2 inteira, conector unico, e cronograma com folga zero. Registro em oneask/AVALIACAO.md secao 11.",
+  "09/09: nome do TIME confirmado - OneAsk (o mesmo do produto). Login e e-mail do Agent Lead confirmados (rebv). E o achado do dia: as inscricoes individuais de 3 dos 4 integrantes nunca foram enviadas - a Organizacao pediu regularizacao por e-mail ate as 13h de 09/09. Novo risco no topo de riscos.",
+  "10/09: PROPOSTA APROVADA pelo comite - e-mail da Organizacao aos quatro integrantes. Nova secao aprovacao; status.proposta_aprovada_pelo_comite passa de null para true. Registro fiel em APROVACAO.md.",
+  "10/09: os entregaveis obrigatorios passam de QUATRO para CINCO - o quinto e o diretorio da equipe no GitLab da GFT, que so aparece no e-mail de aprovacao e nao na pagina do SharePoint. Todos os arquivos do repositorio diziam 'quatro'.",
+  "10/09: o ambiente homologado do codigo foi nomeado - GitLab da GFT. Encerra a questao aberta sobre GitHub e o risco correspondente; abre no lugar o risco de acesso nao provisionado, com prazo vencido desde ~18/08.",
+  "11/09: registrada a armadilha de leitura da data 13/08 - o e-mail de aprovacao repete o cronograma original e foi lido no Teams como se a janela comecasse em 13/09 (que e domingo). A janela esta aberta desde 13/08 e ja consumiu cerca de 60% do prazo. Novo risco, e correcao propagada para README.md, PLAN.md e RULES.md."
+ ],
+ "status": {
+  "fase": "construcao do agente com proposta APROVADA - janela 13/08 a 30/09, aberta desde 13/08, com 20 dias corridos e 14 dias uteis restantes na data deste checkpoint",
+  "nome_do_time_definido": "OneAsk",
+  "ideia_da_solucao_definida": true,
+  "composicao_do_time_definida": true,
+  "inscricao_realizada": true,
+  "proposta_aprovada_pelo_comite": true,
+  "notas_de_status": [
+   "ideia_da_solucao_definida = true e agora firme: a direcao esta travada pelo texto submetido no formulario (oneask/PROPOSTA_SUBMETIDA.md). O que segue em discussao e o plano de evolucao V1/V2/V3 do documento do Loop.",
+   "inscricao_realizada = true confirmado pela captura do formulario em 08/09. A APROVACAO pelo comite (selecao encerrada em 01/09) segue nao confirmada.",
+   "Visiveis na captura apenas os campos 7, 8 e 9 ('Dados do Agente'). Os campos 1 a 6 - que devem conter nome do time e integrantes - nao foram vistos.",
+   "O documento OneAsk de evolucao esta em modo Read-Only para o usuario deste repositorio, o que sugere autoria de outro integrante do time.",
+   "Composicao confirmada em 08/09 pelo chat do Teams do grupo OneAsk (4 pessoas). Agent Lead informado pelo usuario: Raffaele Brivio. Nome do TIME registrado no formulario CONFIRMADO em 09/09 pelo usuario: OneAsk - o mesmo do produto.",
+   "09/09: a Organizacao (Evelim Ribeiro) informou que NAO localizou as inscricoes individuais dos demais integrantes - somente a do Agent Lead. A inscricao era individual (sec. 7 mais SharePoint) e o time entendeu que a submissao em grupo do Agent Lead cobria os quatro. Regularizacao pedida por e-mail ate as 13h de 09/09, com o motivo do descumprimento do prazo e as respostas do formulario, para evelim.ribeiro@gft.com com copia para Vitor Miotta, Carlos Kato e Thiago Bueno. Aceite pela Organizacao: NAO confirmado.",
+   "10/09: PROPOSTA APROVADA. E-mail da Organizacao (Evelim Carla Ribeiro), 10/09 12h30, enderecado aos QUATRO integrantes, com copia para Vitor Miotta, Carlos Kato e Thiago Bueno. Transcricao fiel e analise em APROVACAO.md. Fecha proposta_aprovada_pelo_comite e confirma o nome do time - o e-mail abre com 'Ola OneAsk!'.",
+   "10/09: os entregaveis obrigatorios passam de QUATRO para CINCO. O e-mail acrescenta 'GitLab GFT: artefatos de desenvolvimento no diretorio da sua equipe'. A pagina do SharePoint lista apenas quatro - o quinto so existe no e-mail.",
+   "10/09: o ambiente homologado do codigo tem nome - GitLab da GFT, diretorio da equipe. Encerra a duvida sobre GitHub (sec. 14). Em troca, abre risco novo: o acesso era para ate 3 dias uteis a partir de 13/08 (~18/08) e nao ha confirmacao de provisionamento.",
+   "10/09: o padrao Google Enterprise AI passa a ser exigido em TODOS os entregaveis, nao apenas no agente que roda - com desclassificacao nomeada na mesma frase.",
+   "ARMADILHA DE LEITURA: o e-mail repete o cronograma original ('de 13/08 a 30/09', acesso liberado 'em 13/08') e foi lido no Teams como 'dia 13 comeca'. Nao e 13/09 - essa data cai num domingo, e 13/08 e a publicada no SharePoint desde 05/08. A janela esta aberta desde 13/08 e ja consumiu cerca de 60% do prazo.",
+   "O e-mail de aprovacao NAO e aceite das tres inscricoes individuais faltantes. Estar enderecado aos quatro e indicio de que a Organizacao trata o time como quarteto formado, mas o assunto do e-mail e a proposta, nao a inscricao. inscricao_dos_4_integrantes_confirmada segue null."
   ],
-  "status": {
-    "fase": "construcao do agente - janela 13/08 a 30/09, com 22 dias corridos restantes na data deste checkpoint",
-    "nome_do_time_definido": null,
-    "ideia_da_solucao_definida": true,
-    "composicao_do_time_definida": true,
-    "inscricao_realizada": true,
-    "proposta_aprovada_pelo_comite": null,
-    "notas_de_status": [
-      "ideia_da_solucao_definida = true e agora firme: a direcao esta travada pelo texto submetido no formulario (oneask/PROPOSTA_SUBMETIDA.md). O que segue em discussao e o plano de evolucao V1/V2/V3 do documento do Loop.",
-      "inscricao_realizada = true confirmado pela captura do formulario em 08/09. A APROVACAO pelo comite (selecao encerrada em 01/09) segue nao confirmada.",
-      "Visiveis na captura apenas os campos 7, 8 e 9 ('Dados do Agente'). Os campos 1 a 6 - que devem conter nome do time e integrantes - nao foram vistos.",
-      "O documento OneAsk de evolucao esta em modo Read-Only para o usuario deste repositorio, o que sugere autoria de outro integrante do time.",
-      "Composicao confirmada em 08/09 pelo chat do Teams do grupo OneAsk (4 pessoas). Agent Lead informado pelo usuario: Raffaele Brivio. O nome do TIME registrado no formulario segue nao confirmado - o chat se chama OneAsk, mas isso e o nome do produto."
-    ],
-    "texto_da_proposta_conhecido": true,
-    "agent_lead_definido": true
+  "texto_da_proposta_conhecido": true,
+  "agent_lead_definido": true,
+  "inscricao_dos_4_integrantes_confirmada": null,
+  "data_da_aprovacao": "2026-09-10",
+  "ambiente_homologado_do_codigo": "GitLab da GFT, diretorio da equipe - nomeado no e-mail de aprovacao de 10/09",
+  "acesso_ao_gitlab_confirmado": null,
+  "quantidade_de_entregaveis_obrigatorios": 5
+ },
+ "arquivos_de_origem": [
+  {
+   "path": "Regulamento_AI_Agents_Challenge_SMC_2026.pdf",
+   "paginas": 22,
+   "o_que_e": "Regulamento oficial. Versao 1.0, publicado em 05/08/2026. FONTE AUTORITATIVA em duvida juridica.",
+   "nota_de_extracao": "Sem poppler nesta maquina; texto extraido com python pypdf e gravado em UTF-8."
   },
-  "arquivos_de_origem": [
-    {
-      "path": "Regulamento_AI_Agents_Challenge_SMC_2026.pdf",
-      "paginas": 22,
-      "o_que_e": "Regulamento oficial. Versao 1.0, publicado em 05/08/2026. FONTE AUTORITATIVA em duvida juridica.",
-      "nota_de_extracao": "Sem poppler nesta maquina; texto extraido com python pypdf e gravado em UTF-8."
-    },
-    {
-      "path": "Brazil_NewsForYou_files/saved_resource.html",
-      "o_que_e": "Pagina de divulgacao no SharePoint: cronograma, entregaveis, juri, premiacao. Convertida para Brazil_NewsForYou.md."
-    },
-    {
-      "path": "oneask/OneAsk_Proposta_Evolucao_MVP.md",
-      "o_que_e": "Extracao fiel da pagina do Microsoft Loop com a proposta de evolucao do MVP OneAsk.",
-      "origem": "Microsoft Loop sobre SharePoint gft365 (contentstorage), acesso Read-Only",
-      "extraido_em": "2026-09-08",
-      "nota_de_extracao": "Pagina autenticada, inalcancavel por fetch anonimo; extraida pela sessao autenticada do navegador. O Loop renderiza o documento em dois modos sobrepostos (webView e simpleView) em 51 quadros paginados - a extracao usa apenas o fluxo webView e reconstroi a tabela da secao 6 a partir do DOM da tabela, para nao duplicar conteudo. Nenhum comentario na pagina no momento da extracao.",
-      "nota_de_idioma": "Este e o unico arquivo do repositorio que preserva acentuacao, por ser extracao fiel."
-    },
-    {
-      "path": "oneask/AVALIACAO.md",
-      "o_que_e": "Avaliacao do OneAsk contra os criterios do desafio: nota por criterio, tres correcoes de maior impacto, arquitetura sugerida em Gemini Enterprise/GCP, respostas as 7 perguntas que o proprio documento faz ao time, plano ate 30/09 e riscos. Versao longa do que este checkpoint resume."
-    },
-    {
-      "path": "oneask/PROPOSTA_SUBMETIDA.md",
-      "o_que_e": "Transcricao fiel dos campos 7, 8 e 9 do formulario de inscricao - o escopo submetido, e portanto o limite do que os entregaveis podem afirmar.",
-      "origem": "captura de tela da secao 'Dados do Agente' do formulario, fornecida pelo usuario",
-      "extraido_em": "2026-09-08",
-      "nota_de_idioma": "preserva acentuacao, por ser transcricao fiel"
-    }
-  ],
-  "desafio": {
-    "nome": "Desafio Capital Markets - AI Agents Challenge - SMC 2026",
-    "promotor": "GFT Technologies Brasil",
-    "evento": "Semana Mercado de Capitais 2026 (SMC)",
-    "contato": "Evelim Buratti (emro@gft.com)",
-    "objetivo": "Desenvolver agentes de IA generativa que resolvam problemas reais do Mercado de Capitais, simulando cenarios do dia a dia, com foco em impacto, clareza, seguranca e aplicabilidade pratica.",
-    "parceiro_tecnologico": "Google"
+  {
+   "path": "Brazil_NewsForYou_files/saved_resource.html",
+   "o_que_e": "Pagina de divulgacao no SharePoint: cronograma, entregaveis, juri, premiacao. Convertida para Brazil_NewsForYou.md."
   },
-  "proposta_submetida": {
-    "fonte": "oneask/PROPOSTA_SUBMETIDA.md - transcricao fiel dos campos 7, 8 e 9 da secao 'Dados do Agente' do formulario de inscricao, a partir de captura de tela fornecida em 08/09/2026",
-    "status": "SUBMETIDO - confirmado. APROVACAO pelo comite nao confirmada.",
-    "campos_vistos": [
-      "7 - Descricao do problema",
-      "8 - Descricao do agente",
-      "9 - Publico-alvo"
-    ],
-    "campos_nao_vistos": "1 a 6 - devem conter nome do time e integrantes",
-    "por_que_importa": "Este e o escopo submetido. Ele delimita o que os entregaveis podem afirmar - e o que eles TEM de entregar.",
-    "tres_fatos_que_o_texto_estabelece": [
-      {
-        "fato": "A proposta e horizontal, e o texto e neutro de dominio, nao errado de dominio",
-        "evidencia": "Nenhuma palavra de Mercado de Capitais nos tres campos: 'atividades operacionais', 'equipes de operacoes, negocio e tecnologia'.",
-        "consequencia": "Confirma - nao apenas sugere - a fragilidade em Aderencia ao Mercado de Capitais. Mas como o texto e neutro e nao contrario, demonstrar num caso de custodia EVIDENCIA o texto em vez de contradize-lo. A correcao C1 segue valida com uma restricao nova: a afirmacao horizontal precisa sobreviver como argumento de Escalabilidade (15%), nao ser substituida.",
-        "forma_do_pitch": [
-          "Problema: relatorios fragmentados entre sistemas, e o gargalo persiste mesmo onde ja existem APIs - campo 7, quase literal",
-          "Onde doi mais, a demo: custodia e pos-negociacao, investigacao de divergencia de posicao - instancia do campo 7",
-          "Mecanismo: catalogo semantico, playbooks e conectores configuraveis - campo 8, quase literal",
-          "Escala: mesmo motor, qualquer dominio - operacoes, negocio e tecnologia - campo 9, literal"
-        ]
-      },
-      {
-        "fato": "O texto submetido promete V3, nao V1",
-        "evidencia": "Campo 8: 'o agente interpreta a necessidade do usuario, identifica quais relatorios e fontes sao necessarios, determina os parametros da consulta e orquestra as extracoes'. A V1 do documento do Loop parte da premissa oposta e explicita: 'o usuario sabe qual relatorio deseja'.",
-        "consequencia": "Existe lacuna entre o escopo submetido e o plano de MVP. Um playbook de V3 ponta a ponta deixa de ser diferencial e passa a ser OBRIGATORIO. Corrige a afirmacao anterior de que a V1 sozinha seria submissao valida - contra este texto, nao e.",
-        "impacto_no_plano": "O playbook subiu para a janela de 15/09 a 21/09; o join arbitrario da V2.3 desceu para fora de escopo."
-      },
-      {
-        "fato": "A arquitetura de conectores ja foi prometida",
-        "evidencia": "Campo 8: 'uma arquitetura de conectores configuraveis, permitindo sua adaptacao a diferentes sistemas, APIs e mecanismos de automacao sem alterar a experiencia do usuario'.",
-        "consequencia": "'Sem alterar a experiencia do usuario' e precisamente a propriedade de catalogo como dado. A correcao C2 deixa de ser sugestao de inovacao e passa a ser cumprimento do prometido; os conectores mockados heterogeneos passam a ser a evidencia de uma afirmacao ja feita ao comite."
-      }
-    ],
-    "frase_do_texto_para_levar_ao_pitch": "Campo 7: a fragmentacao persiste 'mesmo quando ja existem APIs ou automacoes para parte dessas atividades'. Preempta a objecao mais obvia de um juri tecnico - por que nao chamar a API direto. O gargalo nao e integracao, e saber o que pedir e onde.",
-    "o_que_o_texto_nao_resolve": "Nao ha numero nele. 'Aumenta o esforco operacional' e o adjetivo no lugar exato onde deveria estar a cifra. O one-pager nao herda nenhum numero do formulario - tem de produzi-lo."
+  {
+   "path": "oneask/OneAsk_Proposta_Evolucao_MVP.md",
+   "o_que_e": "Extracao fiel da pagina do Microsoft Loop com a proposta de evolucao do MVP OneAsk.",
+   "origem": "Microsoft Loop sobre SharePoint gft365 (contentstorage), acesso Read-Only",
+   "extraido_em": "2026-09-08",
+   "nota_de_extracao": "Pagina autenticada, inalcancavel por fetch anonimo; extraida pela sessao autenticada do navegador. O Loop renderiza o documento em dois modos sobrepostos (webView e simpleView) em 51 quadros paginados - a extracao usa apenas o fluxo webView e reconstroi a tabela da secao 6 a partir do DOM da tabela, para nao duplicar conteudo. Nenhum comentario na pagina no momento da extracao.",
+   "nota_de_idioma": "Este e o unico arquivo do repositorio que preserva acentuacao, por ser extracao fiel."
   },
-  "direcao_da_solucao": {
-    "atual": {
-      "nome": "OneAsk",
-      "subtitulo": "Agente Inteligente de Extracao de Dados",
-      "fonte": "oneask/OneAsk_Proposta_Evolucao_MVP.md",
-      "status_do_documento": "proposta para discussao - o proprio documento diz que nao define antecipadamente que todas as versoes serao desenvolvidas nem fecha a ordem apresentada",
-      "o_que_e": "Agente conversacional que centraliza o acesso a relatorios e informacoes distribuidos em diferentes sistemas. Recebe solicitacao em linguagem natural, interpreta a necessidade e usa ferramentas/conectores para obter os dados.",
-      "escada_de_versoes": [
-        {
-          "versao": "V1",
-          "nome": "Conversational Report Retrieval",
-          "frase_do_usuario": "Me de este relatorio",
-          "usuario_sabe": "qual relatorio quer",
-          "agente_identifica": "como obter o relatorio",
-          "capacidade_principal": "retrieval",
-          "entrega": "arquivo existente",
-          "fluxo": "solicitacao -> identificacao do relatorio -> interpretacao dos parametros -> selecao da ferramenta/conector -> chamada da API -> disponibilizacao do arquivo",
-          "e_o_core_do_mvp": true
-        },
-        {
-          "versao": "V2",
-          "nome": "Conversational Data Exploration",
-          "frase_do_usuario": "Me de esta informacao",
-          "usuario_sabe": "qual informacao quer",
-          "agente_identifica": "onde estao os dados e como processa-los",
-          "capacidade_principal": "exploracao e composicao de dados",
-          "entrega": "informacao/dataset personalizado",
-          "incrementos": [
-            {
-              "id": "V2.1",
-              "nome": "Exploracao do conteudo",
-              "o_que_faz": "o usuario pergunta quais informacoes existem em um relatorio"
-            },
-            {
-              "id": "V2.2",
-              "nome": "Selecao e filtros",
-              "o_que_faz": "o usuario pede parte dos campos e define condicoes em linguagem natural"
-            },
-            {
-              "id": "V2.3",
-              "nome": "Cruzamento e enriquecimento de fontes",
-              "o_que_faz": "join entre fontes por chave comum quando a informacao nao existe em uma unica fonte"
-            }
-          ]
-        },
-        {
-          "versao": "V3",
-          "nome": "Intelligent Business Retrieval",
-          "frase_do_usuario": "Me ajude com este problema",
-          "usuario_sabe": "qual problema quer resolver",
-          "agente_identifica": "quais informacoes sao necessarias",
-          "capacidade_principal": "entendimento de contexto/necessidade",
-          "entrega": "informacoes necessarias para a necessidade apresentada",
-          "exemplo_do_documento": "Preciso investigar uma divergencia de posicao de ontem -> o agente identifica que pode precisar de Position Report, Transaction Report e Movement Report"
-        }
-      ],
-      "premissas_do_documento": [
-        "universo pequeno e controlado de sistemas e relatorios",
-        "APIs/dados mockados quando necessario",
-        "conectores previamente conhecidos/configurados",
-        "nao buscar integracao universal com qualquer API nesta etapa",
-        "o agente para entendimento, decisao e orquestracao",
-        "backend/tools para operacoes deterministicas: chamadas de API, filtros, joins, geracao de arquivos",
-        "V1 como fundacao, evoluindo conforme capacidade do time",
-        "a arquitetura deve evitar que uma evolucao exija reconstruir a versao anterior"
-      ],
-      "perguntas_abertas_do_proprio_documento": [
-        "Visao: faz sentido essa evolucao do produto ou existe caminho melhor?",
-        "Priorizacao: V2 e V3 estao na ordem correta?",
-        "Viabilidade: quais partes parecem simples ou complexas tecnicamente?",
-        "Escopo: qual o minimo necessario para a V1 ser realmente funcional?",
-        "Evolucao: V2.1, V2.2 e V2.3 fazem sentido como incrementos separados?",
-        "Arquitetura: a V1 pode ser estruturada de forma a suportar essas evolucoes sem grande retrabalho?",
-        "Outras ideias: que outras capacidades o time enxerga?"
-      ],
-      "respostas_propostas": "Todas as sete respondidas em oneask/AVALIACAO.md, secao 6."
-    },
-    "recomendacao_anterior_agosto_2026": {
-      "superada_por": "OneAsk",
-      "principal": "A3 Covenant Watch",
-      "vice": "B4 Normalizador de eventos corporativos",
-      "diferencial_de_inovacao_proposto": "projecao de distancia da quebra - projetar cada indice a frente pela tendencia do emissor e ranquear a carteira por meses ate a quebra",
-      "papeis_dos_agentes_propostos": [
-        "Extrator",
-        "Calculadora",
-        "Vigia",
-        "Narrador"
-      ],
-      "aceita": false,
-      "nota": "Mantida como historico. O catalogo completo de dores (P1-P5) e solucoes (A1-D9) segue valido como referencia de espaco de problemas em dores_de_negocio_identificadas e solucoes_candidatas."
-    }
+  {
+   "path": "oneask/AVALIACAO.md",
+   "o_que_e": "Avaliacao do OneAsk contra os criterios do desafio: nota por criterio, tres correcoes de maior impacto, arquitetura sugerida em Gemini Enterprise/GCP, respostas as 7 perguntas que o proprio documento faz ao time, plano ate 30/09 e riscos. Versao longa do que este checkpoint resume."
   },
-  "avaliacao_da_direcao_atual": {
-    "veredito": "Tecnicamente bem pensada e estrategicamente mal posicionada.",
-    "o_que_esta_certo": "A fronteira entre agente (entendimento, decisao, orquestracao) e backend/tools (operacoes deterministicas) e exatamente a divisao que o Gemini Enterprise faz bem e que um juri tecnico premia, porque mostra um time que sabe onde o LLM nao deve entrar. A escada V1-V2-V3 e boa sequencia de engenharia.",
-    "o_que_esta_em_risco": "Como esta escrita, a proposta poderia ser de qualquer setor. 'Relatorio de transacoes', 'clientes', 'moeda = EUR', 'valor > 500 mil' descrevem um banco de varejo ou uma telco. O unico momento genuinamente de Mercado de Capitais no documento e o exemplo da V3 - divergencia de posicao exigindo Position, Transaction e Movement Report, que e reconciliacao de custodia (dores P2/P3, solucao candidata B5) - e esta enterrado na secao 5 de 8.",
-    "nota_por_criterio": [
-      {
-        "criterio": "Inovacao e Criatividade",
-        "peso": 0.25,
-        "situacao": "fraca",
-        "por_que": "V1 e deteccao de intencao mais extracao de parametro mais chamada de API. V2 e NL2SQL. A originalidade real esta na V3 e nao tem mecanismo nomeado."
-      },
-      {
-        "criterio": "Valor agregado ao negocio",
-        "peso": 0.25,
-        "situacao": "media",
-        "por_que": "A dor e real e reconhecivel, mas o documento nao tem um unico numero. Sem numero, ganho de eficiencia e adjetivo - e o desempate e justamente por valor de negocio."
-      },
-      {
-        "criterio": "Aderencia ao Mercado de Capitais",
-        "peso": "primeira classe na redacao do SharePoint",
-        "situacao": "fraca",
-        "por_que": "Generico. Corrigivel em uma tarde trocando a pele do dominio."
-      },
-      {
-        "criterio": "Viabilidade tecnica",
-        "peso": 0.2,
-        "situacao": "forte",
-        "por_que": "Fronteira LLM/deterministico correta, premissas explicitas de contencao de escopo, mock permitido pelas regras. Melhor aspecto da proposta."
-      },
-      {
-        "criterio": "Qualidade da experiencia do usuario",
-        "peso": 0.15,
-        "situacao": "boa, com folga para ganhar",
-        "por_que": "O loop de pergunta esclarecedora ja esta desenhado. Falta mostrar plano antes de executar e devolver procedencia junto com o arquivo."
-      },
-      {
-        "criterio": "Escalabilidade e potencial de aplicacao",
-        "peso": 0.15,
-        "situacao": "forte se dita da forma certa",
-        "por_que": "Adicionar um sistema novo e uma entrada no catalogo mais um conector, nao uma mudanca no agente. A proposta implica isso; precisa afirmar."
-      }
-    ],
-    "tres_correcoes_de_maior_impacto": [
-      {
-        "id": "C1",
-        "nome": "Vestir o dominio",
-        "o_que_fazer": "Reescrever os exemplos de V1 e V2 dentro do caso de custodia que a V3 ja usa, e promover a divergencia de posicao a caso de abertura. Nao inventar dominio novo - usar o que ja esta la.",
-        "custo": "baixo - e narrativa, nao engenharia",
-        "ganho": "move Inovacao e Aderencia ao mesmo tempo, 25% mais criterio de primeira classe"
-      },
-      {
-        "id": "C2",
-        "nome": "Nomear o mecanismo",
-        "o_que_fazer": "Catalogo semantico (relatorios como dado legivel por maquina: sinonimos, sistema, conector, schema de parametros, colunas com rotulo em portugues, grao, chaves de join) mais playbooks declarativos para a V3 (necessidade, sinonimos, datasets exigidos, passos de montagem, verificacoes de consistencia).",
-        "custo": "medio",
-        "ganho": "da a V3 um mecanismo demonstravel, torna a V3 barata por nao exigir capacidade de execucao nova, e e auditavel - o que importa em setor regulado, onde autonomia aberta assusta. Tambem e a resposta direta a pergunta de arquitetura do proprio documento."
-      },
-      {
-        "id": "C3",
-        "nome": "Manifesto de procedencia",
-        "o_que_fazer": "Todo resultado sai com sistema de origem, horario da extracao, parametros usados, filtros aplicados, chaves de join e contagem de linhas antes e depois de cada filtro. Invariante acompanhante: o agente nunca escreve um numero que nao tenha vindo de uma tool.",
-        "custo": "baixo - o backend ja conhece tudo isso",
-        "ganho": "em Mercado de Capitais o problema de um numero nao e produzi-lo, e defende-lo. Converte demo legal em ferramenta auditavel, aparece na tela na demo, e nenhum outro time deve fazer."
-      }
-    ],
-    "o_numero_que_falta": {
-      "por_que_importa": "O desempate vai ao VP de Capital Markets, que decide por maior valor agregado ao negocio. E a votacao final e do publico presente, que vota dor reconhecivel e numero final.",
-      "nao_exige_dado_real": "Basta conjunto de premissas declaradas com ordem de grandeza, assinado pelo time.",
-      "esqueleto": {
-        "N": "extracoes manuais por analista por dia",
-        "T": "minutos por extracao, incluindo achar o sistema, logar, parametrizar, exportar e tratar",
-        "A": "analistas na operacao",
-        "horas_por_mes": "N x T x A x 21 / 60",
-        "segundo_andar": "uma investigacao de divergencia de posicao custa M minutos entre tres sistemas e uma planilha; com o playbook, custa a conversa. Esse e o numero do slide de fechamento."
-      },
-      "regra_de_honestidade": "Rotular como premissa, nao como medicao. Um juri de Capital Markets perdoa premissa declarada e nao perdoa numero inventado apresentado como fato."
-    },
-    "coreografia_da_demo": [
-      "A dor em uma frase: um analista investigando divergencia de posicao abre tres sistemas, puxa tres relatorios e reconcilia em planilha.",
-      "Uma frase para o agente: preciso investigar a divergencia de posicao do fundo X de ontem.",
-      "O agente mostra o plano - quais relatorios, de quais sistemas, com quais parametros. Usuario confirma. Este passo e o que separa a demo de um chatbot.",
-      "Executa: tres sistemas diferentes, join, verificacao de consistencia, acha o movimento sem par.",
-      "Fecha no numero: de M minutos para segundos, com o manifesto na tela provando de onde veio cada cifra. Este passo e o que ganha voto.",
-      "Uma frase de escala: adicionar um quarto sistema e uma entrada no catalogo."
-    ]
+  {
+   "path": "oneask/PROPOSTA_SUBMETIDA.md",
+   "o_que_e": "Transcricao fiel dos campos 7, 8 e 9 do formulario de inscricao - o escopo submetido, e portanto o limite do que os entregaveis podem afirmar.",
+   "origem": "captura de tela da secao 'Dados do Agente' do formulario, fornecida pelo usuario",
+   "extraido_em": "2026-09-08",
+   "nota_de_idioma": "preserva acentuacao, por ser transcricao fiel"
   },
-  "arquitetura_sugerida": {
-    "aviso": "RESSALVA REMOVIDA em 08/09. Nao existe Guia Tecnico por vir (ver restricoes_tecnicas.guia_tecnico), portanto estas escolhas nao correm risco de serem invalidadas por documento nao visto. Os limites aplicaveis sao o regulamento sec. 12, 13 e 14 mais a pagina do SharePoint.",
-    "camadas": [
-      {
-        "camada": "conversa",
-        "componente": "Agente no Gemini Enterprise",
-        "papel": "entendimento, elicitacao de parametro, selecao de tool, apresentacao. Nunca calcula."
-      },
-      {
-        "camada": "contrato",
-        "componente": "Tools via OpenAPI",
-        "papel": "fronteira unica entre linguagem natural e execucao"
-      },
-      {
-        "camada": "execucao",
-        "componente": "Cloud Run (backend deterministico)",
-        "papel": "valida spec, chama conectores, executa filtro e join, gera arquivo e manifesto"
-      },
-      {
-        "camada": "dados",
-        "componente": "Em memoria no proprio Cloud Run (DuckDB ou pandas)",
-        "papel": "Motor de filtro e join. BigQuery SAIU em 08/09 - acervo mockado minusculo, e o join em memoria nao muda o contrato de tools. Se houver volume real algum dia, BigQuery entra atras da mesma tool."
-      },
-      {
-        "camada": "entrega",
-        "componente": "Cloud Storage + URL assinada",
-        "papel": "arquivo final para o usuario"
-      },
-      {
-        "camada": "registro",
-        "componente": "Cloud Logging",
-        "papel": "toda spec executada fica registrada - e o que sustenta a procedencia"
-      },
-      {
-        "camada": "segredo",
-        "componente": "Secret Manager",
-        "papel": "chaves das APIs mockadas"
-      }
-    ],
-    "contrato_de_tools": [
-      {
-        "tool": "list_reports(query)",
-        "devolve": "subconjunto do catalogo"
-      },
-      {
-        "tool": "describe_report(report_id)",
-        "devolve": "colunas, parametros, grao",
-        "nota": "esta tool E a V2.1"
-      },
-      {
-        "tool": "fetch_report(report_id, params)",
-        "devolve": "referencia do arquivo, contagem de linhas, manifesto"
-      },
-      {
-        "tool": "run_query(spec)",
-        "spec": "{sources[], select[], filters[], joins[], limit}",
-        "nota": "validado por JSON Schema e traduzido para SQL pelo backend"
-      },
-      {
-        "tool": "deliver(result_ref, format)",
-        "devolve": "CSV ou XLSX via URL assinada"
-      },
-      {
-        "tool": "list_playbooks(need) / get_playbook(id)",
-        "nota": "a V3"
-      }
-    ],
-    "duas_regras_nao_negociaveis": [
-      "Catalogo como DADO, nunca como prompt. Violar isso faz cada relatorio novo virar edicao de prompt.",
-      "O LLM emite SPEC, nunca SQL livre e nunca numero. O backend valida contra schema e so entao executa. Violar isso faz a V2.3 exigir reescrita e traz risco de alucinacao em cifra."
-    ],
-    "por_que_isso_responde_a_pergunta_de_arquitetura_do_time": "A V3 nao adiciona capacidade de execucao nova - adiciona apenas recuperacao de catalogo/playbook e elicitacao de parametro. Sob as duas regras acima, a V1 suporta V2 e V3 sem reconstrucao.",
-    "dois_detalhes_baratos_que_compram_credibilidade": [
-      "Conectores genuinamente heterogeneos: os sistemas mockados devem ser servicos separados com estilos de API de verdade diferentes (um REST/JSON paginado, um XML, um arquivo em GCS simulando entrega batch). Tres rotas do mesmo servidor o juri percebe, e a abstracao de conector perde o argumento.",
-      "Uma integracao real dentro do mundo mockado: conversao de moeda via serie de PTAX do Bacen (SGS) e dado publico, permitido, custa quase nada e quebra o cheiro de 'esta tudo mockado' que corroi credibilidade de demo."
-    ],
-    "cuidado_de_lgpd": "O campo customer_name do exemplo da V2.3 e um convite a alguem popular a base com nome de cliente real. Mock ostensivamente sintetico, e dito em voz alta para o time.",
-    "seguranca_e_conformidade": {
-      "por_que": "Lacuna encontrada pela revisao externa. Privacidade e seguranca de dados foi a unica exigencia que a Organizacao acrescentou de proprio punho. Diagrama para setor regulado sem caixa de seguranca e sinal negativo, nao omissao neutra.",
-      "controles": [
-        "NENHUM DADO BRUTO NO CONTEXTO DO AGENTE - o agente trafega referencias (report_id, result_ref), nunca linhas. Controle mais forte da lista, e cai de graca da regra 'o LLM emite spec'",
-        "Perimetro: VPC Service Controls em volta do projeto",
-        "Cifragem: CMEK em Cloud Storage; cifragem em repouso declarada",
-        "Trilha de auditoria: Cloud Audit Logs com sink imutavel - sustenta o manifesto de procedencia",
-        "Segredos: Secret Manager; nunca em codigo, nunca em documento",
-        "IAM: service account propria por conector, menor privilegio; o agente nao acessa as fontes direto",
-        "Dados: somente mock/sintetico/publico (sec. 13)"
-      ],
-      "frase_de_pitch": "O agente nunca ve o dado, so a referencia - simultaneamente controle de privacidade e a razao pela qual o agente nao consegue inventar cifra."
-    },
-    "nota_para_o_parceiro_google": "O Google esta no juri como parceiro tecnologico. 'Agente no Gemini Enterprise' e vago demais para quem constroi a plataforma - nomear primitivas concretas no diagrama e no one-pager, e evitar qualquer coisa que pareca VM administrada a mao. Conferir nomes de servico e de modelo no console antes de publicar o PDF.",
-    "conectores_mockados": "DOIS, de naturezas opostas - um REST/JSON paginado com auth e modos de erro, e um arquivo em Cloud Storage simulando entrega batch. O terceiro (XML) era luxo e foi cortado. Um so deixaria sem prova a promessa do campo 8 de adaptacao a diferentes sistemas e mecanismos.",
-    "rejeitado": "Backend rodando localmente atras de tunel, sugerido pela revisao externa. Sec. 12 exige o agente executavel e disponivel para avaliacao NO padrao Gemini Enterprise/GCP - tunel para maquina local e exatamente o que a clausula veda, e trafegaria conteudo interno por terceiro. Cloud Run e um comando de deploy."
-  },
-  "definicao_de_pronto_da_v1": {
-    "por_que_congelar": "Responde a pergunta 4 da secao 8 do documento OneAsk e e a defesa contra escopo espalhado por V1, V2 e V3 sem nenhum completo.",
-    "escopo": "1 agente no Gemini Enterprise, 3 tools, 3 relatorios, 2 sistemas de origem distintos",
-    "caminho_feliz": "pedido -> identifica relatorio -> extrai parametro -> MOSTRA O PLANO -> usuario confirma -> executa -> entrega arquivo mais manifesto",
-    "caminhos_de_falha_tratados": [
-      "parametro ausente: o agente pergunta",
-      "relatorio desconhecido: o agente oferece os candidatos mais proximos do catalogo",
-      "resultado vazio: o agente diz que veio vazio e mostra os filtros aplicados"
-    ],
-    "invariante_verificado": "nenhum numero na tela que nao tenha vindo de tool",
-    "nota": "Se isto esta de pe, a V1 esta funcional como FUNDACAO, mesmo que V2 e V3 nao existam. Ver correcao_08_09.",
-    "correcao_08_09": "A afirmacao anterior de que 'a V1 esta funcional mesmo que V2 e V3 nao existam, e ja e submissao valida' esta CORRIGIDA. O campo 8 do formulario promete identificacao de necessidade (V3). A V1 sozinha subentrega contra o escopo submetido. O minimo para submeter e V1 como fundacao MAIS um playbook de V3 ponta a ponta."
-  },
-  "viabilidade_por_incremento": {
-    "simples": [
-      "V1 ponta a ponta",
-      "V2.1 - e so ler o catalogo",
-      "entrega de arquivo e manifesto",
-      "playbooks declarativos"
-    ],
-    "medio": [
-      "V2.2 - spec validada por schema",
-      "V2.3 com conjunto fixo de chaves",
-      "elicitacao de parametro multi-turno",
-      "conectores heterogeneos"
-    ],
-    "arriscado_dentro_do_prazo": [
-      "V2.3 com join arbitrario entre fontes quaisquer",
-      "V3 como autonomia aberta",
-      "estado conversacional em sessao longa",
-      "casos de borda de formato de arquivo (encoding, decimal, data)"
-    ],
-    "observacao_contraintuitiva": "Os playbooks da V3 sao mais faceis que a V2.3 aberta. Playbook e configuracao; join arbitrario e problema de engenharia de dados. Se o prazo apertar, cortar V2.3 aberta e manter playbook - o resultado demonstravel e melhor.",
-    "ordem_de_construcao": "A ordem V2.1 -> V2.2 -> V2.3 esta correta e o motivo e estrutural: cada incremento adiciona um conjunto de campos ao mesmo catalogo. V2.1 precisa de colunas e rotulos; V2.2 precisa de tipos e dominios para virar filtro; V2.3 precisa de chaves de join; V3 precisa de playbooks apontando para report_ids.",
-    "correcao_de_narrativa": "Construir de baixo para cima (V1 primeiro) e CONTAR de cima para baixo (abrir pela necessidade de negocio). Hoje o documento conta de baixo para cima, e por isso a leitura de abertura e 'chatbot que baixa relatorio'."
-  },
-  "plano_ate_30_09": {
-    "prazo_duro": "2026-09-30",
-    "dias_corridos_na_data_deste_checkpoint": 22,
-    "dias_reais_de_construcao": "cerca de 12 - o restante e entregavel e ensaio",
-    "janelas": [
-      {
-        "janela": "08/09 - 10/09",
-        "foco": "Congelar escopo CONTRA O TEXTO SUBMETIDO. Agendar a revisao do cenario com alguem da BU de Capital Markets. Confirmar homologacao do repositorio de codigo. Fechar o conjunto de premissas do numero.",
-        "saida": "escopo congelado, numero acordado, revisao marcada"
-      },
-      {
-        "janela": "08/09 - 15/09",
-        "foco": "Catalogo semantico como dado. Dois servicos mockados heterogeneos. V1 ponta a ponta no Gemini Enterprise.",
-        "saida": "fundacao pronta"
-      },
-      {
-        "janela": "15/09 - 21/09",
-        "foco": "UM PLAYBOOK DE V3 PONTA A PONTA - divergencia de posicao, com verificacao de consistencia. V2.1, que sai quase de graca do catalogo. Manifesto de procedencia. Passo de plano e confirmacao.",
-        "saida": "a demo que o texto submetido promete"
-      },
-      {
-        "janela": "22/09 - 24/09",
-        "foco": "Caixa de seguranca no diagrama. Integracao. CONGELAR CODIGO EM 24/09.",
-        "saida": "demo completa"
-      },
-      {
-        "janela": "24/09 - 28/09",
-        "foco": "ROTEIRO DO VIDEO PRIMEIRO, depois gravacao com take de reserva. One-pager e PDF de arquitetura.",
-        "saida": "pacote de submissao"
-      },
-      {
-        "janela": "29/09",
-        "foco": "Folga deliberada - revisao, ensaio, correcao do que aparecer. Folga zero nao e plano.",
-        "saida": "margem"
-      },
-      {
-        "janela": "30/09",
-        "foco": "Enviar de manha, nao no fim do dia",
-        "saida": "submetido"
-      }
-    ],
-    "alerta": "Os quatro entregaveis obrigatorios sao 100% do que o juri ve, e a pagina do Loop planeja evolucao de produto sem mencionar nenhum deles.",
-    "reordenado_em": "08/09, apos a leitura do texto submetido: o playbook de V3 subiu de 'se houver folga' para obrigatorio; o join arbitrario da V2.3 desceu para fora de escopo.",
-    "fora_de_escopo": "Aprofundado em 08/09 pela conta de horas: 60 a 80 horas de backend disponiveis contra mais de 120 na lista original. Fora - BigQuery (join em memoria resolve), V2.3 com join arbitrario (o playbook cobre), terceiro conector XML (dois provam a abstracao), e V2.2 como capacidade de usuario (nao aparece no roteiro do video)."
-  },
-  "cronograma_2026": [
-    {
-      "janela": "05/08 - 28/08",
-      "evento": "Periodo de inscricao (formulario individual por integrante, vagas limitadas)",
-      "situacao": "ENCERRADO - resultado nao confirmado no repositorio"
-    },
-    {
-      "janela": "07/08 - 01/09",
-      "evento": "Selecao das propostas pelo comite; apenas propostas aprovadas avancam",
-      "situacao": "ENCERRADO - resultado nao confirmado no repositorio"
-    },
-    {
-      "janela": "12/08 14h",
-      "evento": "Kickoff online + apresentacao da trilha de capacitacao do Google",
-      "situacao": "ENCERRADO"
-    },
-    {
-      "janela": "13/08 - 30/09",
-      "evento": "Desenvolvimento e entrega; 30/09 e o ultimo dia para enviar o agente",
-      "situacao": "EM CURSO - fase atual"
-    },
-    {
-      "janela": "a partir de 13/08",
-      "evento": "Liberacao das licencas Gemini Enterprise para os aprovados",
-      "situacao": "recebimento nao confirmado no repositorio"
-    },
-    {
-      "janela": "01/10 - 15/10",
-      "evento": "Avaliacao do juri",
-      "situacao": "futuro"
-    },
-    {
-      "janela": "16/10",
-      "evento": "Divulgacao dos 3 finalistas",
-      "situacao": "futuro"
-    },
-    {
-      "janela": "19/10 - 23/10",
-      "evento": "Finalistas recebem orientacoes de apresentacao",
-      "situacao": "futuro"
-    },
-    {
-      "janela": "28/10",
-      "evento": "Apresentacao final; o publico presente elege 1o, 2o e 3o lugares",
-      "situacao": "futuro"
-    }
-  ],
-  "entregaveis_obrigatorios": [
-    {
-      "item": "One-pager",
-      "formato": "PDF",
-      "conteudo": "problema abordado, solucao desenvolvida e impacto esperado",
-      "status": "nao iniciado",
-      "o_que_nao_pode_faltar": "O numero. A dor em uma frase reconhecivel por quem e de Capital Markets."
-    },
-    {
-      "item": "Video com pitch e demo",
-      "formato": "video",
-      "conteudo": "apresentacao com demonstracao da solucao",
-      "status": "nao iniciado",
-      "o_que_nao_pode_faltar": "Take de reserva gravado. Demo ao vivo falha, e falha na hora errada."
-    },
-    {
-      "item": "Demo funcional",
-      "formato": "prototipo",
-      "conteudo": "prototipo navegavel ou simulado do agente de IA",
-      "status": "em construcao (V1)",
-      "o_que_nao_pode_faltar": "Rodando em Gemini Enterprise, nao em notebook local."
-    },
-    {
-      "item": "Arquitetura da solucao",
-      "formato": "PDF",
-      "conteudo": "diagrama simplificado da arquitetura tecnica do agente",
-      "status": "nao iniciado",
-      "o_que_nao_pode_faltar": "A fronteira LLM/deterministico DESENHADA - e o argumento de viabilidade tecnica em forma visual."
-    }
-  ],
-  "avaliacao": {
-    "pesos_do_regulamento": {
-      "Inovacao e Criatividade": 0.25,
-      "Valor agregado ao negocio": 0.25,
-      "Viabilidade tecnica": 0.2,
-      "Qualidade da experiencia do usuario": 0.15,
-      "Escalabilidade e potencial de aplicacao": 0.15
-    },
-    "criterios_na_redacao_do_sharepoint": [
-      "Aderencia ao Mercado de Capitais - clareza do problema e relevancia para o setor financeiro regulado",
-      "Valor para cliente ou negocio - potencial de impacto, eficiencia ou reducao de riscos",
-      "Qualidade do agente e UX - qualidade tecnica, usabilidade e experiencia do usuario",
-      "Criatividade e inovacao - originalidade da abordagem e potencial de escala"
-    ],
-    "desempate": "O VP de Capital Markets decide qual solucao apresenta maior valor agregado ao negocio",
-    "composicao_do_juri": [
-      "Lideranca de Negocios/Delivery da Business Unit de Capital Markets",
-      "Lideranca do BDP",
-      "Parceiro tecnologico: Google",
-      "pode incluir Tecnologia, IA, Negocios, Produtos, Arquitetura, RH, executivos convidados e parceiros estrategicos"
-    ],
-    "vencedor_final_definido_por": "votacao do publico presente no evento de 28/10 - plateia nao tecnica, que vota dor reconhecivel e numero final, nao arquitetura"
-  },
-  "elegibilidade": {
-    "permitido": "Colaboradores da GFT Brasil contratados em regime CLT, com vinculo ativo da inscricao ate a divulgacao do resultado",
-    "excluidos": [
-      "estagiarios",
-      "prestadores de servico",
-      "consultores independentes",
-      "fornecedores",
-      "contratados como Pessoa Juridica (PJ)",
-      "terceiros alocados em projetos da GFT",
-      "colaboradores em Staff (Bench) na inscricao ou durante o desafio",
-      "colaboradores em cumprimento de aviso previo",
-      "colaboradores afastados (auxilio-doenca, maternidade, paternidade, licenca nao remunerada, acidente)",
-      "colaboradores desligados antes da entrega da premiacao",
-      "integrantes da Comissao Julgadora",
-      "integrantes da Organizacao com conflito de interesses",
-      "executivos L7 ou superior quando a Organizacao declarar impedimento",
-      "colaboradores em processo disciplinar ou penalizados nos 3 meses anteriores"
-    ],
-    "validado_por": "Recursos Humanos; pode ser revisto a qualquer momento",
-    "alerta": "A elegibilidade vale ATE A DIVULGACAO DO RESULTADO, nao apenas na inscricao. Perder elegibilidade em qualquer etapa desclassifica."
-  },
-  "time": {
-    "minimo_de_integrantes": 2,
-    "maximo_de_integrantes": 4,
-    "participacao_individual_permitida": true,
-    "agent_lead_obrigatorio": true,
-    "atribuicoes_do_agent_lead": [
-      "representar oficialmente a equipe",
-      "realizar a inscricao",
-      "efetuar o envio das entregas",
-      "manter comunicacao com a Organizacao",
-      "assegurar o cumprimento dos prazos"
-    ],
-    "como_o_regulamento_chama_os_integrantes": "Builders (regulamento sec. 4.5)",
-    "um_time_por_participante": true,
-    "alteracao_de_integrantes": "permitida somente ate a data limite do cronograma oficial",
-    "inscricao_e_individual": "Todos os integrantes devem preencher o formulario de inscricao, inclusive quem participa em equipe. Vagas limitadas.",
-    "times_multidisciplinares_incentivados": true,
-    "regras_de_nome": "NAO EXISTEM - o regulamento nao define nenhuma restricao para o nome do time",
-    "nota_de_status": "Composicao e Agent Lead confirmados. Segue nao confirmado o nome do TIME registrado nos formularios, e a elegibilidade individual de cada integrante.",
-    "tamanho_atual": 4,
-    "tamanho_maximo": 4,
-    "alerta_de_tamanho": "O time esta CHEIO - 4 de 4 (regulamento sec. 4.3). Nao cabe mais ninguem, e a substituicao de integrantes so era permitida ate a data limite do cronograma oficial, que ja passou.",
-    "integrantes": [
-      {
-        "nome": "Brivio, Raffaele",
-        "usuario": "nao informado",
-        "email": "Raffaele.Brivio@gft.com",
-        "cargo": "Analista de Negocios III",
-        "unidade": "PSU BR",
-        "jornada": "09:00 - 18:00",
-        "papel_no_desafio": "Agent Lead / Builder",
-        "senioridade_relativa": "mais senior do time"
-      },
-      {
-        "nome": "Franco, Jeferson",
-        "usuario": "jrfc",
-        "email": "Jeferson.Franco@gft.com",
-        "cargo": "Desenvolvedor(a) Front-End II",
-        "unidade": "PSU BR",
-        "jornada": "08:00 - 17:00",
-        "papel_no_desafio": "Builder - dono deste repositorio"
-      },
-      {
-        "nome": "Augusto de Melo, Guilherme",
-        "usuario": "geam",
-        "email": "Guilherme.Melo@gft.com",
-        "cargo": "Desenvolvedor(a) Back-End I",
-        "unidade": "PSU BR",
-        "jornada": "08:00 - 17:00",
-        "papel_no_desafio": "Builder"
-      },
-      {
-        "nome": "da Silva, Michelle Carla",
-        "usuario": "maiv",
-        "email": "michelle.silva@gft.com",
-        "cargo": "Analista de Teste I",
-        "unidade": "PSU BR Indirect",
-        "jornada": "08:30 - 17:30",
-        "papel_no_desafio": "Builder"
-      }
-    ],
-    "agent_lead": "Raffaele Brivio",
-    "fonte_da_informacao": "Chat do Teams do grupo 'OneAsk' (4 pessoas), captura fornecida pelo usuario em 08/09/2026, mais indicacao direta do usuario de que Raffaele Brivio e o Agent Lead.",
-    "o_que_cabe_ao_agent_lead": [
-      "Representar oficialmente a equipe",
-      "Ter realizado a inscricao",
-      "EFETUAR O ENVIO DAS ENTREGAS ate 30/09 - nao e qualquer integrante que submete",
-      "Manter a comunicacao com a Organizacao - portanto e por este canal que se pede o Guia Tecnico",
-      "Assegurar o cumprimento dos prazos"
-    ],
-    "papeis_profissionais": "CONFIRMADOS em 08/09 pelos cartoes de contato do Teams.",
-    "composicao_por_disciplina": "1 Analista de Negocios, 1 Front-End, 1 Back-End, 1 Analista de Teste. Time multidisciplinar, como o regulamento incentiva (sec. 8).",
-    "senioridade": "Analista de Negocios III (senior), Front-End II (pleno), Back-End I (junior), Analista de Teste I (junior). A musculatura de engenharia esta em niveis I e II - mais um argumento para cortar escopo com firmeza.",
-    "janela_de_sobreposicao": "Tres jornadas diferentes (08:00-17:00, 08:30-17:30, 09:00-18:00). Sobreposicao comum aproximada: 09:00 as 17:00. Relevante para agendar as poucas decisoes sincronas necessarias.",
-    "nota_de_jornada": "A participacao e voluntaria (sec. 9 e 10). Dedicacao em horario de expediente depende de ciencia e autorizacao previa do gestor imediato, e nao se pode exigir participacao fora da jornada. Quatro pessoas com trabalho principal em paralelo - o plano precisa caber nisso.",
-    "mapeamento_dos_papeis_para_o_trabalho": [
-      {
-        "integrante": "Raffaele Brivio - Analista de Negocios III",
-        "encaixe": "Excelente, e no lugar mais escasso",
-        "o_que_faz_sentido_assumir": [
-          "O catalogo semantico - e um artefato de vocabulario de negocio antes de ser codigo",
-          "Os playbooks declarativos - processo de negocio codificado de forma declarativa",
-          "O one-pager e o conjunto de premissas do numero de impacto",
-          "A entrevista com alguem de Capital Markets para validar o cenario da demo",
-          "O pitch, e o envio das entregas por ser Agent Lead"
-        ]
-      },
-      {
-        "integrante": "Guilherme Augusto de Melo - Back-End I",
-        "encaixe": "Direto no nucleo, mas e o ponto de carga do time",
-        "o_que_faz_sentido_assumir": [
-          "Backend deterministico no Cloud Run: validacao de spec, execucao, geracao de arquivo e manifesto",
-          "Os conectores mockados heterogeneos",
-          "A camada de join no BigQuery"
-        ],
-        "alerta": "E o nivel I carregando o nucleo deterministico em cerca de 12 dias uteis de construcao, com trabalho principal em paralelo. Se algo tem de ser cortado, corta-se aqui - V2.3 com join arbitrario e a primeira coisa a sair."
-      },
-      {
-        "integrante": "Jeferson Franco - Front-End II",
-        "encaixe": "Bom, e cobre 15% da nota diretamente",
-        "o_que_faz_sentido_assumir": [
-          "A camada de conversa e apresentacao - Qualidade da experiencia do usuario vale 15%",
-          "O passo de MOSTRAR O PLANO antes de executar, com confirmacao - um dos tres diferenciais recomendados",
-          "O manifesto de procedencia na tela - outro dos tres diferenciais",
-          "Previa das primeiras linhas do resultado na conversa"
-        ],
-        "observacao": "Dois dos tres diferenciais da avaliacao sao trabalho de front-end. O que costuma ser camada de acabamento e, aqui, onde a nota se ganha."
-      },
-      {
-        "integrante": "Michelle Carla da Silva - Analista de Teste I",
-        "encaixe": "Melhor do que parece - habilita um ativo que quase nenhum time de hackathon tem",
-        "o_que_faz_sentido_assumir": [
-          "Provar o invariante 'nenhum numero na tela que nao tenha vindo de tool' - e uma afirmacao TESTAVEL, e ter quem a comprove transforma promessa em evidencia",
-          "Os tres caminhos de falha da definicao de pronto da V1: parametro ausente, relatorio desconhecido, resultado vazio",
-          "As verificacoes de consistencia do playbook - por exemplo, soma de movimentos fecha com variacao de posicao",
-          "Um roteiro de demo repetivel, que e o que evita a falha ao vivo"
-        ],
-        "observacao": "O invariante anti-alucinacao e o argumento mais forte da proposta para um juri de setor regulado, e e o unico que pode ser DEMONSTRADO em vez de afirmado. Ter QA no time e o que viabiliza isso."
-      }
-    ],
-    "lacuna_de_dominio": {
-      "achado": "NENHUM integrante e da Business Unit de Capital Markets. Todos os quatro sao PSU BR, e nenhum dos quatro cargos e papel de dominio de mercado de capitais.",
-      "por_que_importa": "O desafio e de Capital Markets, e o juri inclui a lideranca de Negocios/Delivery da BU de Capital Markets. 'Aderencia ao Mercado de Capitais' e criterio de primeira classe, e 'Valor agregado ao negocio' vale 25%. O IDEAS.md ja avisava: um pitch sobre um fluxo que o time nunca viu soa generico, nao importa quao bom seja o agente.",
-      "consequencia_para_a_correcao_C1": "A recomendacao de promover a investigacao de divergencia de posicao a manchete SEGUE VALIDA, mas deixa de ser gratuita. Sem revisao de alguem de Capital Markets, a pele de dominio passa de ativo a passivo: um juri de lideranca de CM identifica detalhe inventado mais rapido do que penalizaria uma demo generica e honesta.",
-      "acao_que_fecha_a_lacuna": "Uma conversa de 30 a 60 minutos com uma pessoa da BU de Capital Markets, para validar o cenario da demo, o vocabulario e o formato dos relatorios. Isso NAO viola o limite de 4 integrantes - consultar uma pessoa nao a torna integrante da equipe. E a acao de maior alavancagem disponivel ao time hoje.",
-      "fontes_publicas_que_ajudam": [
-        "Manuais e procedimentos operacionais publicos da B3 sobre custodia e liquidacao",
-        "Guias operacionais publicos da ANBIMA",
-        "Dados abertos da CVM"
-      ],
-      "plano_b_se_a_revisao_nao_acontecer": "Manter o enquadramento horizontal do formulario como narrativa principal e escolher um cenario de custodia deliberadamente simples e bem documentado publicamente, em vez de simular profundidade que o time nao tem. Perde nota em Aderencia, mas nao perde credibilidade - que e o dano mais caro diante deste juri."
-    }
-  },
-  "restricoes_tecnicas": {
-    "plataforma_oficial": "Gemini Enterprise + Google Cloud Platform, com licenca individual por participante inscrito",
-    "obrigatorio": "O agente final deve estar implementado, configurado, integrado, executavel e disponivel para avaliacao nos padroes Gemini Enterprise / GCP. Descumprimento acarreta desclassificacao.",
-    "outras_ferramentas_de_ia": "Permitidas como apoio ao desenvolvimento se autorizadas pelas politicas da GFT e sem gerar custo ou compromisso contratual para a GFT",
-    "guia_tecnico": {
-      "status": "RESOLVIDO em 08/09 - NAO EXISTE Guia Tecnico separado",
-      "resposta_da_organizacao": "O guia tecnico e o que esta na pagina do SharePoint mais o que ja esta no regulamento, nada alem disso. Acrescentou o pedido de que as pessoas cuidem de privacidade de dados, seguranca e afins.",
-      "data_da_resposta": "2026-08-12",
-      "origem": "Evelim Buratti (Organizacao), repassada no Teams por Michelle Carla da Silva. E repasse, nao mensagem direta - em duvida formal, reconfirmar pelo canal do Agent Lead.",
-      "registro": "GUIA_TECNICO_RESPOSTA.md - transcricao fiel",
-      "especificacao_tecnica_aplicavel": [
-        "Regulamento sec. 12 - agente implementado, configurado, integrado, executavel e disponivel para avaliacao em Gemini Enterprise + GCP; descumprir desclassifica",
-        "Regulamento sec. 13 - regras de dados",
-        "Regulamento sec. 14 - seguranca da informacao, incluindo a vedacao de plataformas nao homologadas e a regra de que todo material permanece nos ambientes indicados pela Organizacao",
-        "Pagina do SharePoint - os quatro entregaveis, cronograma, criterios e juri"
-      ],
-      "sem_template_de_arquitetura": "A pagina do SharePoint pede 'diagrama simplificado da arquitetura tecnica' e nada alem. Nao ha template nem rubrica - o time define o que isso quer dizer.",
-      "nota_de_calendario": "A resposta e de 12/08, mesmo dia do primeiro checkpoint, que nunca a registrou. O projeto carregou 'Guia Tecnico nao obtido' como principal risco tecnico por quase um mes com a questao ja respondida."
-    },
-    "termos_da_licenca": "individual, pessoal, intransferivel, uso exclusivo no desafio"
-  },
-  "regras_de_dados": {
-    "permitido": [
-      "dados ficticios (mock)",
-      "dados publicos",
-      "dados anonimizados quando previamente autorizados",
-      "dados sinteticos"
-    ],
-    "proibido": [
-      "dados pessoais de colaboradores",
-      "dados pessoais de clientes",
-      "dados de parceiros",
-      "dados sensiveis",
-      "bases de producao",
-      "informacoes protegidas por sigilo contratual",
-      "codigo fonte proprietario da GFT",
-      "codigo fonte de clientes",
-      "documentos internos",
-      "credenciais de acesso"
-    ],
-    "penalidade": "desclassificacao imediata, medidas disciplinares e responsabilizacao civil, administrativa e criminal",
-    "aplicacao_ao_oneask": "Mock e explicitamente permitido, o que valida a premissa do documento. Risco especifico: o campo customer_name do exemplo da V2.3 nao pode ser populado com nome de cliente real.",
-    "expectativa_nomeada_pela_organizacao": "A unica exigencia que a Organizacao acrescentou de proprio punho ao responder sobre o Guia Tecnico foi: 'que as pessoas cuidem da questao de privacidade de dados, seguranca e afins'. Isso eleva as regras de dados de clausula no PDF a pedido explicito de quem organiza - mock ostensivamente sintetico, sem nome de cliente real, credenciais em Secret Manager e nunca em codigo ou documento."
-  },
-  "propriedade_intelectual_e_confidencialidade": {
-    "titularidade": "Todos os ativos desenvolvidos sao patrimonio intelectual exclusivo da GFT Brasil; a participacao implica cessao gratuita, total, definitiva e irrevogavel dos direitos patrimoniais",
-    "autoria": "A GFT pode reconhecer a autoria institucionalmente, sem qualquer direito economico associado",
-    "itens_confidenciais": [
-      "solucoes desenvolvidas",
-      "estrategias de negocio",
-      "materiais tecnicos",
-      "informacoes de clientes",
-      "codigo fonte",
-      "arquiteturas",
-      "documentos internos",
-      "criterios de avaliacao",
-      "resultados preliminares"
-    ],
-    "vigencia": "permanece apos o encerramento do desafio e apos eventual desligamento do participante"
-  },
-  "premiacao": {
-    "primeiro": {
-      "valor_brl": 3000,
-      "forma": "cartao de beneficios + destaque nos canais institucionais"
-    },
-    "segundo": {
-      "valor_brl": 2000,
-      "forma": "cartao de beneficios + destaque nos canais institucionais"
-    },
-    "terceiro": {
-      "valor_brl": 1000,
-      "forma": "cartao de beneficios + destaque nos canais institucionais"
-    },
-    "divisao": "concedida ao projeto e dividida igualmente entre todos os integrantes elegiveis; rateio desigual e proibido; a parcela de integrante nao elegivel nao e redistribuida",
-    "divisao_com_4_integrantes": {
-      "primeiro_lugar_por_pessoa_brl": 750,
-      "segundo_lugar_por_pessoa_brl": 500,
-      "terceiro_lugar_por_pessoa_brl": 250,
-      "alerta": "A parcela de integrante inelegivel na data da concessao e PERDIDA e nao e redistribuida. Com 4 integrantes, um inelegivel custa R$ 750 que ninguem recebe, em caso de primeiro lugar."
-    }
-  },
-  "analise_de_aderencia_da_plataforma": {
-    "forcas_do_gemini_enterprise": [
-      "RAG sobre grandes acervos de documentos",
-      "orquestracao multi-agente",
-      "conectores para dados corporativos",
-      "extracao estruturada a partir de documentos nao estruturados"
-    ],
-    "fraquezas_do_gemini_enterprise": [
-      "computacao quantitativa customizada",
-      "streaming de dados de mercado em tempo real",
-      "caminhos de latencia muito baixa"
-    ],
-    "implicacao": "Priorizar problemas intensivos em documentos e em operacoes, em vez de problemas de trading sensiveis a latencia.",
-    "aderencia_do_oneask": "Boa. Orquestracao mais conectores mais extracao estruturada e exatamente o territorio forte. E a premissa do documento de deixar operacoes deterministicas no backend contorna a fraqueza de computacao quantitativa."
-  },
-  "fontes_de_dados_publicos_utilizaveis": [
-    "Dados abertos da CVM - regulamentos de fundos, ITR/DFP, fatos relevantes, escrituras de debentures",
-    "Manuais, comunicados e avisos de eventos corporativos publicos da B3",
-    "APIs do Bacen (SGS / PTAX) - indices, taxas, cambio. Candidata natural a integracao real dentro do mundo mockado do OneAsk.",
-    "Documentos publicos e taxas de referencia da ANBIMA",
-    "Listas publicas de sancoes e lista de punidos da CVM"
-  ],
-  "dores_de_negocio_identificadas": [
-    {
-      "id": "P1",
-      "titulo": "Monitoramento de covenants em credito privado",
-      "por_que_agora": "O volume de debentures, CRI/CRA e fundos de credito cresceu rapido enquanto o monitoramento de covenants continuou manual",
-      "onde_vaza_dinheiro": "deteccao tardia de quebra eleva a perda dada a inadimplencia; 2 a 4 dias de analista por emissor por trimestre; cauda da carteira sem monitoramento",
-      "disponibilidade_de_dados": "totalmente publica (escrituras, ITR/DFP, indices Bacen)"
-    },
-    {
-      "id": "P2",
-      "titulo": "Processamento de eventos corporativos na custodia",
-      "por_que_agora": "avisos nao estruturados ainda sao digitados manualmente como eventos estruturados",
-      "onde_vaza_dinheiro": "claims operacionais por eventos perdidos ou lancados errado; horas extras no dia do evento",
-      "disponibilidade_de_dados": "avisos publicos, posicoes sinteticas",
-      "relacao_com_o_oneask": "Dominio da unica passagem genuinamente de Mercado de Capitais do documento OneAsk (a V3, divergencia de posicao)."
-    },
-    {
-      "id": "P3",
-      "titulo": "Falhas de liquidacao em ciclos comprimidos",
-      "por_que_agora": "ciclos globais comprimidos para T+1 (EUA e Canada em 2024, Reino Unido e UE previstos para 2027) enquanto acoes na B3 seguem em D+2; pressao de afirmacao no mesmo dia para fluxo cross-border",
-      "onde_vaza_dinheiro": "custo de falha, funding e pre-funding, risco de buy-in, regimes de penalidade",
-      "disponibilidade_de_dados": "majoritariamente sintetica - menor credibilidade de demo",
-      "relacao_com_o_oneask": "A solucao candidata B5 (triagem de breaks e falhas) e o vizinho mais proximo do caso de abertura recomendado para o OneAsk."
-    },
-    {
-      "id": "P4",
-      "titulo": "Vazao de mudancas regulatorias",
-      "por_que_agora": "CVM, Bacen e B3 publicam continuamente; bancos mantem times dedicados a ler, classificar impacto e cascatear para backlogs de sistemas",
-      "onde_vaza_dinheiro": "semanas entre a publicacao e a avaliacao de impacto",
-      "risco": "ideia mais saturada em hackathons - prejudica a nota de Inovacao"
-    },
-    {
-      "id": "P5",
-      "titulo": "Falsos positivos em PLD e vigilancia de mercado",
-      "por_que_agora": "taxas de falso positivo passam de 90%; analistas reescrevem narrativas quase identicas",
-      "onde_vaza_dinheiro": "custo puro de headcount",
-      "risco": "o juri desconfia de agente que parece decidir sobre crime financeiro; viavel apenas com humano no circuito"
-    }
-  ],
-  "solucoes_candidatas": [
-    {
-      "id": "A1",
-      "nome": "Radar Normativo",
-      "dor": "P4",
-      "formato": "monitora publicacoes de CVM/Bacen/B3, classifica impacto por dominio de negocio e emite avaliacao de impacto + backlog de acoes + casos de teste"
-    },
-    {
-      "id": "A2",
-      "nome": "Auditor de Regulamento CVM 175",
-      "dor": "P4",
-      "formato": "audita regulamentos publicos de fundos contra um checklist de clausulas da CVM 175, cita artigos e propoe redacao corretiva",
-      "risco": "a onda de adaptacao a CVM 175 pode ja ter passado do pico em 2026 - validar antes de pitchar"
-    },
-    {
-      "id": "A3",
-      "nome": "Covenant Watch",
-      "dor": "P1",
-      "formato": "extrai covenants de escrituras publicas, monta calendario de verificacao, testa contra ITR/DFP publicos, projeta distancia da quebra e redige memorando e carta de waiver"
-    },
-    {
-      "id": "B4",
-      "nome": "Normalizador de eventos corporativos",
-      "dor": "P2",
-      "formato": "avisos publicos de AGO/AGE e fatos relevantes convertidos em eventos no formato ISO 20022 / MT564, com ambiguidade encaminhada a um humano"
-    },
-    {
-      "id": "B5",
-      "nome": "Triagem de breaks e falhas",
-      "dor": "P3",
-      "formato": "trades sinteticos contra posicoes de custodia, classificacao de causa raiz, redacao da mensagem a contraparte e proposta de correcao",
-      "nota": "vizinho mais proximo do caso de abertura recomendado para o OneAsk"
-    },
-    {
-      "id": "C6",
-      "nome": "Analista de suitability e KYC",
-      "dor": "P5",
-      "formato": "suitability conforme CVM 30 mais screening em listas publicas de sancoes e na lista de punidos da CVM"
-    },
-    {
-      "id": "C7",
-      "nome": "Respondedor de DDQ/RFP",
-      "dor": "nenhuma-primaria",
-      "formato": "responde questionarios de due diligence de gestoras, com cada resposta lastreada em citacao"
-    },
-    {
-      "id": "C8",
-      "nome": "Triagem de vigilancia",
-      "dor": "P5",
-      "formato": "fluxo de ordens sintetico, sinalizacao de layering e spoofing, narrativa do caso para um analista humano"
-    },
-    {
-      "id": "D9",
-      "nome": "Agente de manual de regras para suite de testes",
-      "dor": "margem de delivery da GFT",
-      "formato": "le mudancas em manuais e regras operacionais da B3 e gera cenarios de teste executaveis para a plataforma de um cliente",
-      "nota": "atinge o P&L que o proprio juri administra; risco de ser lido como ferramenta interna e nao solucao de mercado"
-    }
-  ],
-  "riscos": [
-    {
-      "risco": "Reposicionamento contradiz a proposta submetida",
-      "gravidade": "RESOLVIDO em 08/09",
-      "mitigacao": "Texto lido. E neutro de dominio, nao contrario - a demo em custodia evidencia o texto."
-    },
-    {
-      "risco": "Entregar so V1 subentrega contra o texto submetido",
-      "gravidade": "alta",
-      "mitigacao": "O campo 8 prometeu identificacao de necessidade. Um playbook de V3 ponta a ponta e obrigatorio, na janela de 15/09 a 21/09."
-    },
-    {
-      "risco": "Perder a afirmacao horizontal ao vestir o dominio",
-      "gravidade": "media",
-      "mitigacao": "O alcance amplo dos campos 7 e 9 e o argumento de Escalabilidade (15%). Custodia e onde a dor morde, nao o novo escopo."
-    },
-    {
-      "risco": "Guia Tecnico nao obtido - pode invalidar arquitetura",
-      "gravidade": "RESOLVIDO em 08/09",
-      "mitigacao": "Nao existe Guia Tecnico separado. Ver GUIA_TECNICO_RESPOSTA.md. A especificacao tecnica e o regulamento mais a pagina do SharePoint, e nada mais vai chegar."
-    },
-    {
-      "risco": "Escopo espalhado por V1, V2 e V3 sem nenhum completo",
-      "gravidade": "alta",
-      "mitigacao": "Congelar a definicao de pronto da V1. Freeze de codigo em 25/09."
-    },
-    {
-      "risco": "Leitura de 'chatbot generico' pelo juri",
-      "gravidade": "alta",
-      "mitigacao": "Pele de dominio mais mecanismo nomeado mais procedencia (correcoes C1, C2, C3)"
-    },
-    {
-      "risco": "Ausencia de numero",
-      "gravidade": "alta",
-      "mitigacao": "Conjunto de premissas fechado esta semana. O desempate e por valor de negocio."
-    },
-    {
-      "risco": "Agente alucina cifra",
-      "gravidade": "media",
-      "mitigacao": "Invariante: nenhum numero fora de saida de tool. Renderizar verbatim."
-    },
-    {
-      "risco": "'Esta tudo mockado' corroi credibilidade",
-      "gravidade": "media",
-      "mitigacao": "Uma integracao publica real (PTAX/Bacen, CVM, B3)"
-    },
-    {
-      "risco": "Falha da demo ao vivo",
-      "gravidade": "media",
-      "mitigacao": "Take de reserva gravado"
-    },
-    {
-      "risco": "Dado pessoal entrando no mock",
-      "gravidade": "media",
-      "mitigacao": "Mock ostensivamente sintetico. Violacao e desclassificacao imediata."
-    },
-    {
-      "risco": "Entregaveis comprimidos na ultima semana",
-      "gravidade": "media",
-      "mitigacao": "Reservar 25/09 a 29/09 e nao usar para codigo"
-    },
-    {
-      "risco": "Ponto unico de falha na submissao - so o Agent Lead envia as entregas",
-      "gravidade": "media",
-      "mitigacao": "Cabe ao Agent Lead (Raffaele Brivio) efetuar o envio ate 30/09. Combinar um plano B por escrito com a Organizacao caso haja indisponibilidade na data, e nao deixar o envio para o dia 30."
-    },
-    {
-      "risco": "Elegibilidade de 4 pessoas nao verificada",
-      "gravidade": "media",
-      "mitigacao": "Cada integrante confere a propria situacao: CLT ativo, fora de Bench/Staff, sem aviso previo, sem afastamento, sem processo disciplinar. Vale ate a divulgacao do resultado, nao apenas na inscricao."
-    },
-    {
-      "risco": "Codigo do desafio em plataforma possivelmente nao homologada",
-      "gravidade": "alta - classe de gatilho de desclassificacao",
-      "detalhe": "Ha indicio de uso de organizacao no GitHub, com convite enviado a conta de email pessoal. O regulamento sec. 14 veda usar ambientes nao autorizados para informacao corporativa e subir material em plataformas nao homologadas, e determina que todo material permanece nos ambientes indicados pela Organizacao. Sec. 15 torna todo o codigo patrimonio da GFT. Sec. 20 faz da violacao gatilho de desclassificacao.",
-      "mitigacao": "Confirmar se GitHub e plataforma homologada na GFT para este uso e se a Organizacao considera esse ambiente indicado. Padrao seguro: repositorio gerido pela GFT, ou o proprio projeto GCP do desafio. Contas pessoais nao devem deter codigo que e patrimonio da GFT."
-    },
-    {
-      "risco": "Pele de dominio sem lastro - nenhum integrante e de Capital Markets",
-      "gravidade": "alta",
-      "mitigacao": "Revisao do cenario por alguem da BU de Capital Markets antes de fechar a demo e o one-pager. Consultar nao torna a pessoa integrante, logo nao afeta o limite de 4. Sem essa revisao, preferir cenario simples e publicamente documentado a profundidade simulada."
-    },
-    {
-      "risco": "Nucleo deterministico concentrado em um unico dev de nivel I",
-      "gravidade": "media",
-      "mitigacao": "Cortar V2.3 com join arbitrario. Manter os conectores mockados simples de construir, ainda que heterogeneos em estilo. Front-End e QA podem absorver parte do trabalho de tool e de fixture."
-    },
-    {
-      "risco": "Backend rodando fora do padrao Gemini Enterprise/GCP",
-      "gravidade": "alta - desclassificacao",
-      "mitigacao": "Tentacao real quando o prazo aperta. Sec. 12 exige o agente executavel e disponivel para avaliacao NO padrao GE/GCP. Cloud Run e um comando de deploy."
-    },
-    {
-      "risco": "Diagrama de arquitetura sem historia de seguranca",
-      "gravidade": "media",
-      "mitigacao": "Caixa de seguranca e conformidade; privacidade foi a unica exigencia que a Organizacao acrescentou de proprio punho."
-    },
-    {
-      "risco": "Numero de impacto com fonte inventada",
-      "gravidade": "alta",
-      "mitigacao": "Citar somente fonte que alguem do time abriu; senao declarar como premissa. Fonte inexistente derruba a submissao inteira."
-    },
-    {
-      "risco": "Video tratado como embalagem e nao como entregavel",
-      "gravidade": "media",
-      "mitigacao": "Roteiro do video primeiro; demo ao vivo como subconjunto. A plateia que vota ve o video."
-    }
-  ],
-  "questoes_abertas": [
-    "O time aceita o escopo minimo como V1 mais um playbook de V3, em vez de V1 sozinha? (define o cronograma)",
-    "Quem, na BU de Capital Markets, pode revisar o cenario da demo em 30 a 60 minutos? Sem isso a manchete de custodia fica sem lastro.",
-    "O GitHub usado pelo time e ambiente homologado para o codigo do desafio? (sec. 14 e 15)",
-    "Qual o nome do TIME registrado nos formularios, e os 4 digitaram a mesma grafia?",
-    "A proposta foi aprovada pelo comite na selecao encerrada em 01/09?",
-    "As licencas Gemini Enterprise foram liberadas? O chat de 08/09 mostra um problema de acesso resolvido as 10h27, que PODE ter sido exatamente isso - confirmar.",
-    "Os 4 integrantes seguem elegiveis, e seguirao ate a divulgacao do resultado?",
-    "Os gestores imediatos deram ciencia e autorizacao para dedicacao em horario de expediente (sec. 10)?",
-    "Qual caso de custodia vira a demo?",
-    "Qual o conjunto de premissas do numero de impacto (N, T, A, M)?"
-  ],
-  "proximas_acoes": [
-    {
-      "acao": "Fechar o escopo minimo como V1 mais um playbook de V3, nao V1 sozinha - e o que o campo 8 do formulario prometeu",
-      "dono": "time, decisao coletiva"
-    },
-    {
-      "acao": "Achar e agendar uma pessoa da BU de Capital Markets para revisar o cenario da demo, o vocabulario e o formato dos relatorios. Acao de maior alavancagem disponivel hoje.",
-      "dono": "Agent Lead - Raffaele Brivio, por perfil de Analista de Negocios e por ser o canal externo"
-    },
-    {
-      "acao": "Confirmar se o GitHub usado pelo time e ambiente homologado para o codigo do desafio (sec. 14 e 15). Padrao seguro: repositorio gerido pela GFT ou o proprio projeto GCP.",
-      "dono": "Agent Lead - Raffaele Brivio"
-    },
-    {
-      "acao": "Fechar o conjunto de premissas do numero de impacto - o formulario nao traz nenhum numero",
-      "dono": "Raffaele Brivio, com o insumo da revisao de Capital Markets"
-    },
-    {
-      "acao": "Confirmar aprovacao pelo comite e o nome do time registrado nos 4 formularios",
-      "dono": "Agent Lead - Raffaele Brivio, que realizou a inscricao"
-    },
-    {
-      "acao": "Confirmar se as licencas Gemini Enterprise estao liberadas para os 4",
-      "dono": "Agent Lead - Raffaele Brivio"
-    },
-    {
-      "acao": "Distribuir o trabalho conforme time.mapeamento_dos_papeis_para_o_trabalho, e cortar V2.3 com join arbitrario desde ja",
-      "dono": "time"
-    },
-    {
-      "acao": "Cada integrante confere a propria elegibilidade e a autorizacao do gestor imediato para dedicacao em expediente",
-      "dono": "cada um dos 4"
-    },
-    {
-      "acao": "Reservar a janela 25/09 a 29/09 para os quatro entregaveis e nao usar para codigo",
-      "dono": "time"
-    },
-    {
-      "acao": "Combinar plano B de submissao caso o Agent Lead esteja indisponivel em 30/09",
-      "dono": "Agent Lead - Raffaele Brivio"
-    },
-    {
-      "acao": "Escrever o roteiro do video antes de construir o resto - a plateia que decide o 1o lugar ve o video, nao a arquitetura",
-      "dono": "BA (Agent Lead) com o Front-End"
-    },
-    {
-      "acao": "Desenhar a caixa de seguranca e conformidade no PDF de arquitetura, comecando por 'o agente nunca ve dado bruto, so referencia'",
-      "dono": "Back-End com o BA"
-    },
-    {
-      "acao": "Conferir se a camada de tools do Gemini Enterprise exige schema OpenAPI antes de considerar corta-la",
-      "dono": "Back-End"
-    }
-  ],
-  "segunda_opiniao_externa": {
-    "data": "2026-09-08",
-    "como": "Avaliacao submetida a modelo externo via bridge local, com instrucao explicita de contestar em vez de validar. Briefing descreveu o concurso, o texto submetido, a escada V1/V2/V3, as recomendacoes e a composicao do time POR PAPEL - sem nome, e-mail ou horario de ninguem.",
-    "procedencia": "Os modelos de topo da cadeia falharam; a resposta veio de um modelo gratuito de porte menor, que citou uma geracao de modelo Gemini de 2024. Leitura externa util, nao autoridade.",
-    "aceito": [
-      "Faltava historia de seguranca no diagrama - melhor item: nenhum dado bruto no contexto do agente, so referencia",
-      "Video e demo ao vivo sao pecas diferentes, para plateias e prazos diferentes; o roteiro do video vem primeiro",
-      "O parceiro Google esta no juri e precisa ver primitivas concretas da stack dele",
-      "A conta de horas de backend nao fechava - o corte anterior (so V2.3) era insuficiente",
-      "Citar fonte publica e melhor que declarar premissa, COM a ressalva de que citacao nao conferida e pior que premissa honesta"
-    ],
-    "rejeitado": [
-      "Backend local atras de tunel - gatilho de desclassificacao (sec. 12)",
-      "Cortar a camada OpenAPI - e o caminho nativo de tools do Gemini Enterprise; conferir antes de cortar",
-      "Cortar a V2 inteira - a V2.1 e so ler o catalogo, custo proximo de zero",
-      "Um unico conector mockado - deixaria sem prova a promessa do campo 8",
-      "Cronograma com folga zero apresentado como virtude",
-      "Abandonar o dominio de custodia - ele abre contestando a C1 e fecha recomendando a C1 com o pre-requisito de revisao que ela ja tinha"
-    ],
-    "formulacoes_a_roubar": [
-      "'We solved the pattern, not one instance' - enquadramento para Escalabilidade (15%)",
-      "Se insistir em custodia, o caso da V3 tem de ser o UNICO cenario da demo, estreito o bastante para caber numa conversa de uma hora com quem e do dominio",
-      "'O momento do recibo' para o manifesto, e 'eu conseguiria defender isso para o auditor' como o pensamento desejado na plateia"
-    ],
-    "sobreviveu_intacto": "Fronteira LLM/deterministico, catalogo como dado, playbooks como configuracao, manifesto de procedencia, verificacoes de consistencia, invariante anti-alucinacao, e o minimo de V1 mais um playbook."
+  {
+   "path": "APROVACAO.md",
+   "o_que_e": "E-mail de aprovacao da proposta, com transcricao fiel e analise do que ele muda: quinto entregavel (GitLab GFT), ambiente homologado do codigo, padrao Google Enterprise AI em todos os entregaveis, e a leitura correta da data 13/08.",
+   "origem": "e-mail da Organizacao (Evelim Carla Ribeiro) de 10/09/2026 12h30, aos quatro integrantes; captura de tela fornecida pelo usuario, mais a confirmacao no grupo OneAsk do Teams em 10/09 12h36",
+   "extraido_em": "2026-09-11",
+   "natureza": "mensagem direta da Organizacao - NAO e repasse, ao contrario de GUIA_TECNICO_RESPOSTA.md",
+   "nota_de_idioma": "preserva acentuacao, por ser transcricao fiel"
   }
+ ],
+ "desafio": {
+  "nome": "Desafio Capital Markets - AI Agents Challenge - SMC 2026",
+  "promotor": "GFT Technologies Brasil",
+  "evento": "Semana Mercado de Capitais 2026 (SMC)",
+  "contato": "Evelim Buratti (emro@gft.com)",
+  "objetivo": "Desenvolver agentes de IA generativa que resolvam problemas reais do Mercado de Capitais, simulando cenarios do dia a dia, com foco em impacto, clareza, seguranca e aplicabilidade pratica.",
+  "parceiro_tecnologico": "Google"
+ },
+ "proposta_submetida": {
+  "fonte": "oneask/PROPOSTA_SUBMETIDA.md - transcricao fiel dos campos 7, 8 e 9 da secao 'Dados do Agente' do formulario de inscricao, a partir de captura de tela fornecida em 08/09/2026",
+  "status": "SUBMETIDO - confirmado. APROVACAO pelo comite nao confirmada.",
+  "campos_vistos": [
+   "7 - Descricao do problema",
+   "8 - Descricao do agente",
+   "9 - Publico-alvo"
+  ],
+  "campos_nao_vistos": "1 a 6 - devem conter nome do time e integrantes",
+  "por_que_importa": "Este e o escopo submetido. Ele delimita o que os entregaveis podem afirmar - e o que eles TEM de entregar.",
+  "tres_fatos_que_o_texto_estabelece": [
+   {
+    "fato": "A proposta e horizontal, e o texto e neutro de dominio, nao errado de dominio",
+    "evidencia": "Nenhuma palavra de Mercado de Capitais nos tres campos: 'atividades operacionais', 'equipes de operacoes, negocio e tecnologia'.",
+    "consequencia": "Confirma - nao apenas sugere - a fragilidade em Aderencia ao Mercado de Capitais. Mas como o texto e neutro e nao contrario, demonstrar num caso de custodia EVIDENCIA o texto em vez de contradize-lo. A correcao C1 segue valida com uma restricao nova: a afirmacao horizontal precisa sobreviver como argumento de Escalabilidade (15%), nao ser substituida.",
+    "forma_do_pitch": [
+     "Problema: relatorios fragmentados entre sistemas, e o gargalo persiste mesmo onde ja existem APIs - campo 7, quase literal",
+     "Onde doi mais, a demo: custodia e pos-negociacao, investigacao de divergencia de posicao - instancia do campo 7",
+     "Mecanismo: catalogo semantico, playbooks e conectores configuraveis - campo 8, quase literal",
+     "Escala: mesmo motor, qualquer dominio - operacoes, negocio e tecnologia - campo 9, literal"
+    ]
+   },
+   {
+    "fato": "O texto submetido promete V3, nao V1",
+    "evidencia": "Campo 8: 'o agente interpreta a necessidade do usuario, identifica quais relatorios e fontes sao necessarios, determina os parametros da consulta e orquestra as extracoes'. A V1 do documento do Loop parte da premissa oposta e explicita: 'o usuario sabe qual relatorio deseja'.",
+    "consequencia": "Existe lacuna entre o escopo submetido e o plano de MVP. Um playbook de V3 ponta a ponta deixa de ser diferencial e passa a ser OBRIGATORIO. Corrige a afirmacao anterior de que a V1 sozinha seria submissao valida - contra este texto, nao e.",
+    "impacto_no_plano": "O playbook subiu para a janela de 15/09 a 21/09; o join arbitrario da V2.3 desceu para fora de escopo."
+   },
+   {
+    "fato": "A arquitetura de conectores ja foi prometida",
+    "evidencia": "Campo 8: 'uma arquitetura de conectores configuraveis, permitindo sua adaptacao a diferentes sistemas, APIs e mecanismos de automacao sem alterar a experiencia do usuario'.",
+    "consequencia": "'Sem alterar a experiencia do usuario' e precisamente a propriedade de catalogo como dado. A correcao C2 deixa de ser sugestao de inovacao e passa a ser cumprimento do prometido; os conectores mockados heterogeneos passam a ser a evidencia de uma afirmacao ja feita ao comite."
+   }
+  ],
+  "frase_do_texto_para_levar_ao_pitch": "Campo 7: a fragmentacao persiste 'mesmo quando ja existem APIs ou automacoes para parte dessas atividades'. Preempta a objecao mais obvia de um juri tecnico - por que nao chamar a API direto. O gargalo nao e integracao, e saber o que pedir e onde.",
+  "o_que_o_texto_nao_resolve": "Nao ha numero nele. 'Aumenta o esforco operacional' e o adjetivo no lugar exato onde deveria estar a cifra. O one-pager nao herda nenhum numero do formulario - tem de produzi-lo."
+ },
+ "direcao_da_solucao": {
+  "atual": {
+   "nome": "OneAsk",
+   "subtitulo": "Agente Inteligente de Extracao de Dados",
+   "fonte": "oneask/OneAsk_Proposta_Evolucao_MVP.md",
+   "status_do_documento": "proposta para discussao - o proprio documento diz que nao define antecipadamente que todas as versoes serao desenvolvidas nem fecha a ordem apresentada",
+   "o_que_e": "Agente conversacional que centraliza o acesso a relatorios e informacoes distribuidos em diferentes sistemas. Recebe solicitacao em linguagem natural, interpreta a necessidade e usa ferramentas/conectores para obter os dados.",
+   "escada_de_versoes": [
+    {
+     "versao": "V1",
+     "nome": "Conversational Report Retrieval",
+     "frase_do_usuario": "Me de este relatorio",
+     "usuario_sabe": "qual relatorio quer",
+     "agente_identifica": "como obter o relatorio",
+     "capacidade_principal": "retrieval",
+     "entrega": "arquivo existente",
+     "fluxo": "solicitacao -> identificacao do relatorio -> interpretacao dos parametros -> selecao da ferramenta/conector -> chamada da API -> disponibilizacao do arquivo",
+     "e_o_core_do_mvp": true
+    },
+    {
+     "versao": "V2",
+     "nome": "Conversational Data Exploration",
+     "frase_do_usuario": "Me de esta informacao",
+     "usuario_sabe": "qual informacao quer",
+     "agente_identifica": "onde estao os dados e como processa-los",
+     "capacidade_principal": "exploracao e composicao de dados",
+     "entrega": "informacao/dataset personalizado",
+     "incrementos": [
+      {
+       "id": "V2.1",
+       "nome": "Exploracao do conteudo",
+       "o_que_faz": "o usuario pergunta quais informacoes existem em um relatorio"
+      },
+      {
+       "id": "V2.2",
+       "nome": "Selecao e filtros",
+       "o_que_faz": "o usuario pede parte dos campos e define condicoes em linguagem natural"
+      },
+      {
+       "id": "V2.3",
+       "nome": "Cruzamento e enriquecimento de fontes",
+       "o_que_faz": "join entre fontes por chave comum quando a informacao nao existe em uma unica fonte"
+      }
+     ]
+    },
+    {
+     "versao": "V3",
+     "nome": "Intelligent Business Retrieval",
+     "frase_do_usuario": "Me ajude com este problema",
+     "usuario_sabe": "qual problema quer resolver",
+     "agente_identifica": "quais informacoes sao necessarias",
+     "capacidade_principal": "entendimento de contexto/necessidade",
+     "entrega": "informacoes necessarias para a necessidade apresentada",
+     "exemplo_do_documento": "Preciso investigar uma divergencia de posicao de ontem -> o agente identifica que pode precisar de Position Report, Transaction Report e Movement Report"
+    }
+   ],
+   "premissas_do_documento": [
+    "universo pequeno e controlado de sistemas e relatorios",
+    "APIs/dados mockados quando necessario",
+    "conectores previamente conhecidos/configurados",
+    "nao buscar integracao universal com qualquer API nesta etapa",
+    "o agente para entendimento, decisao e orquestracao",
+    "backend/tools para operacoes deterministicas: chamadas de API, filtros, joins, geracao de arquivos",
+    "V1 como fundacao, evoluindo conforme capacidade do time",
+    "a arquitetura deve evitar que uma evolucao exija reconstruir a versao anterior"
+   ],
+   "perguntas_abertas_do_proprio_documento": [
+    "Visao: faz sentido essa evolucao do produto ou existe caminho melhor?",
+    "Priorizacao: V2 e V3 estao na ordem correta?",
+    "Viabilidade: quais partes parecem simples ou complexas tecnicamente?",
+    "Escopo: qual o minimo necessario para a V1 ser realmente funcional?",
+    "Evolucao: V2.1, V2.2 e V2.3 fazem sentido como incrementos separados?",
+    "Arquitetura: a V1 pode ser estruturada de forma a suportar essas evolucoes sem grande retrabalho?",
+    "Outras ideias: que outras capacidades o time enxerga?"
+   ],
+   "respostas_propostas": "Todas as sete respondidas em oneask/AVALIACAO.md, secao 6."
+  },
+  "recomendacao_anterior_agosto_2026": {
+   "superada_por": "OneAsk",
+   "principal": "A3 Covenant Watch",
+   "vice": "B4 Normalizador de eventos corporativos",
+   "diferencial_de_inovacao_proposto": "projecao de distancia da quebra - projetar cada indice a frente pela tendencia do emissor e ranquear a carteira por meses ate a quebra",
+   "papeis_dos_agentes_propostos": [
+    "Extrator",
+    "Calculadora",
+    "Vigia",
+    "Narrador"
+   ],
+   "aceita": false,
+   "nota": "Mantida como historico. O catalogo completo de dores (P1-P5) e solucoes (A1-D9) segue valido como referencia de espaco de problemas em dores_de_negocio_identificadas e solucoes_candidatas."
+  }
+ },
+ "avaliacao_da_direcao_atual": {
+  "veredito": "Tecnicamente bem pensada e estrategicamente mal posicionada.",
+  "o_que_esta_certo": "A fronteira entre agente (entendimento, decisao, orquestracao) e backend/tools (operacoes deterministicas) e exatamente a divisao que o Gemini Enterprise faz bem e que um juri tecnico premia, porque mostra um time que sabe onde o LLM nao deve entrar. A escada V1-V2-V3 e boa sequencia de engenharia.",
+  "o_que_esta_em_risco": "Como esta escrita, a proposta poderia ser de qualquer setor. 'Relatorio de transacoes', 'clientes', 'moeda = EUR', 'valor > 500 mil' descrevem um banco de varejo ou uma telco. O unico momento genuinamente de Mercado de Capitais no documento e o exemplo da V3 - divergencia de posicao exigindo Position, Transaction e Movement Report, que e reconciliacao de custodia (dores P2/P3, solucao candidata B5) - e esta enterrado na secao 5 de 8.",
+  "nota_por_criterio": [
+   {
+    "criterio": "Inovacao e Criatividade",
+    "peso": 0.25,
+    "situacao": "fraca",
+    "por_que": "V1 e deteccao de intencao mais extracao de parametro mais chamada de API. V2 e NL2SQL. A originalidade real esta na V3 e nao tem mecanismo nomeado."
+   },
+   {
+    "criterio": "Valor agregado ao negocio",
+    "peso": 0.25,
+    "situacao": "media",
+    "por_que": "A dor e real e reconhecivel, mas o documento nao tem um unico numero. Sem numero, ganho de eficiencia e adjetivo - e o desempate e justamente por valor de negocio."
+   },
+   {
+    "criterio": "Aderencia ao Mercado de Capitais",
+    "peso": "primeira classe na redacao do SharePoint",
+    "situacao": "fraca",
+    "por_que": "Generico. Corrigivel em uma tarde trocando a pele do dominio."
+   },
+   {
+    "criterio": "Viabilidade tecnica",
+    "peso": 0.2,
+    "situacao": "forte",
+    "por_que": "Fronteira LLM/deterministico correta, premissas explicitas de contencao de escopo, mock permitido pelas regras. Melhor aspecto da proposta."
+   },
+   {
+    "criterio": "Qualidade da experiencia do usuario",
+    "peso": 0.15,
+    "situacao": "boa, com folga para ganhar",
+    "por_que": "O loop de pergunta esclarecedora ja esta desenhado. Falta mostrar plano antes de executar e devolver procedencia junto com o arquivo."
+   },
+   {
+    "criterio": "Escalabilidade e potencial de aplicacao",
+    "peso": 0.15,
+    "situacao": "forte se dita da forma certa",
+    "por_que": "Adicionar um sistema novo e uma entrada no catalogo mais um conector, nao uma mudanca no agente. A proposta implica isso; precisa afirmar."
+   }
+  ],
+  "tres_correcoes_de_maior_impacto": [
+   {
+    "id": "C1",
+    "nome": "Vestir o dominio",
+    "o_que_fazer": "Reescrever os exemplos de V1 e V2 dentro do caso de custodia que a V3 ja usa, e promover a divergencia de posicao a caso de abertura. Nao inventar dominio novo - usar o que ja esta la.",
+    "custo": "baixo - e narrativa, nao engenharia",
+    "ganho": "move Inovacao e Aderencia ao mesmo tempo, 25% mais criterio de primeira classe"
+   },
+   {
+    "id": "C2",
+    "nome": "Nomear o mecanismo",
+    "o_que_fazer": "Catalogo semantico (relatorios como dado legivel por maquina: sinonimos, sistema, conector, schema de parametros, colunas com rotulo em portugues, grao, chaves de join) mais playbooks declarativos para a V3 (necessidade, sinonimos, datasets exigidos, passos de montagem, verificacoes de consistencia).",
+    "custo": "medio",
+    "ganho": "da a V3 um mecanismo demonstravel, torna a V3 barata por nao exigir capacidade de execucao nova, e e auditavel - o que importa em setor regulado, onde autonomia aberta assusta. Tambem e a resposta direta a pergunta de arquitetura do proprio documento."
+   },
+   {
+    "id": "C3",
+    "nome": "Manifesto de procedencia",
+    "o_que_fazer": "Todo resultado sai com sistema de origem, horario da extracao, parametros usados, filtros aplicados, chaves de join e contagem de linhas antes e depois de cada filtro. Invariante acompanhante: o agente nunca escreve um numero que nao tenha vindo de uma tool.",
+    "custo": "baixo - o backend ja conhece tudo isso",
+    "ganho": "em Mercado de Capitais o problema de um numero nao e produzi-lo, e defende-lo. Converte demo legal em ferramenta auditavel, aparece na tela na demo, e nenhum outro time deve fazer."
+   }
+  ],
+  "o_numero_que_falta": {
+   "por_que_importa": "O desempate vai ao VP de Capital Markets, que decide por maior valor agregado ao negocio. E a votacao final e do publico presente, que vota dor reconhecivel e numero final.",
+   "nao_exige_dado_real": "Basta conjunto de premissas declaradas com ordem de grandeza, assinado pelo time.",
+   "esqueleto": {
+    "N": "extracoes manuais por analista por dia",
+    "T": "minutos por extracao, incluindo achar o sistema, logar, parametrizar, exportar e tratar",
+    "A": "analistas na operacao",
+    "horas_por_mes": "N x T x A x 21 / 60",
+    "segundo_andar": "uma investigacao de divergencia de posicao custa M minutos entre tres sistemas e uma planilha; com o playbook, custa a conversa. Esse e o numero do slide de fechamento."
+   },
+   "regra_de_honestidade": "Rotular como premissa, nao como medicao. Um juri de Capital Markets perdoa premissa declarada e nao perdoa numero inventado apresentado como fato."
+  },
+  "coreografia_da_demo": [
+   "A dor em uma frase: um analista investigando divergencia de posicao abre tres sistemas, puxa tres relatorios e reconcilia em planilha.",
+   "Uma frase para o agente: preciso investigar a divergencia de posicao do fundo X de ontem.",
+   "O agente mostra o plano - quais relatorios, de quais sistemas, com quais parametros. Usuario confirma. Este passo e o que separa a demo de um chatbot.",
+   "Executa: tres sistemas diferentes, join, verificacao de consistencia, acha o movimento sem par.",
+   "Fecha no numero: de M minutos para segundos, com o manifesto na tela provando de onde veio cada cifra. Este passo e o que ganha voto.",
+   "Uma frase de escala: adicionar um quarto sistema e uma entrada no catalogo."
+  ]
+ },
+ "arquitetura_sugerida": {
+  "aviso": "RESSALVA REMOVIDA em 08/09. Nao existe Guia Tecnico por vir (ver restricoes_tecnicas.guia_tecnico), portanto estas escolhas nao correm risco de serem invalidadas por documento nao visto. Os limites aplicaveis sao o regulamento sec. 12, 13 e 14 mais a pagina do SharePoint.",
+  "camadas": [
+   {
+    "camada": "conversa",
+    "componente": "Agente no Gemini Enterprise",
+    "papel": "entendimento, elicitacao de parametro, selecao de tool, apresentacao. Nunca calcula."
+   },
+   {
+    "camada": "contrato",
+    "componente": "Tools via OpenAPI",
+    "papel": "fronteira unica entre linguagem natural e execucao"
+   },
+   {
+    "camada": "execucao",
+    "componente": "Cloud Run (backend deterministico)",
+    "papel": "valida spec, chama conectores, executa filtro e join, gera arquivo e manifesto"
+   },
+   {
+    "camada": "dados",
+    "componente": "Em memoria no proprio Cloud Run (DuckDB ou pandas)",
+    "papel": "Motor de filtro e join. BigQuery SAIU em 08/09 - acervo mockado minusculo, e o join em memoria nao muda o contrato de tools. Se houver volume real algum dia, BigQuery entra atras da mesma tool."
+   },
+   {
+    "camada": "entrega",
+    "componente": "Cloud Storage + URL assinada",
+    "papel": "arquivo final para o usuario"
+   },
+   {
+    "camada": "registro",
+    "componente": "Cloud Logging",
+    "papel": "toda spec executada fica registrada - e o que sustenta a procedencia"
+   },
+   {
+    "camada": "segredo",
+    "componente": "Secret Manager",
+    "papel": "chaves das APIs mockadas"
+   }
+  ],
+  "contrato_de_tools": [
+   {
+    "tool": "list_reports(query)",
+    "devolve": "subconjunto do catalogo"
+   },
+   {
+    "tool": "describe_report(report_id)",
+    "devolve": "colunas, parametros, grao",
+    "nota": "esta tool E a V2.1"
+   },
+   {
+    "tool": "fetch_report(report_id, params)",
+    "devolve": "referencia do arquivo, contagem de linhas, manifesto"
+   },
+   {
+    "tool": "run_query(spec)",
+    "spec": "{sources[], select[], filters[], joins[], limit}",
+    "nota": "validado por JSON Schema e traduzido para SQL pelo backend"
+   },
+   {
+    "tool": "deliver(result_ref, format)",
+    "devolve": "CSV ou XLSX via URL assinada"
+   },
+   {
+    "tool": "list_playbooks(need) / get_playbook(id)",
+    "nota": "a V3"
+   }
+  ],
+  "duas_regras_nao_negociaveis": [
+   "Catalogo como DADO, nunca como prompt. Violar isso faz cada relatorio novo virar edicao de prompt.",
+   "O LLM emite SPEC, nunca SQL livre e nunca numero. O backend valida contra schema e so entao executa. Violar isso faz a V2.3 exigir reescrita e traz risco de alucinacao em cifra."
+  ],
+  "por_que_isso_responde_a_pergunta_de_arquitetura_do_time": "A V3 nao adiciona capacidade de execucao nova - adiciona apenas recuperacao de catalogo/playbook e elicitacao de parametro. Sob as duas regras acima, a V1 suporta V2 e V3 sem reconstrucao.",
+  "dois_detalhes_baratos_que_compram_credibilidade": [
+   "Conectores genuinamente heterogeneos: os sistemas mockados devem ser servicos separados com estilos de API de verdade diferentes (um REST/JSON paginado, um XML, um arquivo em GCS simulando entrega batch). Tres rotas do mesmo servidor o juri percebe, e a abstracao de conector perde o argumento.",
+   "Uma integracao real dentro do mundo mockado: conversao de moeda via serie de PTAX do Bacen (SGS) e dado publico, permitido, custa quase nada e quebra o cheiro de 'esta tudo mockado' que corroi credibilidade de demo."
+  ],
+  "cuidado_de_lgpd": "O campo customer_name do exemplo da V2.3 e um convite a alguem popular a base com nome de cliente real. Mock ostensivamente sintetico, e dito em voz alta para o time.",
+  "seguranca_e_conformidade": {
+   "por_que": "Lacuna encontrada pela revisao externa. Privacidade e seguranca de dados foi a unica exigencia que a Organizacao acrescentou de proprio punho. Diagrama para setor regulado sem caixa de seguranca e sinal negativo, nao omissao neutra.",
+   "controles": [
+    "NENHUM DADO BRUTO NO CONTEXTO DO AGENTE - o agente trafega referencias (report_id, result_ref), nunca linhas. Controle mais forte da lista, e cai de graca da regra 'o LLM emite spec'",
+    "Perimetro: VPC Service Controls em volta do projeto",
+    "Cifragem: CMEK em Cloud Storage; cifragem em repouso declarada",
+    "Trilha de auditoria: Cloud Audit Logs com sink imutavel - sustenta o manifesto de procedencia",
+    "Segredos: Secret Manager; nunca em codigo, nunca em documento",
+    "IAM: service account propria por conector, menor privilegio; o agente nao acessa as fontes direto",
+    "Dados: somente mock/sintetico/publico (sec. 13)"
+   ],
+   "frase_de_pitch": "O agente nunca ve o dado, so a referencia - simultaneamente controle de privacidade e a razao pela qual o agente nao consegue inventar cifra."
+  },
+  "nota_para_o_parceiro_google": "O Google esta no juri como parceiro tecnologico. 'Agente no Gemini Enterprise' e vago demais para quem constroi a plataforma - nomear primitivas concretas no diagrama e no one-pager, e evitar qualquer coisa que pareca VM administrada a mao. Conferir nomes de servico e de modelo no console antes de publicar o PDF.",
+  "conectores_mockados": "DOIS, de naturezas opostas - um REST/JSON paginado com auth e modos de erro, e um arquivo em Cloud Storage simulando entrega batch. O terceiro (XML) era luxo e foi cortado. Um so deixaria sem prova a promessa do campo 8 de adaptacao a diferentes sistemas e mecanismos.",
+  "rejeitado": "Backend rodando localmente atras de tunel, sugerido pela revisao externa. Sec. 12 exige o agente executavel e disponivel para avaliacao NO padrao Gemini Enterprise/GCP - tunel para maquina local e exatamente o que a clausula veda, e trafegaria conteudo interno por terceiro. Cloud Run e um comando de deploy."
+ },
+ "definicao_de_pronto_da_v1": {
+  "por_que_congelar": "Responde a pergunta 4 da secao 8 do documento OneAsk e e a defesa contra escopo espalhado por V1, V2 e V3 sem nenhum completo.",
+  "escopo": "1 agente no Gemini Enterprise, 3 tools, 3 relatorios, 2 sistemas de origem distintos",
+  "caminho_feliz": "pedido -> identifica relatorio -> extrai parametro -> MOSTRA O PLANO -> usuario confirma -> executa -> entrega arquivo mais manifesto",
+  "caminhos_de_falha_tratados": [
+   "parametro ausente: o agente pergunta",
+   "relatorio desconhecido: o agente oferece os candidatos mais proximos do catalogo",
+   "resultado vazio: o agente diz que veio vazio e mostra os filtros aplicados"
+  ],
+  "invariante_verificado": "nenhum numero na tela que nao tenha vindo de tool",
+  "nota": "Se isto esta de pe, a V1 esta funcional como FUNDACAO, mesmo que V2 e V3 nao existam. Ver correcao_08_09.",
+  "correcao_08_09": "A afirmacao anterior de que 'a V1 esta funcional mesmo que V2 e V3 nao existam, e ja e submissao valida' esta CORRIGIDA. O campo 8 do formulario promete identificacao de necessidade (V3). A V1 sozinha subentrega contra o escopo submetido. O minimo para submeter e V1 como fundacao MAIS um playbook de V3 ponta a ponta."
+ },
+ "viabilidade_por_incremento": {
+  "simples": [
+   "V1 ponta a ponta",
+   "V2.1 - e so ler o catalogo",
+   "entrega de arquivo e manifesto",
+   "playbooks declarativos"
+  ],
+  "medio": [
+   "V2.2 - spec validada por schema",
+   "V2.3 com conjunto fixo de chaves",
+   "elicitacao de parametro multi-turno",
+   "conectores heterogeneos"
+  ],
+  "arriscado_dentro_do_prazo": [
+   "V2.3 com join arbitrario entre fontes quaisquer",
+   "V3 como autonomia aberta",
+   "estado conversacional em sessao longa",
+   "casos de borda de formato de arquivo (encoding, decimal, data)"
+  ],
+  "observacao_contraintuitiva": "Os playbooks da V3 sao mais faceis que a V2.3 aberta. Playbook e configuracao; join arbitrario e problema de engenharia de dados. Se o prazo apertar, cortar V2.3 aberta e manter playbook - o resultado demonstravel e melhor.",
+  "ordem_de_construcao": "A ordem V2.1 -> V2.2 -> V2.3 esta correta e o motivo e estrutural: cada incremento adiciona um conjunto de campos ao mesmo catalogo. V2.1 precisa de colunas e rotulos; V2.2 precisa de tipos e dominios para virar filtro; V2.3 precisa de chaves de join; V3 precisa de playbooks apontando para report_ids.",
+  "correcao_de_narrativa": "Construir de baixo para cima (V1 primeiro) e CONTAR de cima para baixo (abrir pela necessidade de negocio). Hoje o documento conta de baixo para cima, e por isso a leitura de abertura e 'chatbot que baixa relatorio'."
+ },
+ "plano_ate_30_09": {
+  "prazo_duro": "2026-09-30",
+  "dias_corridos_na_data_deste_checkpoint": 20,
+  "dias_reais_de_construcao": "cerca de 10 dias uteis ate o congelamento de codigo em 24/09, mais 4 dias uteis de 25/09 a 30/09 para os entregaveis. E trabalho voluntario - 10 dias uteis nao sao 80 horas por pessoa",
+  "janelas": [
+   {
+    "janela": "08/09 - 10/09",
+    "foco": "VENCIDA. A homologacao do repositorio foi respondida de fora (GitLab GFT, e-mail de 10/09); o restante foi empurrado para a janela seguinte.",
+    "saida": "parcial"
+   },
+   {
+    "janela": "11/09 - 12/09",
+    "foco": "COBRAR ACESSO AO GITLAB E AS LICENCAS GEMINI ENTERPRISE - ambos com prazo estourado desde agosto. Abrir o diretorio da equipe e subir o primeiro artefato. Congelar escopo CONTRA O TEXTO SUBMETIDO. Agendar a revisao com Capital Markets. Fechar as premissas do numero.",
+    "saida": "acessos cobrados por escrito, diretorio do GitLab vivo, escopo congelado, numero acordado, revisao marcada"
+   },
+   {
+    "janela": "11/09 - 15/09",
+    "foco": "Catalogo semantico como dado. Dois servicos mockados heterogeneos. V1 ponta a ponta no Gemini Enterprise. Tudo versionado no GitLab desde o primeiro commit.",
+    "saida": "fundacao pronta"
+   },
+   {
+    "janela": "15/09 - 21/09",
+    "foco": "UM PLAYBOOK DE V3 PONTA A PONTA - divergencia de posicao, com verificacao de consistencia. V2.1, que sai quase de graca do catalogo. Manifesto de procedencia. Passo de plano e confirmacao.",
+    "saida": "a demo que o texto submetido promete"
+   },
+   {
+    "janela": "22/09 - 24/09",
+    "foco": "Caixa de seguranca no diagrama. Integracao. CONGELAR CODIGO EM 24/09.",
+    "saida": "demo completa"
+   },
+   {
+    "janela": "24/09 - 28/09",
+    "foco": "ROTEIRO DO VIDEO PRIMEIRO, depois gravacao com take de reserva. One-pager e PDF de arquitetura. Os tres no padrao Google Enterprise AI - exigencia do e-mail de aprovacao para todos os entregaveis.",
+    "saida": "pacote de submissao"
+   },
+   {
+    "janela": "29/09",
+    "foco": "Folga deliberada - revisao, ensaio, correcao do que aparecer. Folga zero nao e plano. Conferir o diretorio do GitLab como se fosse entregavel - porque e.",
+    "saida": "margem"
+   },
+   {
+    "janela": "30/09",
+    "foco": "Enviar de manha, nao no fim do dia",
+    "saida": "submetido"
+   }
+  ],
+  "alerta": "Os CINCO entregaveis obrigatorios sao 100% do que o juri ve, e a pagina do Loop planeja evolucao de produto sem mencionar nenhum deles. O quinto - o diretorio da equipe no GitLab - e o unico que nao cabe na janela final: ele acumula historico desde o primeiro commit.",
+  "reordenado_em": "08/09, apos a leitura do texto submetido: o playbook de V3 subiu de 'se houver folga' para obrigatorio; o join arbitrario da V2.3 desceu para fora de escopo.",
+  "fora_de_escopo": "Aprofundado em 08/09 pela conta de horas: 60 a 80 horas de backend disponiveis contra mais de 120 na lista original. Fora - BigQuery (join em memoria resolve), V2.3 com join arbitrario (o playbook cobre), terceiro conector XML (dois provam a abstracao), e V2.2 como capacidade de usuario (nao aparece no roteiro do video).",
+  "dias_uteis_na_data_deste_checkpoint": 14
+ },
+ "cronograma_2026": [
+  {
+   "janela": "05/08 - 28/08",
+   "evento": "Periodo de inscricao (formulario individual por integrante, vagas limitadas)",
+   "situacao": "ENCERRADO - resultado nao confirmado no repositorio"
+  },
+  {
+   "janela": "07/08 - 01/09",
+   "evento": "Selecao das propostas pelo comite; apenas propostas aprovadas avancam",
+   "situacao": "ENCERRADO - PROPOSTA APROVADA, comunicada por e-mail em 10/09 (APROVACAO.md)"
+  },
+  {
+   "janela": "12/08 14h",
+   "evento": "Kickoff online + apresentacao da trilha de capacitacao do Google",
+   "situacao": "ENCERRADO"
+  },
+  {
+   "janela": "13/08 - 30/09",
+   "evento": "Desenvolvimento e entrega; 30/09 e o ultimo dia para enviar o agente",
+   "situacao": "EM CURSO - fase atual. ABERTA DESDE 13/08, nao 13/09: o e-mail de aprovacao de 10/09 repete esta mesma janela e foi lido como se comecasse dia 13. Em 11/09 restam 20 dias corridos e 14 dias uteis"
+  },
+  {
+   "janela": "a partir de 13/08",
+   "evento": "Liberacao das licencas Gemini Enterprise para os aprovados",
+   "situacao": "recebimento nao confirmado. O e-mail de aprovacao de 10/09 diz 'seu acesso sera liberado em 13/08' - futuro sobre data passada, o que nao confirma provisionamento"
+  },
+  {
+   "janela": "ate 3 dias uteis a partir de 13/08 (~18/08)",
+   "evento": "Liberacao do acesso ao projeto no GitLab da GFT, onde sao versionados os artefatos do agente",
+   "situacao": "PRAZO ESTOURADO - nenhuma confirmacao de provisionamento ate 11/09. O diretorio da equipe e entregavel obrigatorio"
+  },
+  {
+   "janela": "01/10 - 15/10",
+   "evento": "Avaliacao do juri",
+   "situacao": "futuro"
+  },
+  {
+   "janela": "16/10",
+   "evento": "Divulgacao dos 3 finalistas",
+   "situacao": "futuro"
+  },
+  {
+   "janela": "19/10 - 23/10",
+   "evento": "Finalistas recebem orientacoes de apresentacao",
+   "situacao": "futuro"
+  },
+  {
+   "janela": "28/10",
+   "evento": "Apresentacao final; o publico presente elege 1o, 2o e 3o lugares",
+   "situacao": "futuro"
+  }
+ ],
+ "entregaveis_obrigatorios": [
+  {
+   "item": "One-pager",
+   "formato": "PDF",
+   "conteudo": "problema abordado, solucao desenvolvida e impacto esperado",
+   "status": "nao iniciado",
+   "o_que_nao_pode_faltar": "O numero. A dor em uma frase reconhecivel por quem e de Capital Markets."
+  },
+  {
+   "item": "Video com pitch e demo",
+   "formato": "video",
+   "conteudo": "apresentacao com demonstracao da solucao",
+   "status": "nao iniciado",
+   "o_que_nao_pode_faltar": "Take de reserva gravado. Demo ao vivo falha, e falha na hora errada."
+  },
+  {
+   "item": "Demo funcional",
+   "formato": "prototipo",
+   "conteudo": "prototipo navegavel ou simulado do agente de IA",
+   "status": "em construcao (V1)",
+   "o_que_nao_pode_faltar": "Rodando em Gemini Enterprise, nao em notebook local."
+  },
+  {
+   "item": "Arquitetura da solucao",
+   "formato": "PDF",
+   "conteudo": "diagrama simplificado da arquitetura tecnica do agente",
+   "status": "nao iniciado",
+   "o_que_nao_pode_faltar": "A fronteira LLM/deterministico DESENHADA - e o argumento de viabilidade tecnica em forma visual."
+  },
+  {
+   "item": "GitLab GFT",
+   "formato": "repositorio",
+   "conteudo": "artefatos de desenvolvimento no diretorio da equipe",
+   "status": "nao iniciado - acesso nao confirmado",
+   "o_que_nao_pode_faltar": "Historico real. E o unico entregavel que nao se produz no fim: acumula durante a construcao. Um commit unico em 29/09 entrega o artefato e nao entrega a evidencia de processo.",
+   "origem": "e-mail de aprovacao de 10/09 - NAO consta da pagina do SharePoint, que lista apenas quatro"
+  }
+ ],
+ "avaliacao": {
+  "pesos_do_regulamento": {
+   "Inovacao e Criatividade": 0.25,
+   "Valor agregado ao negocio": 0.25,
+   "Viabilidade tecnica": 0.2,
+   "Qualidade da experiencia do usuario": 0.15,
+   "Escalabilidade e potencial de aplicacao": 0.15
+  },
+  "criterios_na_redacao_do_sharepoint": [
+   "Aderencia ao Mercado de Capitais - clareza do problema e relevancia para o setor financeiro regulado",
+   "Valor para cliente ou negocio - potencial de impacto, eficiencia ou reducao de riscos",
+   "Qualidade do agente e UX - qualidade tecnica, usabilidade e experiencia do usuario",
+   "Criatividade e inovacao - originalidade da abordagem e potencial de escala"
+  ],
+  "desempate": "O VP de Capital Markets decide qual solucao apresenta maior valor agregado ao negocio",
+  "composicao_do_juri": [
+   "Lideranca de Negocios/Delivery da Business Unit de Capital Markets",
+   "Lideranca do BDP",
+   "Parceiro tecnologico: Google",
+   "pode incluir Tecnologia, IA, Negocios, Produtos, Arquitetura, RH, executivos convidados e parceiros estrategicos"
+  ],
+  "vencedor_final_definido_por": "votacao do publico presente no evento de 28/10 - plateia nao tecnica, que vota dor reconhecivel e numero final, nao arquitetura"
+ },
+ "elegibilidade": {
+  "permitido": "Colaboradores da GFT Brasil contratados em regime CLT, com vinculo ativo da inscricao ate a divulgacao do resultado",
+  "excluidos": [
+   "estagiarios",
+   "prestadores de servico",
+   "consultores independentes",
+   "fornecedores",
+   "contratados como Pessoa Juridica (PJ)",
+   "terceiros alocados em projetos da GFT",
+   "colaboradores em Staff (Bench) na inscricao ou durante o desafio",
+   "colaboradores em cumprimento de aviso previo",
+   "colaboradores afastados (auxilio-doenca, maternidade, paternidade, licenca nao remunerada, acidente)",
+   "colaboradores desligados antes da entrega da premiacao",
+   "integrantes da Comissao Julgadora",
+   "integrantes da Organizacao com conflito de interesses",
+   "executivos L7 ou superior quando a Organizacao declarar impedimento",
+   "colaboradores em processo disciplinar ou penalizados nos 3 meses anteriores"
+  ],
+  "validado_por": "Recursos Humanos; pode ser revisto a qualquer momento",
+  "alerta": "A elegibilidade vale ATE A DIVULGACAO DO RESULTADO, nao apenas na inscricao. Perder elegibilidade em qualquer etapa desclassifica."
+ },
+ "time": {
+  "minimo_de_integrantes": 2,
+  "maximo_de_integrantes": 4,
+  "participacao_individual_permitida": true,
+  "agent_lead_obrigatorio": true,
+  "atribuicoes_do_agent_lead": [
+   "representar oficialmente a equipe",
+   "realizar a inscricao",
+   "efetuar o envio das entregas",
+   "manter comunicacao com a Organizacao",
+   "assegurar o cumprimento dos prazos"
+  ],
+  "como_o_regulamento_chama_os_integrantes": "Builders (regulamento sec. 4.5)",
+  "um_time_por_participante": true,
+  "alteracao_de_integrantes": "permitida somente ate a data limite do cronograma oficial",
+  "inscricao_e_individual": "Todos os integrantes devem preencher o formulario de inscricao, inclusive quem participa em equipe. Vagas limitadas.",
+  "times_multidisciplinares_incentivados": true,
+  "regras_de_nome": "NAO EXISTEM - o regulamento nao define nenhuma restricao para o nome do time",
+  "nota_de_status": "Composicao, Agent Lead e nome do time (OneAsk) confirmados. Segue nao confirmada a elegibilidade individual de cada integrante, e a regularizacao das inscricoes individuais de 3 dos 4 integrantes pedida pela Organizacao em 09/09.",
+  "tamanho_atual": 4,
+  "tamanho_maximo": 4,
+  "alerta_de_tamanho": "O time esta CHEIO - 4 de 4 (regulamento sec. 4.3). Nao cabe mais ninguem, e a substituicao de integrantes so era permitida ate a data limite do cronograma oficial, que ja passou.",
+  "integrantes": [
+   {
+    "nome": "Brivio, Raffaele",
+    "usuario": "rebv",
+    "email": "rebv@gft.com",
+    "cargo": "Analista de Negocios III",
+    "unidade": "PSU BR",
+    "jornada": "09:00 - 18:00",
+    "papel_no_desafio": "Agent Lead / Builder",
+    "senioridade_relativa": "mais senior do time"
+   },
+   {
+    "nome": "Franco, Jeferson",
+    "usuario": "jrfc",
+    "email": "Jeferson.Franco@gft.com",
+    "cargo": "Desenvolvedor(a) Front-End II",
+    "unidade": "PSU BR",
+    "jornada": "08:00 - 17:00",
+    "papel_no_desafio": "Builder - dono deste repositorio"
+   },
+   {
+    "nome": "Augusto de Melo, Guilherme",
+    "usuario": "geam",
+    "email": "Guilherme.Melo@gft.com",
+    "cargo": "Desenvolvedor(a) Back-End I",
+    "unidade": "PSU BR",
+    "jornada": "08:00 - 17:00",
+    "papel_no_desafio": "Builder"
+   },
+   {
+    "nome": "da Silva, Michelle Carla",
+    "usuario": "maiv",
+    "email": "michelle.silva@gft.com",
+    "cargo": "Analista de Teste I",
+    "unidade": "PSU BR Indirect",
+    "jornada": "08:30 - 17:30",
+    "papel_no_desafio": "Builder"
+   }
+  ],
+  "agent_lead": "Raffaele Brivio",
+  "fonte_da_informacao": "Chat do Teams do grupo 'OneAsk' (4 pessoas), captura fornecida pelo usuario em 08/09/2026, mais indicacao direta do usuario de que Raffaele Brivio e o Agent Lead.",
+  "o_que_cabe_ao_agent_lead": [
+   "Representar oficialmente a equipe",
+   "Ter realizado a inscricao",
+   "EFETUAR O ENVIO DAS ENTREGAS ate 30/09 - nao e qualquer integrante que submete",
+   "Manter a comunicacao com a Organizacao - portanto e por este canal que se pede o Guia Tecnico",
+   "Assegurar o cumprimento dos prazos"
+  ],
+  "papeis_profissionais": "CONFIRMADOS em 08/09 pelos cartoes de contato do Teams.",
+  "composicao_por_disciplina": "1 Analista de Negocios, 1 Front-End, 1 Back-End, 1 Analista de Teste. Time multidisciplinar, como o regulamento incentiva (sec. 8).",
+  "senioridade": "Analista de Negocios III (senior), Front-End II (pleno), Back-End I (junior), Analista de Teste I (junior). A musculatura de engenharia esta em niveis I e II - mais um argumento para cortar escopo com firmeza.",
+  "janela_de_sobreposicao": "Tres jornadas diferentes (08:00-17:00, 08:30-17:30, 09:00-18:00). Sobreposicao comum aproximada: 09:00 as 17:00. Relevante para agendar as poucas decisoes sincronas necessarias.",
+  "nota_de_jornada": "A participacao e voluntaria (sec. 9 e 10). Dedicacao em horario de expediente depende de ciencia e autorizacao previa do gestor imediato, e nao se pode exigir participacao fora da jornada. Quatro pessoas com trabalho principal em paralelo - o plano precisa caber nisso.",
+  "mapeamento_dos_papeis_para_o_trabalho": [
+   {
+    "integrante": "Raffaele Brivio - Analista de Negocios III",
+    "encaixe": "Excelente, e no lugar mais escasso",
+    "o_que_faz_sentido_assumir": [
+     "O catalogo semantico - e um artefato de vocabulario de negocio antes de ser codigo",
+     "Os playbooks declarativos - processo de negocio codificado de forma declarativa",
+     "O one-pager e o conjunto de premissas do numero de impacto",
+     "A entrevista com alguem de Capital Markets para validar o cenario da demo",
+     "O pitch, e o envio das entregas por ser Agent Lead"
+    ]
+   },
+   {
+    "integrante": "Guilherme Augusto de Melo - Back-End I",
+    "encaixe": "Direto no nucleo, mas e o ponto de carga do time",
+    "o_que_faz_sentido_assumir": [
+     "Backend deterministico no Cloud Run: validacao de spec, execucao, geracao de arquivo e manifesto",
+     "Os conectores mockados heterogeneos",
+     "A camada de join no BigQuery"
+    ],
+    "alerta": "E o nivel I carregando o nucleo deterministico em cerca de 12 dias uteis de construcao, com trabalho principal em paralelo. Se algo tem de ser cortado, corta-se aqui - V2.3 com join arbitrario e a primeira coisa a sair."
+   },
+   {
+    "integrante": "Jeferson Franco - Front-End II",
+    "encaixe": "Bom, e cobre 15% da nota diretamente",
+    "o_que_faz_sentido_assumir": [
+     "A camada de conversa e apresentacao - Qualidade da experiencia do usuario vale 15%",
+     "O passo de MOSTRAR O PLANO antes de executar, com confirmacao - um dos tres diferenciais recomendados",
+     "O manifesto de procedencia na tela - outro dos tres diferenciais",
+     "Previa das primeiras linhas do resultado na conversa"
+    ],
+    "observacao": "Dois dos tres diferenciais da avaliacao sao trabalho de front-end. O que costuma ser camada de acabamento e, aqui, onde a nota se ganha."
+   },
+   {
+    "integrante": "Michelle Carla da Silva - Analista de Teste I",
+    "encaixe": "Melhor do que parece - habilita um ativo que quase nenhum time de hackathon tem",
+    "o_que_faz_sentido_assumir": [
+     "Provar o invariante 'nenhum numero na tela que nao tenha vindo de tool' - e uma afirmacao TESTAVEL, e ter quem a comprove transforma promessa em evidencia",
+     "Os tres caminhos de falha da definicao de pronto da V1: parametro ausente, relatorio desconhecido, resultado vazio",
+     "As verificacoes de consistencia do playbook - por exemplo, soma de movimentos fecha com variacao de posicao",
+     "Um roteiro de demo repetivel, que e o que evita a falha ao vivo"
+    ],
+    "observacao": "O invariante anti-alucinacao e o argumento mais forte da proposta para um juri de setor regulado, e e o unico que pode ser DEMONSTRADO em vez de afirmado. Ter QA no time e o que viabiliza isso."
+   }
+  ],
+  "lacuna_de_dominio": {
+   "achado": "NENHUM integrante e da Business Unit de Capital Markets. Todos os quatro sao PSU BR, e nenhum dos quatro cargos e papel de dominio de mercado de capitais.",
+   "por_que_importa": "O desafio e de Capital Markets, e o juri inclui a lideranca de Negocios/Delivery da BU de Capital Markets. 'Aderencia ao Mercado de Capitais' e criterio de primeira classe, e 'Valor agregado ao negocio' vale 25%. O IDEAS.md ja avisava: um pitch sobre um fluxo que o time nunca viu soa generico, nao importa quao bom seja o agente.",
+   "consequencia_para_a_correcao_C1": "A recomendacao de promover a investigacao de divergencia de posicao a manchete SEGUE VALIDA, mas deixa de ser gratuita. Sem revisao de alguem de Capital Markets, a pele de dominio passa de ativo a passivo: um juri de lideranca de CM identifica detalhe inventado mais rapido do que penalizaria uma demo generica e honesta.",
+   "acao_que_fecha_a_lacuna": "Uma conversa de 30 a 60 minutos com uma pessoa da BU de Capital Markets, para validar o cenario da demo, o vocabulario e o formato dos relatorios. Isso NAO viola o limite de 4 integrantes - consultar uma pessoa nao a torna integrante da equipe. E a acao de maior alavancagem disponivel ao time hoje.",
+   "fontes_publicas_que_ajudam": [
+    "Manuais e procedimentos operacionais publicos da B3 sobre custodia e liquidacao",
+    "Guias operacionais publicos da ANBIMA",
+    "Dados abertos da CVM"
+   ],
+   "plano_b_se_a_revisao_nao_acontecer": "Manter o enquadramento horizontal do formulario como narrativa principal e escolher um cenario de custodia deliberadamente simples e bem documentado publicamente, em vez de simular profundidade que o time nao tem. Perde nota em Aderencia, mas nao perde credibilidade - que e o dano mais caro diante deste juri."
+  }
+ },
+ "restricoes_tecnicas": {
+  "plataforma_oficial": "Gemini Enterprise + Google Cloud Platform, com licenca individual por participante inscrito",
+  "obrigatorio": "O agente final deve estar implementado, configurado, integrado, executavel e disponivel para avaliacao nos padroes Gemini Enterprise / GCP. Descumprimento acarreta desclassificacao.",
+  "outras_ferramentas_de_ia": "Permitidas como apoio ao desenvolvimento se autorizadas pelas politicas da GFT e sem gerar custo ou compromisso contratual para a GFT",
+  "guia_tecnico": {
+   "status": "RESOLVIDO em 08/09 - NAO EXISTE Guia Tecnico separado",
+   "resposta_da_organizacao": "O guia tecnico e o que esta na pagina do SharePoint mais o que ja esta no regulamento, nada alem disso. Acrescentou o pedido de que as pessoas cuidem de privacidade de dados, seguranca e afins.",
+   "data_da_resposta": "2026-08-12",
+   "origem": "Evelim Buratti (Organizacao), repassada no Teams por Michelle Carla da Silva. E repasse, nao mensagem direta - em duvida formal, reconfirmar pelo canal do Agent Lead.",
+   "registro": "GUIA_TECNICO_RESPOSTA.md - transcricao fiel",
+   "especificacao_tecnica_aplicavel": [
+    "Regulamento sec. 12 - agente implementado, configurado, integrado, executavel e disponivel para avaliacao em Gemini Enterprise + GCP; descumprir desclassifica",
+    "Regulamento sec. 13 - regras de dados",
+    "Regulamento sec. 14 - seguranca da informacao, incluindo a vedacao de plataformas nao homologadas e a regra de que todo material permanece nos ambientes indicados pela Organizacao",
+    "Pagina do SharePoint - entregaveis, cronograma, criterios e juri",
+    "E-mail de aprovacao de 10/09 - posterior a resposta sobre o Guia Tecnico. Acrescenta o quinto entregavel (GitLab GFT), nomeia o ambiente dos artefatos e estende o padrao Google Enterprise AI a todos os entregaveis. Ver APROVACAO.md."
+   ],
+   "sem_template_de_arquitetura": "A pagina do SharePoint pede 'diagrama simplificado da arquitetura tecnica' e nada alem. Nao ha template nem rubrica - o time define o que isso quer dizer.",
+   "nota_de_calendario": "A resposta e de 12/08, mesmo dia do primeiro checkpoint, que nunca a registrou. O projeto carregou 'Guia Tecnico nao obtido' como principal risco tecnico por quase um mes com a questao ja respondida."
+  },
+  "termos_da_licenca": "individual, pessoal, intransferivel, uso exclusivo no desafio",
+  "ambiente_do_codigo": {
+   "ambiente": "GitLab da GFT, em diretorio proprio da equipe",
+   "origem": "e-mail de aprovacao de 10/09 (APROVACAO.md)",
+   "por_que_importa": "Sec. 14 determina que todo material permanece nos ambientes indicados pela Organizacao. A Organizacao indicou. Artefato de desenvolvimento fora dali esta fora do ambiente indicado E e entregavel obrigatorio faltando.",
+   "acesso_confirmado": null,
+   "prazo_prometido": "ate 3 dias uteis a partir de 13/08, ou seja ~18/08 - vencido ha quase um mes"
+  },
+  "padrao_google_em_todos_os_entregaveis": "O e-mail de aprovacao de 10/09 e mais especifico que o SharePoint: 'o padrao Google Enterprise AI e obrigatorio em todos os entregaveis. Projetos fora desse padrao serao desclassificados.' Nao basta o agente rodar em Gemini Enterprise - o PDF de arquitetura precisa nomear primitivas Google concretas, o video precisa mostrar a solucao no padrao, e o one-pager nao deve ser agnostico de plataforma."
+ },
+ "regras_de_dados": {
+  "permitido": [
+   "dados ficticios (mock)",
+   "dados publicos",
+   "dados anonimizados quando previamente autorizados",
+   "dados sinteticos"
+  ],
+  "proibido": [
+   "dados pessoais de colaboradores",
+   "dados pessoais de clientes",
+   "dados de parceiros",
+   "dados sensiveis",
+   "bases de producao",
+   "informacoes protegidas por sigilo contratual",
+   "codigo fonte proprietario da GFT",
+   "codigo fonte de clientes",
+   "documentos internos",
+   "credenciais de acesso"
+  ],
+  "penalidade": "desclassificacao imediata, medidas disciplinares e responsabilizacao civil, administrativa e criminal",
+  "aplicacao_ao_oneask": "Mock e explicitamente permitido, o que valida a premissa do documento. Risco especifico: o campo customer_name do exemplo da V2.3 nao pode ser populado com nome de cliente real.",
+  "expectativa_nomeada_pela_organizacao": "A unica exigencia que a Organizacao acrescentou de proprio punho ao responder sobre o Guia Tecnico foi: 'que as pessoas cuidem da questao de privacidade de dados, seguranca e afins'. Isso eleva as regras de dados de clausula no PDF a pedido explicito de quem organiza - mock ostensivamente sintetico, sem nome de cliente real, credenciais em Secret Manager e nunca em codigo ou documento."
+ },
+ "propriedade_intelectual_e_confidencialidade": {
+  "titularidade": "Todos os ativos desenvolvidos sao patrimonio intelectual exclusivo da GFT Brasil; a participacao implica cessao gratuita, total, definitiva e irrevogavel dos direitos patrimoniais",
+  "autoria": "A GFT pode reconhecer a autoria institucionalmente, sem qualquer direito economico associado",
+  "itens_confidenciais": [
+   "solucoes desenvolvidas",
+   "estrategias de negocio",
+   "materiais tecnicos",
+   "informacoes de clientes",
+   "codigo fonte",
+   "arquiteturas",
+   "documentos internos",
+   "criterios de avaliacao",
+   "resultados preliminares"
+  ],
+  "vigencia": "permanece apos o encerramento do desafio e apos eventual desligamento do participante"
+ },
+ "premiacao": {
+  "primeiro": {
+   "valor_brl": 3000,
+   "forma": "cartao de beneficios + destaque nos canais institucionais"
+  },
+  "segundo": {
+   "valor_brl": 2000,
+   "forma": "cartao de beneficios + destaque nos canais institucionais"
+  },
+  "terceiro": {
+   "valor_brl": 1000,
+   "forma": "cartao de beneficios + destaque nos canais institucionais"
+  },
+  "divisao": "concedida ao projeto e dividida igualmente entre todos os integrantes elegiveis; rateio desigual e proibido; a parcela de integrante nao elegivel nao e redistribuida",
+  "divisao_com_4_integrantes": {
+   "primeiro_lugar_por_pessoa_brl": 750,
+   "segundo_lugar_por_pessoa_brl": 500,
+   "terceiro_lugar_por_pessoa_brl": 250,
+   "alerta": "A parcela de integrante inelegivel na data da concessao e PERDIDA e nao e redistribuida. Com 4 integrantes, um inelegivel custa R$ 750 que ninguem recebe, em caso de primeiro lugar."
+  }
+ },
+ "analise_de_aderencia_da_plataforma": {
+  "forcas_do_gemini_enterprise": [
+   "RAG sobre grandes acervos de documentos",
+   "orquestracao multi-agente",
+   "conectores para dados corporativos",
+   "extracao estruturada a partir de documentos nao estruturados"
+  ],
+  "fraquezas_do_gemini_enterprise": [
+   "computacao quantitativa customizada",
+   "streaming de dados de mercado em tempo real",
+   "caminhos de latencia muito baixa"
+  ],
+  "implicacao": "Priorizar problemas intensivos em documentos e em operacoes, em vez de problemas de trading sensiveis a latencia.",
+  "aderencia_do_oneask": "Boa. Orquestracao mais conectores mais extracao estruturada e exatamente o territorio forte. E a premissa do documento de deixar operacoes deterministicas no backend contorna a fraqueza de computacao quantitativa."
+ },
+ "fontes_de_dados_publicos_utilizaveis": [
+  "Dados abertos da CVM - regulamentos de fundos, ITR/DFP, fatos relevantes, escrituras de debentures",
+  "Manuais, comunicados e avisos de eventos corporativos publicos da B3",
+  "APIs do Bacen (SGS / PTAX) - indices, taxas, cambio. Candidata natural a integracao real dentro do mundo mockado do OneAsk.",
+  "Documentos publicos e taxas de referencia da ANBIMA",
+  "Listas publicas de sancoes e lista de punidos da CVM"
+ ],
+ "dores_de_negocio_identificadas": [
+  {
+   "id": "P1",
+   "titulo": "Monitoramento de covenants em credito privado",
+   "por_que_agora": "O volume de debentures, CRI/CRA e fundos de credito cresceu rapido enquanto o monitoramento de covenants continuou manual",
+   "onde_vaza_dinheiro": "deteccao tardia de quebra eleva a perda dada a inadimplencia; 2 a 4 dias de analista por emissor por trimestre; cauda da carteira sem monitoramento",
+   "disponibilidade_de_dados": "totalmente publica (escrituras, ITR/DFP, indices Bacen)"
+  },
+  {
+   "id": "P2",
+   "titulo": "Processamento de eventos corporativos na custodia",
+   "por_que_agora": "avisos nao estruturados ainda sao digitados manualmente como eventos estruturados",
+   "onde_vaza_dinheiro": "claims operacionais por eventos perdidos ou lancados errado; horas extras no dia do evento",
+   "disponibilidade_de_dados": "avisos publicos, posicoes sinteticas",
+   "relacao_com_o_oneask": "Dominio da unica passagem genuinamente de Mercado de Capitais do documento OneAsk (a V3, divergencia de posicao)."
+  },
+  {
+   "id": "P3",
+   "titulo": "Falhas de liquidacao em ciclos comprimidos",
+   "por_que_agora": "ciclos globais comprimidos para T+1 (EUA e Canada em 2024, Reino Unido e UE previstos para 2027) enquanto acoes na B3 seguem em D+2; pressao de afirmacao no mesmo dia para fluxo cross-border",
+   "onde_vaza_dinheiro": "custo de falha, funding e pre-funding, risco de buy-in, regimes de penalidade",
+   "disponibilidade_de_dados": "majoritariamente sintetica - menor credibilidade de demo",
+   "relacao_com_o_oneask": "A solucao candidata B5 (triagem de breaks e falhas) e o vizinho mais proximo do caso de abertura recomendado para o OneAsk."
+  },
+  {
+   "id": "P4",
+   "titulo": "Vazao de mudancas regulatorias",
+   "por_que_agora": "CVM, Bacen e B3 publicam continuamente; bancos mantem times dedicados a ler, classificar impacto e cascatear para backlogs de sistemas",
+   "onde_vaza_dinheiro": "semanas entre a publicacao e a avaliacao de impacto",
+   "risco": "ideia mais saturada em hackathons - prejudica a nota de Inovacao"
+  },
+  {
+   "id": "P5",
+   "titulo": "Falsos positivos em PLD e vigilancia de mercado",
+   "por_que_agora": "taxas de falso positivo passam de 90%; analistas reescrevem narrativas quase identicas",
+   "onde_vaza_dinheiro": "custo puro de headcount",
+   "risco": "o juri desconfia de agente que parece decidir sobre crime financeiro; viavel apenas com humano no circuito"
+  }
+ ],
+ "solucoes_candidatas": [
+  {
+   "id": "A1",
+   "nome": "Radar Normativo",
+   "dor": "P4",
+   "formato": "monitora publicacoes de CVM/Bacen/B3, classifica impacto por dominio de negocio e emite avaliacao de impacto + backlog de acoes + casos de teste"
+  },
+  {
+   "id": "A2",
+   "nome": "Auditor de Regulamento CVM 175",
+   "dor": "P4",
+   "formato": "audita regulamentos publicos de fundos contra um checklist de clausulas da CVM 175, cita artigos e propoe redacao corretiva",
+   "risco": "a onda de adaptacao a CVM 175 pode ja ter passado do pico em 2026 - validar antes de pitchar"
+  },
+  {
+   "id": "A3",
+   "nome": "Covenant Watch",
+   "dor": "P1",
+   "formato": "extrai covenants de escrituras publicas, monta calendario de verificacao, testa contra ITR/DFP publicos, projeta distancia da quebra e redige memorando e carta de waiver"
+  },
+  {
+   "id": "B4",
+   "nome": "Normalizador de eventos corporativos",
+   "dor": "P2",
+   "formato": "avisos publicos de AGO/AGE e fatos relevantes convertidos em eventos no formato ISO 20022 / MT564, com ambiguidade encaminhada a um humano"
+  },
+  {
+   "id": "B5",
+   "nome": "Triagem de breaks e falhas",
+   "dor": "P3",
+   "formato": "trades sinteticos contra posicoes de custodia, classificacao de causa raiz, redacao da mensagem a contraparte e proposta de correcao",
+   "nota": "vizinho mais proximo do caso de abertura recomendado para o OneAsk"
+  },
+  {
+   "id": "C6",
+   "nome": "Analista de suitability e KYC",
+   "dor": "P5",
+   "formato": "suitability conforme CVM 30 mais screening em listas publicas de sancoes e na lista de punidos da CVM"
+  },
+  {
+   "id": "C7",
+   "nome": "Respondedor de DDQ/RFP",
+   "dor": "nenhuma-primaria",
+   "formato": "responde questionarios de due diligence de gestoras, com cada resposta lastreada em citacao"
+  },
+  {
+   "id": "C8",
+   "nome": "Triagem de vigilancia",
+   "dor": "P5",
+   "formato": "fluxo de ordens sintetico, sinalizacao de layering e spoofing, narrativa do caso para um analista humano"
+  },
+  {
+   "id": "D9",
+   "nome": "Agente de manual de regras para suite de testes",
+   "dor": "margem de delivery da GFT",
+   "formato": "le mudancas em manuais e regras operacionais da B3 e gera cenarios de teste executaveis para a plataforma de um cliente",
+   "nota": "atinge o P&L que o proprio juri administra; risco de ser lido como ferramenta interna e nao solucao de mercado"
+  }
+ ],
+ "riscos": [
+  {
+   "risco": "Inscricao individual ausente para 3 dos 4 integrantes",
+   "gravidade": "ALTA - aberto em 09/09",
+   "mitigacao": "A Organizacao pediu e-mail de regularizacao de cada integrante faltante ate as 13h de 09/09, com o motivo e as respostas do formulario. A premiacao e dividida entre os integrantes INSCRITOS e elegiveis (sec. 19), logo nao regularizar tem custo direto. Aceite pela Organizacao nao confirmado."
+  },
+  {
+   "risco": "Acesso ao GitLab da GFT nao provisionado, com o diretorio da equipe valendo como entregavel obrigatorio",
+   "gravidade": "ALTA - aberto em 11/09",
+   "mitigacao": "A liberacao era para ate 3 dias uteis a partir de 13/08 (~18/08) e nao ha confirmacao ate 11/09. Cobrar hoje pelo canal do Agent Lead, e nao em 25/09: sem acesso nao ha onde versionar, e diretorio vazio em 30/09 e entregavel obrigatorio faltando mesmo com os outros quatro perfeitos. Enquanto o acesso nao chega, manter o trabalho pronto para migrar - nada que dependa de historico de uma plataforma nao indicada."
+  },
+  {
+   "risco": "Time acreditar que a janela de desenvolvimento comeca em 13/09",
+   "gravidade": "ALTA - aberto em 11/09",
+   "mitigacao": "O e-mail de aprovacao chegou em 10/09 repetindo o cronograma original ('13/08 a 30/09') e foi lido no Teams como 'dia 13 comeca'. 13/09/2026 e domingo; 13/08 e a data publicada no SharePoint desde 05/08. Corrigir a leitura explicitamente com o time: restam 20 dias corridos e 14 uteis, com congelamento de codigo previsto para 24/09. Registrado em APROVACAO.md secao 4 e em RULES.md."
+  },
+  {
+   "risco": "Reposicionamento contradiz a proposta submetida",
+   "gravidade": "RESOLVIDO em 08/09",
+   "mitigacao": "Texto lido. E neutro de dominio, nao contrario - a demo em custodia evidencia o texto."
+  },
+  {
+   "risco": "Entregar so V1 subentrega contra o texto submetido",
+   "gravidade": "alta",
+   "mitigacao": "O campo 8 prometeu identificacao de necessidade. Um playbook de V3 ponta a ponta e obrigatorio, na janela de 15/09 a 21/09."
+  },
+  {
+   "risco": "Perder a afirmacao horizontal ao vestir o dominio",
+   "gravidade": "media",
+   "mitigacao": "O alcance amplo dos campos 7 e 9 e o argumento de Escalabilidade (15%). Custodia e onde a dor morde, nao o novo escopo."
+  },
+  {
+   "risco": "Guia Tecnico nao obtido - pode invalidar arquitetura",
+   "gravidade": "RESOLVIDO em 08/09",
+   "mitigacao": "Nao existe Guia Tecnico separado. Ver GUIA_TECNICO_RESPOSTA.md. A especificacao tecnica e o regulamento mais a pagina do SharePoint, e nada mais vai chegar."
+  },
+  {
+   "risco": "Escopo espalhado por V1, V2 e V3 sem nenhum completo",
+   "gravidade": "alta",
+   "mitigacao": "Congelar a definicao de pronto da V1. Freeze de codigo em 25/09."
+  },
+  {
+   "risco": "Leitura de 'chatbot generico' pelo juri",
+   "gravidade": "alta",
+   "mitigacao": "Pele de dominio mais mecanismo nomeado mais procedencia (correcoes C1, C2, C3)"
+  },
+  {
+   "risco": "Ausencia de numero",
+   "gravidade": "alta",
+   "mitigacao": "Conjunto de premissas fechado esta semana. O desempate e por valor de negocio."
+  },
+  {
+   "risco": "Agente alucina cifra",
+   "gravidade": "media",
+   "mitigacao": "Invariante: nenhum numero fora de saida de tool. Renderizar verbatim."
+  },
+  {
+   "risco": "'Esta tudo mockado' corroi credibilidade",
+   "gravidade": "media",
+   "mitigacao": "Uma integracao publica real (PTAX/Bacen, CVM, B3)"
+  },
+  {
+   "risco": "Falha da demo ao vivo",
+   "gravidade": "media",
+   "mitigacao": "Take de reserva gravado"
+  },
+  {
+   "risco": "Dado pessoal entrando no mock",
+   "gravidade": "media",
+   "mitigacao": "Mock ostensivamente sintetico. Violacao e desclassificacao imediata."
+  },
+  {
+   "risco": "Entregaveis comprimidos na ultima semana",
+   "gravidade": "media",
+   "mitigacao": "Reservar 25/09 a 29/09 e nao usar para codigo"
+  },
+  {
+   "risco": "Ponto unico de falha na submissao - so o Agent Lead envia as entregas",
+   "gravidade": "media",
+   "mitigacao": "Cabe ao Agent Lead (Raffaele Brivio) efetuar o envio ate 30/09. Combinar um plano B por escrito com a Organizacao caso haja indisponibilidade na data, e nao deixar o envio para o dia 30."
+  },
+  {
+   "risco": "Elegibilidade de 4 pessoas nao verificada",
+   "gravidade": "media",
+   "mitigacao": "Cada integrante confere a propria situacao: CLT ativo, fora de Bench/Staff, sem aviso previo, sem afastamento, sem processo disciplinar. Vale ate a divulgacao do resultado, nao apenas na inscricao."
+  },
+  {
+   "risco": "~~Codigo do desafio em plataforma possivelmente nao homologada~~",
+   "gravidade": "RESOLVIDO em 10/09 - substituido pelo risco de acesso ao GitLab",
+   "detalhe": "Ha indicio de uso de organizacao no GitHub, com convite enviado a conta de email pessoal. O regulamento sec. 14 veda usar ambientes nao autorizados para informacao corporativa e subir material em plataformas nao homologadas, e determina que todo material permanece nos ambientes indicados pela Organizacao. Sec. 15 torna todo o codigo patrimonio da GFT. Sec. 20 faz da violacao gatilho de desclassificacao.",
+   "mitigacao": "O e-mail de aprovacao nomeou o ambiente: GitLab da GFT, diretorio da equipe (APROVACAO.md). Sec. 14 exigia 'ambientes indicados pela Organizacao' e agora se sabe qual e. Migrar o que estiver fora, e nao abrir repositorio do desafio em conta pessoal."
+  },
+  {
+   "risco": "Pele de dominio sem lastro - nenhum integrante e de Capital Markets",
+   "gravidade": "alta",
+   "mitigacao": "Revisao do cenario por alguem da BU de Capital Markets antes de fechar a demo e o one-pager. Consultar nao torna a pessoa integrante, logo nao afeta o limite de 4. Sem essa revisao, preferir cenario simples e publicamente documentado a profundidade simulada."
+  },
+  {
+   "risco": "Nucleo deterministico concentrado em um unico dev de nivel I",
+   "gravidade": "media",
+   "mitigacao": "Cortar V2.3 com join arbitrario. Manter os conectores mockados simples de construir, ainda que heterogeneos em estilo. Front-End e QA podem absorver parte do trabalho de tool e de fixture."
+  },
+  {
+   "risco": "Backend rodando fora do padrao Gemini Enterprise/GCP",
+   "gravidade": "alta - desclassificacao",
+   "mitigacao": "Tentacao real quando o prazo aperta. Sec. 12 exige o agente executavel e disponivel para avaliacao NO padrao GE/GCP. Cloud Run e um comando de deploy."
+  },
+  {
+   "risco": "Diagrama de arquitetura sem historia de seguranca",
+   "gravidade": "media",
+   "mitigacao": "Caixa de seguranca e conformidade; privacidade foi a unica exigencia que a Organizacao acrescentou de proprio punho."
+  },
+  {
+   "risco": "Numero de impacto com fonte inventada",
+   "gravidade": "alta",
+   "mitigacao": "Citar somente fonte que alguem do time abriu; senao declarar como premissa. Fonte inexistente derruba a submissao inteira."
+  },
+  {
+   "risco": "Video tratado como embalagem e nao como entregavel",
+   "gravidade": "media",
+   "mitigacao": "Roteiro do video primeiro; demo ao vivo como subconjunto. A plateia que vota ve o video."
+  },
+  {
+   "risco": "Entregavel de documento fora do padrao Google Enterprise AI",
+   "gravidade": "Media - aberto em 11/09",
+   "mitigacao": "O e-mail de aprovacao exige o padrao em TODOS os entregaveis, com desclassificacao nomeada. O PDF de arquitetura precisa nomear primitivas Google concretas, o video precisa mostrar a solucao rodando no padrao, e o one-pager nao deve descrever a solucao de forma agnostica de plataforma. Ja era recomendacao de nota (o parceiro Google esta no juri); passou a ser requisito de conformidade."
+  }
+ ],
+ "questoes_abertas": [
+  "O acesso ao GitLab da GFT foi provisionado, e qual e o caminho do diretorio da equipe? Prometido para ate 3 dias uteis a partir de 13/08 (~18/08) e sem confirmacao ate 11/09. PRIMEIRA POSICAO porque o diretorio e entregavel obrigatorio e nenhum outro item tem prazo estourado ha um mes.",
+  "O time aceita o escopo minimo como V1 mais um playbook de V3, em vez de V1 sozinha? (define o cronograma)",
+  "Quem, na BU de Capital Markets, pode revisar o cenario da demo em 30 a 60 minutos? Sem isso a manchete de custodia fica sem lastro.",
+  "Os tres e-mails de regularizacao de inscricao foram aceitos pela Organizacao? O e-mail de aprovacao de 10/09, enderecado aos quatro, e indicio - nao e aceite. Sem aceite, 3 dos 4 nao constam como inscritos, e a premiacao so alcanca integrantes inscritos (sec. 19).",
+  "As licencas Gemini Enterprise foram liberadas para os quatro? O e-mail de aprovacao diz 'sera liberado em 13/08' - futuro sobre data passada. O chat de 08/09 mostra um problema de acesso resolvido as 10h27 que PODE ter sido exatamente isso - confirmar.",
+  "Os 4 integrantes seguem elegiveis, e seguirao ate a divulgacao do resultado?",
+  "Os gestores imediatos deram ciencia e autorizacao para dedicacao em horario de expediente (sec. 10)?",
+  "Qual caso de custodia vira a demo?",
+  "Qual o conjunto de premissas do numero de impacto (N, T, A, M)?"
+ ],
+ "proximas_acoes": [
+  {
+   "acao": "Fechar o escopo minimo como V1 mais um playbook de V3, nao V1 sozinha - e o que o campo 8 do formulario prometeu",
+   "dono": "time, decisao coletiva"
+  },
+  {
+   "acao": "Achar e agendar uma pessoa da BU de Capital Markets para revisar o cenario da demo, o vocabulario e o formato dos relatorios. Acao de maior alavancagem disponivel hoje.",
+   "dono": "Agent Lead - Raffaele Brivio, por perfil de Analista de Negocios e por ser o canal externo"
+  },
+  {
+   "acao": "Cobrar o provisionamento do acesso ao GitLab da GFT e comecar a versionar os artefatos no diretorio da equipe - a duvida sobre homologacao foi respondida em 10/09 (e o GitLab), e o diretorio e o QUINTO entregavel obrigatorio. Prazo prometido vencido desde ~18/08",
+   "dono": "Agent Lead para cobrar, Back-End para povoar",
+   "prioridade": "primeira - unica acao da lista com prazo estourado ha um mes"
+  },
+  {
+   "acao": "Fechar o conjunto de premissas do numero de impacto - o formulario nao traz nenhum numero",
+   "dono": "Raffaele Brivio, com o insumo da revisao de Capital Markets"
+  },
+  {
+   "acao": "~~Confirmar aprovacao pelo comite e o nome do time~~ FEITO em 10/09 - aprovada, time OneAsk (APROVACAO.md). No lugar: cobrar o aceite das tres inscricoes individuais regularizadas em 09/09",
+   "dono": "Agent Lead - Raffaele Brivio, que realizou a inscricao"
+  },
+  {
+   "acao": "Confirmar se as licencas Gemini Enterprise estao liberadas para os 4",
+   "dono": "Agent Lead - Raffaele Brivio"
+  },
+  {
+   "acao": "Distribuir o trabalho conforme time.mapeamento_dos_papeis_para_o_trabalho, e cortar V2.3 com join arbitrario desde ja",
+   "dono": "time"
+  },
+  {
+   "acao": "Cada integrante confere a propria elegibilidade e a autorizacao do gestor imediato para dedicacao em expediente",
+   "dono": "cada um dos 4"
+  },
+  {
+   "acao": "Reservar a janela 25/09 a 29/09 para os entregaveis de documento e video, e nao usar para codigo. O quinto entregavel - o diretorio no GitLab - NAO cabe nesta janela: acumula desde o primeiro commit",
+   "dono": "time"
+  },
+  {
+   "acao": "Combinar plano B de submissao caso o Agent Lead esteja indisponivel em 30/09",
+   "dono": "Agent Lead - Raffaele Brivio"
+  },
+  {
+   "acao": "Escrever o roteiro do video antes de construir o resto - a plateia que decide o 1o lugar ve o video, nao a arquitetura",
+   "dono": "BA (Agent Lead) com o Front-End"
+  },
+  {
+   "acao": "Desenhar a caixa de seguranca e conformidade no PDF de arquitetura, comecando por 'o agente nunca ve dado bruto, so referencia'",
+   "dono": "Back-End com o BA"
+  },
+  {
+   "acao": "Conferir se a camada de tools do Gemini Enterprise exige schema OpenAPI antes de considerar corta-la",
+   "dono": "Back-End"
+  },
+  {
+   "acao": "Corrigir com o time a leitura de que 'dia 13 comeca': a janela abriu em 13/08 e restam 20 dias corridos. 13/09/2026 e domingo",
+   "dono": "quem falar primeiro no grupo - custa uma mensagem"
+  },
+  {
+   "acao": "Garantir que o Agent Lead esteja no grupo exclusivo de Agent Builders aprovados, e aterrar no repositorio, no mesmo dia, o que for dito ali - a licao de 12/08 custou quase um mes",
+   "dono": "Agent Lead"
+  }
+ ],
+ "segunda_opiniao_externa": {
+  "data": "2026-09-08",
+  "como": "Avaliacao submetida a modelo externo via bridge local, com instrucao explicita de contestar em vez de validar. Briefing descreveu o concurso, o texto submetido, a escada V1/V2/V3, as recomendacoes e a composicao do time POR PAPEL - sem nome, e-mail ou horario de ninguem.",
+  "procedencia": "Os modelos de topo da cadeia falharam; a resposta veio de um modelo gratuito de porte menor, que citou uma geracao de modelo Gemini de 2024. Leitura externa util, nao autoridade.",
+  "aceito": [
+   "Faltava historia de seguranca no diagrama - melhor item: nenhum dado bruto no contexto do agente, so referencia",
+   "Video e demo ao vivo sao pecas diferentes, para plateias e prazos diferentes; o roteiro do video vem primeiro",
+   "O parceiro Google esta no juri e precisa ver primitivas concretas da stack dele",
+   "A conta de horas de backend nao fechava - o corte anterior (so V2.3) era insuficiente",
+   "Citar fonte publica e melhor que declarar premissa, COM a ressalva de que citacao nao conferida e pior que premissa honesta"
+  ],
+  "rejeitado": [
+   "Backend local atras de tunel - gatilho de desclassificacao (sec. 12)",
+   "Cortar a camada OpenAPI - e o caminho nativo de tools do Gemini Enterprise; conferir antes de cortar",
+   "Cortar a V2 inteira - a V2.1 e so ler o catalogo, custo proximo de zero",
+   "Um unico conector mockado - deixaria sem prova a promessa do campo 8",
+   "Cronograma com folga zero apresentado como virtude",
+   "Abandonar o dominio de custodia - ele abre contestando a C1 e fecha recomendando a C1 com o pre-requisito de revisao que ela ja tinha"
+  ],
+  "formulacoes_a_roubar": [
+   "'We solved the pattern, not one instance' - enquadramento para Escalabilidade (15%)",
+   "Se insistir em custodia, o caso da V3 tem de ser o UNICO cenario da demo, estreito o bastante para caber numa conversa de uma hora com quem e do dominio",
+   "'O momento do recibo' para o manifesto, e 'eu conseguiria defender isso para o auditor' como o pensamento desejado na plateia"
+  ],
+  "sobreviveu_intacto": "Fronteira LLM/deterministico, catalogo como dado, playbooks como configuracao, manifesto de procedencia, verificacoes de consistencia, invariante anti-alucinacao, e o minimo de V1 mais um playbook."
+ },
+ "aprovacao": {
+  "status": "APROVADA",
+  "data": "2026-09-10",
+  "hora": "12:30",
+  "remetente": "Evelim Carla Ribeiro (Organizacao)",
+  "destinatarios": [
+   "Raffaele Brivio",
+   "Jeferson Franco",
+   "Guilherme Augusto de Melo",
+   "Michelle Carla da Silva"
+  ],
+  "copia": [
+   "Vitor Hugo Miotta",
+   "Carlos Alberto Kato",
+   "Thiago Martins Silveira Bueno"
+  ],
+  "assunto": "Sua proposta foi aprovada! | Capital Markets AI Agents Challenge 2026",
+  "registro": "APROVACAO.md - transcricao fiel mais analise",
+  "confirmacao_lateral": "O e-mail abre com 'Ola OneAsk!', o que confirma o nome do TIME registrado.",
+  "o_que_muda": [
+   "Sao CINCO entregaveis obrigatorios, nao quatro - o quinto e o diretorio da equipe no GitLab da GFT, e ele nao se produz na ultima semana: acumula historico durante a construcao.",
+   "O ambiente homologado do codigo tem nome: GitLab da GFT, diretorio da equipe. Responde a pergunta sobre GitHub (sec. 14, 15 e 20) e converte risco em tarefa.",
+   "O padrao Google Enterprise AI e obrigatorio em TODOS os entregaveis, com desclassificacao nomeada. Sobe a barra do PDF de arquitetura, do video e do one-pager, que nao podem ser agnosticos de plataforma.",
+   "Vai existir um grupo exclusivo com os Agent Builders aprovados, para orientacoes, cronograma e duvidas. Garantir que o Agent Lead esteja nele, e aterrar no repositorio, no mesmo dia, o que for dito ali."
+  ],
+  "armadilha_de_data": {
+   "o_que_o_email_diz": "'O periodo de desenvolvimento do agente acontecera de 13/08 a 30/09' e 'seu acesso sera liberado em 13/08'.",
+   "como_foi_lido": "No Teams, em 10/09 12h36: 'foi aprovado hein' / 'dia 13 comeca uhuu'.",
+   "leitura_correta": "13/08, nao 13/09. E o cronograma publicado no SharePoint desde 05/08, e 13/09/2026 cai num domingo - 13/08 era a quinta-feira seguinte ao kickoff de 12/08.",
+   "consequencia": "A janela esta aberta ha 28 dias na data do e-mail, e ja consumiu cerca de 60% do prazo. Quem le 'comeca dia 13' acredita ter a janela inteira pela frente."
+  },
+  "o_que_nao_resolve": [
+   "O aceite das tres inscricoes individuais regularizadas em 09/09 - o e-mail trata da proposta, nao da inscricao.",
+   "Se as licencas Gemini Enterprise estao efetivamente liberadas para os quatro - o e-mail diz 'sera liberado em 13/08', futuro sobre data passada.",
+   "Se o acesso ao GitLab foi provisionado, e qual e o caminho do diretorio da equipe."
+  ],
+  "nota_de_confidencialidade": "A aprovacao e resultado preliminar, explicitamente coberto pela sec. 16. Comemorar dentro da GFT, nao fora dela."
+ },
+ "entregaveis_obrigatorios_nota": "SAO CINCO, nao quatro. A pagina do SharePoint lista quatro; o e-mail de aprovacao de 10/09 lista cinco. E o padrao Google Enterprise AI e obrigatorio em TODOS eles - 'Projetos fora desse padrao serao desclassificados' - e nao apenas no agente que roda. Ver APROVACAO.md.",
+ "questoes_respondidas_em_10_09": [
+  "A proposta foi aprovada pelo comite? SIM - e-mail da Organizacao em 10/09 (APROVACAO.md).",
+  "Qual o nome do TIME registrado? OneAsk - o e-mail abre com 'Ola OneAsk!'.",
+  "O GitHub usado pelo time e ambiente homologado? A pergunta perdeu o objeto: a Organizacao nomeou o ambiente, e e o GitLab da GFT."
+ ]
 }

@@ -42,8 +42,10 @@ Para a situacao do projeto como um todo - cronograma, o que esta confirmado, cam
 
 ## O que segue nao confirmado
 
-A aprovacao pelo comite (selecao encerrada em 01/09), o nome do **time** registrado nos formularios (campos 1 a 6 nao vistos), as licencas Gemini Enterprise, e se o GitHub usado pelo time e ambiente homologado para o codigo do desafio.
+O aceite das tres inscricoes individuais regularizadas em 09/09, as licencas Gemini Enterprise, e **o acesso ao GitLab da GFT** - prometido para ate ~18/08 e ainda sem confirmacao, sendo que o diretorio da equipe e entregavel obrigatorio.
 
-Ja resolvidos: o texto submetido, a composicao do time, o Agent Lead, os papeis profissionais, e o Guia Tecnico - que **nao existe** como documento separado (`../GUIA_TECNICO_RESPOSTA.md`).
+Ja resolvidos: o texto submetido, a composicao do time, o Agent Lead, os papeis profissionais, o Guia Tecnico - que **nao existe** como documento separado (`../GUIA_TECNICO_RESPOSTA.md`) - e, desde 10/09, **a aprovacao da proposta**, o nome do time (**OneAsk**) e o ambiente homologado do codigo (**GitLab da GFT**). Ver `../APROVACAO.md`.
+
+> **Atencao ao contar entregaveis:** sao **cinco**, nao quatro. O e-mail de aprovacao acrescentou os artefatos no diretorio da equipe no GitLab, e exigiu o padrao Google Enterprise AI em todos eles.
 
 Detalhes em `AVALIACAO.md`, secoes 0 e 0.1.
