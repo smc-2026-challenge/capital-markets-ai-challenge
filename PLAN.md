@@ -1,6 +1,6 @@
 # Plano - Desafio Capital Markets AI Agents Challenge (SMC 2026)
 
-Data do checkpoint: **11/09/2026**. Versao legivel por maquina: `checkpoint.json` (v10).
+Data do checkpoint: **14/09/2026**. Versao legivel por maquina: `checkpoint.json` (v10, 11/09) - **desatualizado em relacao a este arquivo**: nao incorpora ainda o backlog de 14/09 nem `oneask/REFINAMENTO_ANALISE.md`.
 Arquivos companheiros: `APROVACAO.md` (o e-mail de aprovacao e o que ele muda), `RULES.md` (resumo do regulamento), `IDEAS.md` (espaco de problemas e catalogo de solucoes), `NAMES.md` (historico dos candidatos a nome do time - encerrado em OneAsk), `oneask/` (a solucao em construcao, o texto submetido e a avaliacao).
 
 > Este arquivo esta em pt-BR sem acentuacao (ASCII puro), para nao quebrar em formularios, nomes de arquivo e terminais.
@@ -15,13 +15,18 @@ A recomendacao de agosto (**A3 Covenant Watch**, vice **B4 Normalizador de event
 
 **Atualizacao de 11/09: a proposta foi APROVADA.** E-mail da Organizacao em 10/09, 12h30, aos quatro integrantes. Transcricao fiel e analise em `APROVACAO.md`. O e-mail traz tres coisas que mudam o plano - ver "A aprovacao, e as tres coisas que vieram com ela", abaixo.
 
+**Atualizacao de 14/09: existe backlog.** O Agent Lead publicou no Loop uma segunda pagina - **"OneAsk - Proposta de Estrutura de Refinamento"** - consolidando a escada V1/V2/V3 em **1 Epic, 3 Features e 7 User Stories**, e pediu ao time validacao de representatividade e granularidade, mais cinco confirmacoes de comportamento. Extracao fiel em `oneask/OneAsk_Proposta_Estrutura_Refinamento.md`; analise, linha de corte e respostas em `oneask/REFINAMENTO_ANALISE.md`.
+
+Em uma linha: **a quebra esta certa na forma e faltam quatro coisas** - a V3 nao tem US para o seu mecanismo (o playbook), nao ha verificacao de consistencia em lugar nenhum, o invariante anti-alucinacao nao esta escrito como requisito, e **nenhum item do backlog tem formato de entregavel**. Mais uma quinta, de ordenacao: as US02 e US05 sao **V2.2 e V2.3 com nome novo** - os dois itens cortados do escopo em 08/09 - e sem linha de corte explicita o corte se desfaz sem ninguem decidir desfaze-lo.
+
 ## Onde estamos
 
 | Item | Situacao |
 |---|---|
 | Regulamento lido | Feito |
 | Direcao de problema e solucao | **Travada pelo formulario** - `oneask/PROPOSTA_SUBMETIDA.md`. O que segue em discussao e o plano de evolucao V1/V2/V3 |
-| Fase | **Construcao do agente** - janela 13/08 a 30/09, **aberta desde 13/08**, restam 20 dias corridos |
+| Fase | **Construcao do agente** - janela 13/08 a 30/09, **aberta desde 13/08**. Em 14/09 restam **16 dias corridos** ate 30/09, e **9 dias uteis** ate o congelamento de codigo em 24/09 |
+| Backlog | **Existe desde 14/09** - 1 Epic, 3 Features, 7 US (`oneask/OneAsk_Proposta_Estrutura_Refinamento.md`). **Sem linha de corte definida**, e sem nenhum item com formato de entregavel |
 | Proposta submetida no formulario | **Confirmada** - texto em `oneask/PROPOSTA_SUBMETIDA.md` |
 | Proposta aprovada pelo comite | **APROVADA** - e-mail da Organizacao em 10/09 (`APROVACAO.md`) |
 | Ambiente do codigo | **Resolvido: GitLab da GFT**, diretorio da equipe. **Acesso nao confirmado** - era para ate ~18/08 |
@@ -309,14 +314,15 @@ Se selecionado entre os tres finalistas, refazer o pitch para uma plateia **nao 
 ## Questoes abertas
 
 1. **O acesso ao GitLab da GFT foi provisionado, e qual e o caminho do diretorio da equipe?** Era para ate 3 dias uteis a partir de 13/08 - ou seja, ~18/08 - e nao ha confirmacao. **Sobe para primeira posicao porque o diretorio e entregavel obrigatorio**, e nenhum outro item da lista tem prazo estourado ha um mes.
-2. **O time aceita o escopo minimo como V1 mais um playbook de V3, em vez de V1 sozinha?** Ela define o cronograma.
-3. **Quem, na BU de Capital Markets, pode revisar o cenario da demo em 30 a 60 minutos?** Sem isso a manchete de custodia fica sem lastro.
+2. **O time aceita o escopo minimo como V1 mais um playbook de V3, em vez de V1 sozinha?** Ela define o cronograma. **A partir de 14/09 a pergunta tem forma concreta:** qual e a linha de corte entre as 7 US do refinamento? Proposta em `oneask/REFINAMENTO_ANALISE.md` secao 3 - comprometido US04, US01, US06, a US nova do playbook, US03 restrita a um playbook fechado e US05a; esticado US05b e depois US02.
+3. **Quem, na BU de Capital Markets, pode revisar o cenario da demo em 30 a 60 minutos?** Sem isso a manchete de custodia fica sem lastro. **Subiu de prioridade em 14/09:** com backlog escrito, essa conversa deixou de ser pre-requisito so da demo e passou a ser **pre-requisito da escrita do Epic** - os exemplos das US01 e US02 continuam genericos e nao ha como congelar vocabulario antes dela.
 4. Os tres e-mails de regularizacao de inscricao foram aceitos pela Organizacao? O e-mail de aprovacao aos quatro e indicio, nao aceite.
 5. As licencas Gemini Enterprise foram liberadas **para os quatro**? O e-mail de aprovacao diz "sera liberado em 13/08" - futuro, sobre data no passado. O chat de 08/09 mostra um problema de acesso resolvido as 10h27 que **pode** ter sido exatamente isso - confirmar.
 6. Os 4 integrantes seguem elegiveis, e seguirao ate a divulgacao do resultado?
 7. Os gestores imediatos deram ciencia e autorizacao para dedicacao em expediente (sec. 10)?
-8. Qual caso de custodia vira a demo?
+8. Qual caso de custodia vira a demo? Ver questao 3 - ela nao se responde sem a revisao de Capital Markets.
 9. Qual o conjunto de premissas do numero de impacto?
+10. **Quem rastreia os cinco entregaveis?** Nenhum deles aparece no backlog de 14/09, que so tem historias de produto. Dois nao aceitam compressao na ultima semana: o **roteiro do video** precisa vir antes do fim da construcao, e o **diretorio do GitLab** e avaliado pelo historico que acumulou. Ver `oneask/REFINAMENTO_ANALISE.md` secao 2, lacuna 4.
 
 **Respondidas em 08/09, e por isso fora da lista:** o que a proposta submetida declara (`oneask/PROPOSTA_SUBMETIDA.md`); quem esta no time, quem e o Agent Lead e quais sao os papeis profissionais (ver "O time"); e se o Guia Tecnico foi obtido - nao existe (`GUIA_TECNICO_RESPOSTA.md`).
 
